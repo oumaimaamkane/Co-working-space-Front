@@ -81,7 +81,7 @@ function Footer() {
                 <div className="copyright-area">
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-sm-6 col-md-6">
-                            <p>© Afrtsy is Proudly Owned by <a href="https://envytheme.com/" target="_blank" rel="noreferrer">EnvyTheme</a></p>
+                            <p>© Afrtsy is Proudly Owned by <a href="https://envytheme.com/" target="_blank" rel="noreferrer">Simplon</a></p>
                         </div>
 
                         <div className="col-lg-6 col-sm-6 col-md-6">

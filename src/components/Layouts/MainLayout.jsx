@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../Partials/Navbar';
-import MainBanner from '../MainBanner';
 import Footer from '../Partials/Footer';
+import { Outlet } from 'react-router-dom';
 
 function MainLayout() {
     return (
@@ -26,15 +26,18 @@ function MainLayout() {
                 </div>
 
                 <Navbar />
-                <MainBanner />
-                {/* Other content goes here */}
+                
+                <main>
+                    <Outlet />
+                </main>
+
                 <Footer />
 
                 {/* Go to top button */}
                 <div className="go-top"><i className="fas fa-chevron-up"></i><i className="fas fa-chevron-up"></i></div>
 
         </div>
-                
+               
     );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';  
+import { NavLink } from 'react-router-dom';
 //import { toggleTheme } from '../../assets/js/main';
 
 
@@ -10,15 +11,15 @@ function Navbar() {
                 <div className="container">
                     <div className="zash-responsive-menu">
                         <div className="logo black-logo">
-                            <a href="index.html">
+                            <NavLink to="/">
                                 <img src="assets/img/logo.png" alt="logo" />
-                            </a>
+                            </NavLink>
                         </div>
 
                         <div className="logo white-logo">
-                            <a href="index.html">
+                            <NavLink to="/">
                                 <img src="assets/img/white-logo.png" alt="logo" />
-                            </a>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
@@ -27,16 +28,16 @@ function Navbar() {
             <div className="zash-nav">
                 <div className="container">
                     <nav className="navbar navbar-expand-md navbar-light">
-                        <a className="navbar-brand black-logo" href="index.html">
+                        <NavLink className="navbar-brand black-logo" to="/">
                             <img src="assets/img/logo-youcode-ma.png" alt="logo" style={{ maxWidth: '150px' }} />
-                        </a>
-                        <a className="navbar-brand white-logo" href="index.html">
+                        </NavLink>
+                        <NavLink className="navbar-brand white-logo" to="/">
                             <img src="assets/img/logo-youcode-ma.png" alt="logo" style={{ maxWidth: '150px' }} />
-                        </a>
+                        </NavLink>
 
                         <div className="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul className="navbar-nav">
-                                <li className="nav-item"><a href="about.html" className="nav-link active">Home <i className="flaticon-down-arrow"></i></a>
+                                <li className="nav-item"><NavLink to="/" className="nav-link active">Home <i className="flaticon-down-arrow"></i></NavLink>
                                     <ul className="dropdown-menu">
                                         <li className="nav-item"><a href="index.html" className="nav-link active">Home One</a></li>
 
@@ -48,49 +49,49 @@ function Navbar() {
                                     </ul>
                                 </li>
 
-                                <li className="nav-item"><a href="about.html" className="nav-link">About</a></li>
+                                <li className="nav-item"><NavLink to="/about" className="nav-link">About</NavLink></li>
 
-                                <li className="nav-item"><a href="the-place.html" className="nav-link">The Place</a></li>
+                                <li className="nav-item"><NavLink to="/" className="nav-link">The Place</NavLink></li>
 
-                                <li className="nav-item"><a href="about.html" className="nav-link">Event <i className="flaticon-down-arrow"></i></a>
+                                <li className="nav-item"><NavLink to="/" className="nav-link">Event <i className="flaticon-down-arrow"></i></NavLink>
                                     <ul className="dropdown-menu">
-                                        <li className="nav-item"><a href="event.html" className="nav-link">Event</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">Event</NavLink></li>
 
-                                        <li className="nav-item"><a href="single-event.html" className="nav-link">Event Details</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">Event Details</NavLink></li>
                                     </ul>
                                 </li>
 
-                                <li className="nav-item"><a href="about.html" className="nav-link">Pages <i className="flaticon-down-arrow"></i></a>
+                                <li className="nav-item"><NavLink to="/" className="nav-link">Pages <i className="flaticon-down-arrow"></i></NavLink>
                                     <ul className="dropdown-menu">
-                                        <li className="nav-item"><a href="gallery.html" className="nav-link">Gallery</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">Gallery</NavLink></li>
 
-                                        <li className="nav-item"><a href="about.html" className="nav-link">Services</a>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">Services</NavLink>
                                             <ul className="dropdown-menu">
-                                                <li className="nav-item"><a href="services.html" className="nav-link">Services</a></li>
+                                                <li className="nav-item"><NavLink to="/" className="nav-link">Services</NavLink></li>
 
-                                                <li className="nav-item"><a href="single-services.html" className="nav-link">Services Details</a></li>
+                                                <li className="nav-item"><NavLink to="/" className="nav-link">Services Details</NavLink></li>
                                             </ul>
                                         </li>
 
-                                        <li className="nav-item"><a href="pricing.html" className="nav-link">Pricing</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">Pricing</NavLink></li>
 
-                                        <li className="nav-item"><a href="team.html" className="nav-link">Team</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">Team</NavLink></li>
 
-                                        <li className="nav-item"><a href="error-404.html" className="nav-link">404 Error</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">404 Error</NavLink></li>
                                     </ul>
                                 </li>
 
-                                <li className="nav-item"><a href="about.html" className="nav-link">News <i className="flaticon-down-arrow"></i></a>
+                                <li className="nav-item"><NavLink to="/" className="nav-link">News <i className="flaticon-down-arrow"></i></NavLink>
                                     <ul className="dropdown-menu">
-                                        <li className="nav-item"><a href="news-1.html" className="nav-link">News Grid</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">News Grid</NavLink></li>
 
-                                        <li className="nav-item"><a href="news-2.html" className="nav-link">News Right Sidebar</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">News Right Sidebar</NavLink></li>
 
-                                        <li className="nav-item"><a href="single-news.html" className="nav-link">News Details</a></li>
+                                        <li className="nav-item"><NavLink to="/" className="nav-link">News Details</NavLink></li>
                                     </ul>
                                 </li>
 
-                                <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
+                                <li className="nav-item"><NavLink to="/" className="nav-link">Contact</NavLink></li>
                             </ul>
 
                             <div className="others-option d-flex align-items-center">
