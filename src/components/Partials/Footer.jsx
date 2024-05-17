@@ -32,7 +32,7 @@ function Footer() {
                             <div className="logo">
                                 <a href="about.html"><img src="assets/img/logo-youcode-ma.png" alt="image" style={{ maxWidth: '150px' }} /></a>
 
-                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra lacus vel facilisis.</p>
+                                <p>Lorem ipsum dolor s it amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra lacus vel facilisis.</p>
                             </div>
 
                             <ul className="social">
