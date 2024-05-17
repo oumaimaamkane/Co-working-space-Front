@@ -1,5 +1,5 @@
 import React from 'react';  
-const { toggleTheme } = require('../assets/main.js');
+//import { toggleTheme } from '../../assets/js/main';
 
 
 
@@ -28,10 +28,10 @@ function Navbar() {
                 <div className="container">
                     <nav className="navbar navbar-expand-md navbar-light">
                         <a className="navbar-brand black-logo" href="index.html">
-                            <img src="assets/img/logo.png" alt="logo" />
+                            <img src="assets/img/logo-youcode-ma.png" alt="logo" style={{ maxWidth: '150px' }} />
                         </a>
                         <a className="navbar-brand white-logo" href="index.html">
-                            <img src="assets/img/white-logo.png" alt="logo" />
+                            <img src="assets/img/logo-youcode-ma.png" alt="logo" style={{ maxWidth: '150px' }} />
                         </a>
 
                         <div className="collapse navbar-collapse mean-menu" id="navbarSupportedContent">

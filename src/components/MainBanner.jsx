@@ -1,6 +1,31 @@
-import React from 'react';
+// import React from 'react';
+import React, { useEffect } from 'react';
+//import $ from 'jquery'; 
+//import 'owl.carousel';
 
 function MainBanner() {
+    useEffect(() => {
+        $('.home-slides').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        });
+    }, []);
     
     return (
         <div className="home-area home-slides owl-carousel owl-theme">
