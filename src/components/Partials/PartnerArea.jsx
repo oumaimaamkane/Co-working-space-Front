@@ -29,7 +29,7 @@ function PartnerArea() {
         <section className="partner-area ptb-100 bg-f8f8f8">
             <div className="container">
                 <div className="partner-title">
-                    <h2>Trusted by 20,000 Companies</h2>
+                    <h2>Fait Confiance par 20 000 Entreprises</h2>
                 </div>
 
                 <div className="partner-slides owl-carousel owl-theme">
@@ -77,6 +77,7 @@ function PartnerArea() {
                 </div>
             </div>
         </section>
+
     );
 }
 

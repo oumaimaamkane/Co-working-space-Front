@@ -6,16 +6,17 @@ function AboutHero() {
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>About Us</h2>
+                            <h2>À propos de nous</h2>
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li>About Us</li>
+                                <li><a href="index.html">Accueil</a></li>
+                                <li>À propos</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     )
 }
 

@@ -6,7 +6,7 @@ const BlogsHighlights = () => {
         <section className="blog-area ptb-100">
             <div className="container">
                 <div className="section-title">
-                    <h2>News and Insights</h2>
+                    <h2>Actualités et Insights</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
 
@@ -16,14 +16,14 @@ const BlogsHighlights = () => {
                             <div className="post-image">
                                 <NavLink to="single-news.html"><img src="assets/img/blog-image/1.jpg" alt="image" /></NavLink>
 
-                                <div className="date"><i className="flaticon-calendar"></i> Oct 14, 2024</div>
+                                <div className="date"><i className="flaticon-calendar"></i> 14 Octobre 2024</div>
                             </div>
 
                             <div className="post-content">
-                                <h3><NavLink to="single-news.html">Why Business Absolutely Needs a Virtual Office</NavLink></h3>
+                                <h3><NavLink to="single-news.html">Pourquoi les entreprises ont absolument besoin d'un bureau virtuel</NavLink></h3>
                                 <p>Quis ipsum suspendisse ultrices. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
 
-                                <NavLink to="single-news.html" className="default-btn">Read More <span></span></NavLink>
+                                <NavLink to="single-news.html" className="default-btn">Lire plus <span></span></NavLink>
                             </div>
                         </div>
                     </div>
@@ -33,14 +33,14 @@ const BlogsHighlights = () => {
                             <div className="post-image">
                                 <NavLink to="single-news.html"><img src="assets/img/blog-image/2.jpg" alt="image" /></NavLink>
 
-                                <div className="date"><i className="flaticon-calendar"></i> Oct 10, 2024</div>
+                                <div className="date"><i className="flaticon-calendar"></i> 10 Octobre 2024</div>
                             </div>
 
                             <div className="post-content">
-                                <h3><NavLink to="single-news.html">6 Design Trends to Look For in Coworking Spaces</NavLink></h3>
+                                <h3><NavLink to="single-news.html">6 tendances de design à rechercher dans les espaces de coworking</NavLink></h3>
                                 <p>Quis ipsum suspendisse ultrices. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
 
-                                <NavLink to="single-news.html" className="default-btn">Read More <span></span></NavLink>
+                                <NavLink to="single-news.html" className="default-btn">Lire plus <span></span></NavLink>
                             </div>
                         </div>
                     </div>
@@ -50,26 +50,27 @@ const BlogsHighlights = () => {
                             <div className="post-image">
                                 <NavLink to="single-news.html"><img src="assets/img/blog-image/3.jpg" alt="image" /></NavLink>
 
-                                <div className="date"><i className="flaticon-calendar"></i> Sep 13, 2024</div>
+                                <div className="date"><i className="flaticon-calendar"></i> 13 Septembre 2024</div>
                             </div>
 
                             <div className="post-content">
-                                <h3><NavLink to="single-news.html">5 Ways to Work Remotely Without Being Overlooked</NavLink></h3>
+                                <h3><NavLink to="single-news.html">5 façons de travailler à distance sans être négligé</NavLink></h3>
                                 <p>Quis ipsum suspendisse ultrices. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
 
-                                <NavLink to="single-news.html" className="default-btn">Read More <span></span></NavLink>
+                                <NavLink to="single-news.html" className="default-btn">Lire plus <span></span></NavLink>
                             </div>
                         </div>
                     </div>
 
                     <div className="col-lg-12 col-md-12">
                         <div className="blog-notes">
-                            <p>Insights to help you do what you do better, faster and more profitably. <NavLink to="#">Read Full Blog</NavLink></p>
+                            <p>Des informations pour vous aider à faire ce que vous faites mieux, plus rapidement et plus rentablement. <NavLink to="#">Lire le blog complet</NavLink></p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     );
 };
 

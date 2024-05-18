@@ -40,11 +40,11 @@ function AboutServicesBanner() {
                             </div>
                         </div>
 
-                        <h3><NavLink to="single-services.html">Virtual Offices</NavLink></h3>
+                        <h3><NavLink to="single-services.html">Bureaux Virtuels</NavLink></h3>
 
-                        <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod incididunt ut incididunt labore et dolore.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                        <NavLink to="single-services.html" className="read-more-btn">Learn More</NavLink>
+                        <NavLink to="single-services.html" className="read-more-btn">En savoir plus</NavLink>
 
                         <div className="box-shape">
                             <img src="assets/img/box-shape1.png" alt="image" />
@@ -52,75 +52,75 @@ function AboutServicesBanner() {
                         </div>
                     </div>
 
-                    <div class="single-services-box">
-                        <div class="icon">
-                            <i class="flaticon-work"></i>
+                    <div className="single-services-box">
+                        <div className="icon">
+                            <i className="flaticon-work"></i>
 
-                            <div class="icon-bg">
+                            <div className="icon-bg">
                                 <img src="assets/img/icon-bg1.png" alt="image" />
                                 <img src="assets/img/icon-bg2.png" alt="image" />
                             </div>
                         </div>
 
-                        <h3><a href="single-services.html">Full-Time Offices</a></h3>
+                        <h3><NavLink to="single-services.html">Bureaux à Temps Plein</NavLink></h3>
 
-                        <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod incididunt ut incididunt labore et dolore.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                        <a href="single-services.html" class="read-more-btn">Learn More</a>
+                        <NavLink to="single-services.html" className="read-more-btn">En savoir plus</NavLink>
 
-                        <div class="box-shape">
+                        <div className="box-shape">
                             <img src="assets/img/box-shape1.png" alt="image" />
                             <img src="assets/img/box-shape2.png" alt="image" />
                         </div>
                     </div>
 
-                    <div class="single-services-box">
-                        <div class="icon">
-                            <i class="flaticon-room"></i>
+                    <div className="single-services-box">
+                        <div className="icon">
+                            <i className="flaticon-room"></i>
 
-                            <div class="icon-bg">
+                            <div className="icon-bg">
                                 <img src="assets/img/icon-bg1.png" alt="image" />
                                 <img src="assets/img/icon-bg2.png" alt="image" />
                             </div>
                         </div>
 
-                        <h3><a href="single-services.html">Conference Rooms</a></h3>
+                        <h3><NavLink to="single-services.html">Salles de Conférence</NavLink></h3>
 
-                        <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod incididunt ut incididunt labore et dolore.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                        <a href="single-services.html" class="read-more-btn">Learn More</a>
+                        <NavLink to="single-services.html" className="read-more-btn">En savoir plus</NavLink>
 
-                        <div class="box-shape">
+                        <div className="box-shape">
                             <img src="assets/img/box-shape1.png" alt="image" />
                             <img src="assets/img/box-shape2.png" alt="image" />
                         </div>
                     </div>
 
-                    <div class="single-services-box">
-                        <div class="icon">
-                            <i class="flaticon-location"></i>
+                    <div className="single-services-box">
+                        <div className="icon">
+                            <i className="flaticon-location"></i>
 
-                            <div class="icon-bg">
+                            <div className="icon-bg">
                                 <img src="assets/img/icon-bg1.png" alt="image" />
                                 <img src="assets/img/icon-bg2.png" alt="image" />
                             </div>
                         </div>
 
-                        <h3><a href="single-services.html">Global Access</a></h3>
+                        <h3><NavLink to="single-services.html">Accès Global</NavLink></h3>
 
-                        <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod incididunt ut incididunt labore et dolore.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                        <a href="single-services.html" class="read-more-btn">Learn More</a>
+                        <NavLink to="single-services.html" className="read-more-btn">En savoir plus</NavLink>
 
-                        <div class="box-shape">
+                        <div className="box-shape">
                             <img src="assets/img/box-shape1.png" alt="image" />
                             <img src="assets/img/box-shape2.png" alt="image" />
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
+
     );
 };
 

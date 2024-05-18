@@ -30,15 +30,15 @@ function ServicesBanner() {
         <section className="services-area ptb-100 bg-f8f8f8">
             <div className="container">
                 <div className="section-title">
-                    <h2>We Offer creative working environments</h2>
+                    <h2>Nous offrons des environnements de travail créatifs</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
 
                 <div className="main-services-slides owl-carousel owl-theme">
                     <div className="services-box">
-                        <img src="assets/img/gallery-image/1.jpg" alt="Office Space" />
+                        <img src="assets/img/gallery-image/1.jpg" alt="Espace de bureau" />
                         <div className="services-content">
-                            <h3><NavLink to="#">Office Space</NavLink></h3>
+                            <h3><NavLink to="#">Espace de bureau</NavLink></h3>
                             <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod</p>
                         </div>
                     </div>
@@ -52,23 +52,24 @@ function ServicesBanner() {
                     </div>
 
                     <div className="services-box">
-                        <img src="assets/img/gallery-image/3.jpg" alt="Meeting Spaces" />
+                        <img src="assets/img/gallery-image/3.jpg" alt="Espaces de réunion" />
                         <div className="services-content">
-                            <h3><NavLink to="single-services.html">Meeting Spaces</NavLink></h3>
+                            <h3><NavLink to="single-services.html">Espaces de réunion</NavLink></h3>
                             <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod</p>
                         </div>
                     </div>
 
                     <div className="services-box">
-                        <img src="assets/img/gallery-image/4.jpg" alt="Virtual Offices" />
+                        <img src="assets/img/gallery-image/4.jpg" alt="Bureaux virtuels" />
                         <div className="services-content">
-                            <h3><NavLink to="single-services.html">Virtual Offices</NavLink></h3>
+                            <h3><NavLink to="single-services.html">Bureaux virtuels</NavLink></h3>
                             <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     );
 }
 

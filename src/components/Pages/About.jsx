@@ -12,8 +12,8 @@ function About() {
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-12">
                             <div class="about-title">
-                                <span>About Us</span>
-                                <h2>We offer creative working environments that suit your business</h2>
+                                <span>À propos de nous</span>
+                                <h2>Nous proposons des environnements de travail créatifs adaptés à votre entreprise</h2>
                             </div>
                         </div>
 
@@ -25,6 +25,7 @@ function About() {
                     </div>
                 </div>
             </section>
+
 
             <AboutServicesBanner />
             <PartnerArea />
