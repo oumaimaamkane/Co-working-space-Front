@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const BlogsHighlights = () => {
+function BlogsHighlights() {
     return (
         <section className="blog-area ptb-100">
             <div className="container">

@@ -9,14 +9,17 @@ import MainLayout from "./components/Layouts/MainLayout";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import NotFound from "./components/Pages/NotFound";
+import Blog from "./components/Pages/Blog";
 // import AuthPage from "./components/Auth/AuthPage";
+//other pages
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />} />
       <Route path="/about" element={<About />} />
-      {/* <Route path="/auth" element={<AuthPage />} /> */}
+      <Route path="/blog" element={<Blog />} />
+       {/* <Route path="/auth" element={<AuthPage />} /> */}
       <Route path="*" element={<NotFound />} />
     </Route>
   )

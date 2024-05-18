@@ -81,7 +81,7 @@ function Navbar() {
                                     </ul>
                                 </li>
 
-                                <li className="nav-item"><NavLink to="/" className="nav-link">Actualités <i className="flaticon-down-arrow"></i></NavLink>
+                                <li className="nav-item"><NavLink to="/blog" className="nav-link">Actualités <i className="flaticon-down-arrow"></i></NavLink>
                                     <ul className="dropdown-menu">
                                         <li className="nav-item"><NavLink to="/" className="nav-link">Grille des Actualités</NavLink></li>
 
