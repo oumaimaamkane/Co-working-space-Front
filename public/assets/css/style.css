@@ -233,6 +233,46 @@ button {
   font-size: 14px;
   letter-spacing: 0.5px;
 }
+
+
+/*blogs-details*/
+.active-light-mode .r
+.rn-blog-details-default .blog-content-top {
+  margin-bottom: 30px;
+}
+.active-light-mode .rn-blog-listen .bd-thumbnail {
+  background: var(--color-white);
+}
+.active-light-mode .rn-blog-listen .comment-inner .rnform-group input {
+  background: var(--color-white);
+}
+.active-light-mode .rn-blog-listen .comment-inner .rnform-group textarea {
+  background: var(--color-white);
+}
+.rn-blog-details-default .blog-content-top {
+  margin-bottom: 30px;
+}
+.rn-blog-details-default .date {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.rn-blog-details-default .bd-thumbnail img {
+  border-radius: 6px;
+}
+.rn-section-gapTop {
+  padding-top: 100px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .rn-section-gapTop {
+    padding-top: 80px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .rn-section-gapTop {
+    padding-top: 80px;
+  }
+}
+
 /*section-title*/
 .section-title {
   text-align: center;
