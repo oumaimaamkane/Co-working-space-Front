@@ -14,7 +14,7 @@ function BlogDetail() {
                                 </div>
                                 <div className="bd-thumbnail">
                                     <div className="large-img mb--30">
-                                        <img className="w-100" src="path/to/your/default/image.jpg" alt="Blog Image" />
+                                        <img className="w-100" src="assets/img/blog-image/1.jpg" alt="Blog Image" />
                                     </div>
                                 </div>
                                 <div className="news-details">

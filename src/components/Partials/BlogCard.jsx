@@ -5,7 +5,7 @@ function BlogCard() {
         <div className="single-blog-post">
             <div className="post-image">
                 <NavLink to="blog-details.html">
-                    <img src="assets/images/blog/blog-04.jpg" alt="Personal Portfolio Images" />
+                    <img src="assets/img/blog-image/1.jpg" alt="Personal Portfolio Images" />
                 </NavLink>
                 <div className="date"><i className="flaticon-calendar"></i> 13 Septembre 2024</div>
             </div>
