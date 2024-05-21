@@ -1,48 +1,29 @@
-import {createBrowserRouter} from "react-router-dom";
-import Categories from "../views/Admin/Categories";
-import Dashboard from "../views/Admin/Dashboard";
-import Equipements from '../views/Admin/Equipements';
-import Espaces from '../views/Admin/Espaces';
-import Reservations from '../views/Admin/Reservations';
-import Roles from '../views/Admin/Roles';
-import Services from '../views/Admin/Services';
-import Users from '../views/Admin/Users';
+import { Routes, Route } from 'react-router-dom';
+import Sidebar from '../components/Layouts/Dashboard/App';
+import Users from '../views/BackOffice/Users';
+import Services from '../views/BackOffice/Services';
+import Categories from '../views/BackOffice/Categories';
+import Espaces from '../views/BackOffice/Espaces';
+import Equipements from '../views/BackOffice/Equipements';
+import Dashboard from '../views/BackOffice/Dashboard';
+import Reservations from '../views/BackOffice/Reservations';
+import Roles from '../views/BackOffice/Roles';
 
-const routes = [
-    {
-        path: '/categories',
-        element: <Categories/>
-    },
-    {
-        path: '/dashboard',
-        element: <Dashboard/>
-    },
-    {
-        path: '/equipements',
-        element: <Equipements/>
-    },
-    {
-        path: '/espaces',
-        element: <Espaces/>
-    },
-    {
-        path: '/reservations',
-        element: <Reservations/>
-    },
-    {
-        path: '/roles',
-        element: <Roles/>
-    },
-    {
-        path: '/services',
-        element: <Services/>
-    },  
-    {
-        path: '/users',
-        element: <Users/>
-    },
-];
+const Router = () => {
+  return (
+    <Routes>
+      <Route path="/sidebar" element={<Sidebar />}>
+        <Route path="users" element={<Users />} />
+        <Route path="services" element={<Services />} />
+        <Route path="categories" element={<Categories />} />
+        <Route path="equipements" element={<Equipements />} />
+        <Route path="espaces" element={<Espaces />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="reservations" element={<Reservations />} />
+        <Route path="roles" element={<Roles />} />
+      </Route>
+    </Routes>
+  );
+};
 
-const router = createBrowserRouter(routes);
-
-export { router };
+export default Router;
