@@ -12,7 +12,7 @@ import Roles from '../views/BackOffice/Roles';
 const Router = () => {
   return (
     <Routes>
-      <Route path="/sidebar" element={<Sidebar />}>
+      <Route path="/Admin" element={<Sidebar />}>
         <Route path="users" element={<Users />} />
         <Route path="services" element={<Services />} />
         <Route path="categories" element={<Categories />} />
