@@ -59,24 +59,6 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         path: '/Admin/users',
         icon: <HiOutlineUserGroup />
     },
-    {
-        key: 'users',
-        label: 'skfvsdl',
-        path: '/Admin/users',
-        icon: <HiOutlineUserGroup />
-    },
-    {
-        key: 'users',
-        label: 'qfvhd',
-        path: '/Admin/users',
-        icon: <HiOutlineUserGroup />
-    },
-    {
-        key: 'users',
-        label: 'iersdifv',
-        path: '/Admin/users',
-        icon: <HiOutlineUserGroup />
-    },
 ];
 
 export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [

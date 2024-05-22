@@ -9,7 +9,7 @@ const App = () => {
             <Sidebar />
             <div className="flex flex-col flex-1 overflow-hidden">
                 <Header />
-                <main className="flex-1 p-6 bg-gray-100">
+                <main className="flex-1 p-6">
                     <Outlet />
                 </main>
             </div>
