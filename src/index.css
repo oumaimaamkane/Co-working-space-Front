@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700,900&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.hero{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.layer-section{
+    position: absolute;
+    top: 98%;
+    left: 10%;
+    transform: translate(-18%, -50%);
+}
+
+.vedio-icon{
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+}
+
+.vedio-icon img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  background-color: #00838d;
+  border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+  margin-top: -4px;
+  margin-right: -4px;
+  color: white;
+  font-family: courier, sans;
+}

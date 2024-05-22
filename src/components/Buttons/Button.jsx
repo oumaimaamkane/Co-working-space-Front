@@ -3,7 +3,7 @@ import React from "react";
 const Button = (props) => {
   return (
     <button
-      className="bg-[#1E3954] font-semibold text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 
+      className="h-fit font-semibold text-white font-[Poppins] py-3 px-8 border-2 rounded-full md:ml-8 hover:bg-[#55BBAF]  hover:border-none
     duration-500"
     >
       {props.children}
