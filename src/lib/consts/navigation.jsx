@@ -20,43 +20,43 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     {
         key: 'categories',
         label: 'Categories',
-        path: '/Admin/categories',
+        path: '/Admin/manage-categories',
         icon: <HiOutlineCube />
     },
     {
         key: 'equipments',
         label: 'Equipments',
-        path: '/Admin/equipements',
+        path: '/Admin/manage-equipements',
         icon: <HiOutlineDeviceTablet />
     },
     {
         key: 'espaces',
         label: 'Espaces',
-        path: '/Admin/espaces',
+        path: '/Admin/manage-espaces',
         icon: <HiOutlineOfficeBuilding />
     },
     {
         key: 'reservations',
         label: 'Reservations',
-        path: '/Admin/reservations',
+        path: '/Admin/manage-reservations',
         icon: <HiOutlineClipboardList />
     },
     {
         key: 'roles',
         label: 'Roles',
-        path: '/Admin/roles',
+        path: '/Admin/manage-roles',
         icon: <HiOutlineKey />
     },
     {
         key: 'services',
         label: 'Services',
-        path: '/Admin/services',
+        path: '/Admin/manage-services',
         icon: <HiOutlineSupport />
     },
     {
         key: 'users',
         label: 'Users',
-        path: '/Admin/users',
+        path: '/Admin/manage-users',
         icon: <HiOutlineUserGroup />
     },
 ];

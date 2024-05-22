@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function roles() {
   return (
-    <div>roles</div>
-  )
+    <div className="bg-white h-auto px-10 mx-5 flex justify-between items-center rounded-lg shadow-lg">
+      <h1>roles</h1>
+    </div>  )
 }

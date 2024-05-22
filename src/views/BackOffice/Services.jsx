@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function services() {
   return (
-    <div>services</div>
-  )
+    <div className="bg-white h-auto px-10 mx-5 flex justify-between items-center rounded-lg shadow-lg">
+      <h1>services</h1>
+    </div>  )
 }

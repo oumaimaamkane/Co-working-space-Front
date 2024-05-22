@@ -14,7 +14,7 @@ import {
 
 const Header = () => {
   return (
-    <header className="bg-white h-16 px-10 mt-5 mx-5 flex justify-between items-center rounded-lg shadow-lg">
+    <header className="bg-white h-16 px-10 mt-5 mx-5 mb-7 pb-2 flex justify-between items-center rounded-lg shadow-md">
       <div className="flex items-center">
         <HiOutlineSearch fontSize={20} className="text-gray-600" />
         <input

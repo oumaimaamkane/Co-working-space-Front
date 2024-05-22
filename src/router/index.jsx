@@ -13,14 +13,14 @@ const Router = () => {
   return (
     <Routes>
       <Route path="/Admin" element={<Sidebar />}>
-        <Route path="users" element={<Users />} />
-        <Route path="services" element={<Services />} />
-        <Route path="categories" element={<Categories />} />
-        <Route path="equipements" element={<Equipements />} />
-        <Route path="espaces" element={<Espaces />} />
+        <Route path="manage-users" element={<Users />} />
+        <Route path="manage-services" element={<Services />} />
+        <Route path="manage-categories" element={<Categories />} />
+        <Route path="manage-equipements" element={<Equipements />} />
+        <Route path="manage-espaces" element={<Espaces />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="reservations" element={<Reservations />} />
-        <Route path="roles" element={<Roles />} />
+        <Route path="manage-reservations" element={<Reservations />} />
+        <Route path="manage-roles" element={<Roles />} />
       </Route>
     </Routes>
   );
