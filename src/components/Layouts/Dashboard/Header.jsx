@@ -14,20 +14,18 @@ import {
 
 const Header = () => {
   return (
-    <header className="bg-white h-16 px-10 mt-5 mx-5 mb-7 pb-2 flex justify-between items-center rounded-lg shadow-md">
+    <header className="bg-white h-16 px-10 mt-5 mx-5 pb-2 flex justify-between items-center rounded-lg shadow-md">
       <div className="flex items-center">
-        <HiOutlineSearch fontSize={20} className="text-gray-600" />
+        <HiOutlineSearch fontSize={20} className="text-gray-600"/>
         <input
           type="text"
           placeholder="Search"
-          className="text-sm outline-none h-10 w-[18rem] px-3"
-        />
+          className="text-sm outline-none h-10 w-[18rem] px-3"/>
       </div>
       <div className="flex items-center gap-4">
         <MdNotificationsNone fontSize={20} />
         <HiOutlineSun fontSize={21} />
 
-        {/* Profile Menu */}
         <Menu as="div" className="relative">
           {({ open }) => (
             <>
