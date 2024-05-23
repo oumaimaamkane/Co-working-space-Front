@@ -9,9 +9,22 @@ import Dashboard from '../views/BackOffice/Dashboard';
 import Reservations from '../views/BackOffice/Reservations';
 import Roles from '../views/BackOffice/Roles';
 
+
+
+
+
+
+import Register from "../views/Auth/Register";
+import Login from "../views/Auth/Login";
+import MainLayout from "../components/Layouts/Home/MainLayout";
+import Home from "../views/FrontOffice/Home";
+
 const Router = () => {
   return (
     <Routes>
+
+      {/*Back Office Routes */}
+      
       <Route path="/Admin" element={<Sidebar />}>
         <Route path="manage-users" element={<Users />} />
         <Route path="manage-services" element={<Services />} />
@@ -22,6 +35,16 @@ const Router = () => {
         <Route path="manage-reservations" element={<Reservations />} />
         <Route path="manage-roles" element={<Roles />} />
       </Route>
+      
+      {/*Auth Routes */}
+      <Route path="register" element={<Register />} />
+      <Route path="login" element={<Login />} />
+
+      {/*Front Office Routes */}
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+      </Route>
+
     </Routes>
   );
 };
