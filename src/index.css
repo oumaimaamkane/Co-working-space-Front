@@ -47,8 +47,8 @@ body {
   width: 32px;
   height: 32px;
   overflow: hidden;
-  top: 0;
-  right: 0;
+  top: 16px;
+  right: 16px;
   background-color: #00838d;
   border-radius: 0 4px 0 32px;
 }

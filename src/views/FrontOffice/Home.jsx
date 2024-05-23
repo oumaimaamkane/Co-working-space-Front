@@ -70,7 +70,7 @@ export default function Home() {
 
         <div className=" flex flex-wrap">
           {/* single Service item */}
-          <div className="w-1/4 p-4">
+          <div className="w-1/4 p-4 relative">
             <div className="bg-[#F3F4F6] p-8 hover:bg-orange-500">
               <h3 className="text-2xl font-bold text-[#1E3954] mb-4">
                 Coworking Space
