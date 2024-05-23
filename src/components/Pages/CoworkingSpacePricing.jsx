@@ -1,4 +1,6 @@
-import {useState} from 'react';
+// PricingCards.js
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import MemberShipModal from './MemberShipModal';
 
 function PricingCards() {
@@ -18,30 +20,7 @@ function PricingCards() {
                 'Accès à la cuisine et au salon'
             ]
         },
-        {
-            title: 'Bureau Virtuel',
-            price: 295,
-            features: [
-                'Accès 24/7',
-                'Service de nettoyage',
-                'Wifi/Internet Haut Débit',
-                'Heures d\'ouverture (8:00 – 22:00)',
-                'Charges incluses',
-                'Accès à la cuisine et au salon'
-            ]
-        },
-        {
-            title: 'Bureau Dédie',
-            price: 139,
-            features: [
-                'Accès 24/7',
-                'Service de nettoyage',
-                'Wifi/Internet Haut Débit',
-                'Heures d\'ouverture (8:00 – 22:00)',
-                'Charges incluses',
-                'Accès à la cuisine et au salon'
-            ]
-        }
+        // Add other memberships here
     ];
 
     const handleMemberShipClick = (membership) => {
@@ -54,7 +33,7 @@ function PricingCards() {
     };
 
     return (
-         <section className="pricing-area ptb-100">
+        <section className="pricing-area ptb-100">
             <div className="container">
                 <div className="section-title">
                     <span className="sub-title">Notre Plan</span>
@@ -73,10 +52,7 @@ function PricingCards() {
                                     <sub>€</sub>{membership.price}<sub>/mois</sub>
                                 </div>
                                 <div className="book-now-btn">
-                                    <button onClick={() => {
-                                        handleMemberShipClick(membership);
-                                        setSelectedMemberShip(membership);
-                                    }} className="default-btn">Réserver maintenant <span></span></button>
+                                    <button className="default-btn">Réserver maintenant <span></span></button>
                                 </div>
                                 <ul className="pricing-features-list">
                                     {membership.features.map((feature, index) => (
@@ -88,9 +64,8 @@ function PricingCards() {
                     ))}
                 </div>
             </div>
-            {selectedMemberShip && <MemberShipModal membership={selectedMemberShip} open={modalOpen} handleClose={handleCloseModal} />}
+            <MemberShipModal membership={selectedMemberShip} open={modalOpen} handleClose={handleCloseModal} />
         </section>
-
     );
 }
 

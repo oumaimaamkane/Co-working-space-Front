@@ -99,7 +99,7 @@ export default function Login() {
 
                 <div className="mb-6 text-center">
                   <button
-                    className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    className="w-full px-4 py-2 font-bold text-white bg-[#0E2333] rounded-full hover:bg-blue-900 focus:outline-none focus:shadow-outline"
                     type="submit"
                   >
                     Sign In
@@ -110,7 +110,7 @@ export default function Login() {
 
                 <div className="text-center">
                   <a
-                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                    className="inline-block text-sm text-[#0E2333] align-baseline hover:text-blue-800"
                     href="/register"
                   >
                     Create an Account!
@@ -119,8 +119,8 @@ export default function Login() {
 
                 <div className="text-center">
                   <a
-                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                    href="/forgot-password"
+                    className="inline-block text-sm text-[#0E2333] align-baseline hover:text-blue-800"
+                    href="/register"
                   >
                     Forgot Password?
                   </a>

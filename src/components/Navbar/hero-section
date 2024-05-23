@@ -1,0 +1,116 @@
+{/*  Welcome Area Start  */}
+      <section className="welcome-area">
+        <div className="welcome-slides owl-carousel">
+          {/* Single Welcome Slide  */}
+          <div
+            className="single-welcome-slide bg-img bg-overlay"
+            style={{
+              backgroundImage:
+                "url('https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/leyer1.jpg')",
+            }}
+            data-img-url="img/cover/1686016799_DSC_6696vv1.jpg"
+          >
+            {/* Welcome Content  */}
+            <div className="welcome-content h-full">
+              <div className="container h-full">
+                <div className="flex h-full items-center">
+                  {/* Welcome Text  */}
+                  <div className="w-full">
+                    <div className="welcome-text text-center">
+                      <h6 data-animation="fadeInLeft" data-delay="200ms">
+                        Guest House
+                      </h6>
+                      <h2 data-animation="fadeInLeft" data-delay="500ms">
+                        Welcome To Roseville
+                      </h2>
+                      <a
+                        href="#"
+                        className="btn hero-btn btn-2"
+                        data-animation="fadeInLeft"
+                        data-delay="800ms"
+                      >
+                        DISCOVER NOW
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Single Welcome Slide  */}
+          <div
+            className="single-welcome-slide bg-img bg-overlay"
+            style={{
+              backgroundImage:
+                "url('https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/leyer1.jpg')",
+            }}
+            data-img-url="img/thumbnail/1687449551_kasbahroseville-riad.jpg"
+          >
+            {/* Welcome Content  */}
+            <div className="welcome-content h-full">
+              <div className="container mx-auto h-full">
+                <div className="flex h-full items-center">
+                  {/* Welcome Text  */}
+                  <div className="w-full">
+                    <div className="welcome-text text-center">
+                      <h6 data-animation="fadeInUp" data-delay="200ms">
+                        Guest House
+                      </h6>
+                      <h2 data-animation="fadeInUp" data-delay="500ms">
+                        A Perfect Getway
+                      </h2>
+                      <a
+                        href="#"
+                        className="btn hero-btn btn-2"
+                        data-animation="fadeInUp"
+                        data-delay="800ms"
+                      >
+                        GET IN TOUCH
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Single Welcome Slide */}
+          <div
+            className="single-welcome-slide bg-img bg-overlay"
+            style={{
+              backgroundImage:
+                "url('https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/leyer1.jpg')",
+            }}
+            data-img-url="img/cover/1686001516_DSC_6647vv1.jpg"
+          >
+            {/*  Welcome Content */}
+            <div className="welcome-content h-full">
+              <div className="container h-full">
+                <div className="flex h-full items-center">
+                  {/*  Welcome Text  */}
+                  <div className="w-full">
+                    <div className="welcome-text text-center">
+                      <h6 data-animation="fadeInDown" data-delay="200ms">
+                        Guest House
+                      </h6>
+                      <h2 data-animation="fadeInDown" data-delay="500ms">
+                        A Peaceful Haven
+                      </h2>
+                      <a
+                        href="#"
+                        className="btn hero-btn btn-2"
+                        data-animation="fadeInDown"
+                        data-delay="800ms"
+                      >
+                        WATCH VEDIO
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Welcome Area End */}
