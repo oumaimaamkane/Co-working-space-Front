@@ -8,7 +8,6 @@ import Equipements from "../views/BackOffice/Equipements";
 import Dashboard from "../views/BackOffice/Dashboard";
 import Reservations from "../views/BackOffice/Reservations";
 import Roles from "../views/BackOffice/Roles";
-
 import Register from "../views/Auth/Register";
 import Login from "../views/Auth/Login";
 import MainLayout from "../components/Layouts/Home/MainLayout";
