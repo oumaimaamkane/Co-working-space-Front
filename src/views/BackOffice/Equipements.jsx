@@ -1,5 +1,9 @@
-function Equipements() {
-  // Your component logic here
-}
+import React from 'react'
 
-export default Equipements;
+export default function equipements() {
+  return (
+    <div className="bg-white h-auto px-10 mx-5 flex justify-between items-center rounded-lg shadow-lg">
+      <h1>equipements</h1>
+    </div>
+  )
+}

@@ -1,5 +1,8 @@
-function Services() {
-  // Your component logic here
-}
+import React from 'react'
 
-export default Services;
+export default function services() {
+  return (
+    <div className="bg-white h-auto px-10 mx-5 flex justify-between items-center rounded-lg shadow-lg">
+      <h1>services</h1>
+    </div>  )
+}
