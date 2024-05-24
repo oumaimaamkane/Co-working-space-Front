@@ -21,7 +21,7 @@ export default function Categories() {
   const [error, setError] = useState("");
   //PAGINATION
   const items = 3;
-  const [CurrentPage, setCurrentPage] = useState(2);
+  const [CurrentPage, setCurrentPage] = useState(1);
   const NbPage = Math.ceil(categories.length / items);
   const StartIndex = (CurrentPage - 1) * items;
   const EndIndex = StartIndex + items;
@@ -36,7 +36,7 @@ export default function Categories() {
         setCategories(response.data);
         setLoading(false);
       } catch (error) {
-        setError("Error fetching categories");
+        setError("Failed to fetch categories from the server");
         setLoading(false);
       }
     };
@@ -121,7 +121,7 @@ export default function Categories() {
     <div className="p-6 min-h-screen dark:bg-neutral-800">
       <div className="flex justify-between items-center py-4 px-8 dark:bg-neutral-600 rounded-lg shadow-md mb-6">
         <span className="text-xl font-semibold text-gray-800 dark:text-white">
-          List of Categories
+          List des Categories
         </span>
         <button
           className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300 font-medium"
