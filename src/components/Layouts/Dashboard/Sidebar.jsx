@@ -11,7 +11,7 @@ const activeLinkClasses = 'text-orange-500 dark:text-white bg-orange-100 dark:bg
 
 const Sidebar = () => {
     return (
-        <aside className="bg-white dark:bg-neutral-700 w-64 p-4 flex flex-col shadow-xl dark:shadow-white">
+        <aside className="bg-white dark:bg-neutral-700 w-64 p-4 flex flex-col shadow-xl">
             <div className="flex items-center gap-3 px-2 py-4 border-b border-gray-400 dark:border-neutral-500">
                 <FcConferenceCall fontSize={28} className="dark:text-red" />
                 <span className="text-lg font-bold text-gray-900 dark:text-white">Co-Working</span>
