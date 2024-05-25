@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faImage } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 
 const slides = [
   images.testo1, 
@@ -131,7 +135,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
+            <h3 className=" font-semibold text-[#1E3954] mb-4">
               Highspeed WiFi
             </h3>
             <p className="text-gray-500 text-lg">
@@ -152,7 +156,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
+            <h3 className=" font-semibold text-[#1E3954] mb-4">
               Organic Tea & Coffee
             </h3>
             <p className="text-gray-500 text-lg">
@@ -174,7 +178,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
+            <h3 className=" font-semibold text-[#1E3954] mb-4">
               Relax, entertainment room
             </h3>
             <p className="text-gray-500 text-lg">
@@ -195,9 +199,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
-              Meeting Room
-            </h3>
+            <h3 className=" font-semibold text-[#1E3954] mb-4">Meeting Room</h3>
             <p className="text-gray-500 text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
@@ -218,7 +220,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
+            <h3 className=" font-semibold text-[#1E3954] mb-4">
               Gallery of books, comics
             </h3>
             <p className="text-gray-500 text-lg">
@@ -243,7 +245,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
+            <h3 className=" font-semibold text-[#1E3954] mb-4">
               Award winning design
             </h3>
             <p className="text-gray-500 text-lg">
@@ -264,7 +266,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
+            <h3 className=" font-semibold text-[#1E3954] mb-4">
               Free public computer
             </h3>
             <p className="text-gray-500 text-lg">
@@ -289,7 +291,7 @@ export default function Home() {
               </svg>
             </figure>
 
-            <h3 className="text-xl font-bold text-[#1E3954] mb-4">
+            <h3 className=" font-semibold text-[#1E3954] mb-4">
               Equipped Kitchen
             </h3>
             <p className="text-gray-500 text-lg">
@@ -348,7 +350,7 @@ export default function Home() {
       >
         <div className="container mx-auto py-28">
           <div className="pb-10">
-            <h2 className="text-[56px] font-semibold text-center mb-4 text-white">
+            <h2 className="text-[50px] font-semibold text-center mb-4 text-white">
               Membership options
             </h2>
             <img className="mx-auto" src={images.layerIcon1} alt="layer icon" />
@@ -571,7 +573,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Area */}
+      {/* Benifits Area */}
       <section className="coworking-testimonials-area pb-20 mx-11">
         <div className="container mx-auto">
           <div className="flex gap-12 justify-between">
@@ -607,7 +609,13 @@ export default function Home() {
                   </li>
                 </div>
 
-                <LinkButton>Schudle My Tour</LinkButton>
+                <a
+                  href="/"
+                  className="h-fit text-white font-[Poppins] py-5 px-12 rounded-full bg-[#55BBAF] hover:bg-[#42938a]
+                  duration-500"
+                >
+                  Schudle My Tour
+                </a>
               </div>
             </div>
 
@@ -799,6 +807,159 @@ export default function Home() {
               alt="brand"
               loading="lazy"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Hsot Event Area */}
+      <section
+        className="px-12 mb-16  leading-tight bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${images.banner1})` }}
+      >
+        <div className="container flex justify-between items-center  py-36">
+          <div className="w-1/2">
+            <h2 className="text-[50px] font-semibold mb-4 text-white">
+              Host your next event at Coworkshop
+            </h2>
+            <p className="text-lg leading-8 text-white mt-12 mb-16">
+              The perfect place for dev gatherings, demo nights, speaker panels,
+              launch parties and creative brainstorming.
+            </p>
+            <div className="memdership-container flex gap-8"></div>
+          </div>
+
+          <a
+            href="/"
+            className="h-fit text-[#55BBAF] font-[Poppins] py-5 px-14 rounded-full bg-white hover:bg-[#42938a] hover:text-white
+          duration-500"
+          >
+            Host Event
+          </a>
+        </div>
+      </section>
+
+      {/* Contact Area */}
+      <section className="pb-6 mb-28 px-12">
+        {/* Header */}
+        <div className="w-full flex flex-wrap">
+          <div className="w-1/3 flex px-3">
+            <span className="p-5 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
+              <FontAwesomeIcon
+                icon={faLocationDot}
+                className=" size-4 text-[#55BBAF]"
+              />
+            </span>
+
+            <div className="ml-6">
+              <h3 className="text-lg font-semibold text-[#1E3954]">Address</h3>
+              <p className="text-base text-gray-500 leading-7  mt-1 mb-28">
+                MASH Detroit bulding, 14711 Mack Ave., Detroit, MI 48214
+              </p>
+            </div>
+          </div>
+
+          <div className="w-1/3 flex px-3">
+            <span className="p-5 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
+              <FontAwesomeIcon
+                icon={faPhone}
+                className=" size-4 text-[#55BBAF]"
+              />
+            </span>
+
+            <div className="ml-6">
+              <h3 className="text-lg font-semibold text-[#1E3954]">Phone</h3>
+              <p className="text-base text-gray-500 leading-7  mt-1 mb-28">
+                123 - 456 7890 / 123 - 456 7891
+              </p>
+            </div>
+          </div>
+
+          <div className="w-1/3 flex px-3">
+            <span className="p-5 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className=" size-4 text-[#55BBAF]"
+              />
+            </span>
+
+            <div className="ml-6">
+              <h3 className="text-lg font-semibold text-[#1E3954]">Email</h3>
+              <p className="text-base text-gray-500 leading-7  mt-1 mb-28">
+                contact@company.com
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact form */}
+        <div className="container">
+          <div className="flex flex-wrap">
+            <div className="w-1/2 pr-8">
+              <h2 className="text-4xl font-bold text-[#1E3954] mb-10">
+                Get in Touch
+              </h2>
+
+              <form>
+                <div className="">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full p-4 border border-[#EBEBEB] rounded-lg mb-4"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full p-4 border border-[#EBEBEB] rounded-lg mb-4"
+                  />
+                  <textarea
+                    name="message"
+                    id="message"
+                    cols="30"
+                    rows="6"
+                    placeholder="Your Message"
+                    className="w-full p-4 border border-[#EBEBEB] rounded-lg mb-4"
+                  ></textarea>
+                </div>
+
+                <div className="flex justify-between">
+                  <button
+                    type="submit"
+                    className="h-fit text-white py-4 px-8 rounded-full bg-[#55BBAF] hover:bg-[#42938a]
+                    duration-500"
+                  >
+                    Submit Now
+                  </button>
+
+                  <div className="flex items-center">
+                    <div className="mr-5">
+                      <p className="text-base text-gray-500 leading-7">
+                        Or call us and get free
+                        <br />
+                        <span className="text-lg text-[#55BBAF] hover:text-[#459b91]">
+                          + 844 123 456 78
+                        </span>
+                      </p>
+                    </div>
+                    <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] hover:bg-[#c7f0ec] leading-4">
+                      <FontAwesomeIcon
+                        icon={faPhone}
+                        className=" size-4 text-[#55BBAF]"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            {/* Afriposte Maps */}
+            <div className="w-1/2 pl-4">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6883.9770291709465!2d-9.507027072769159!3d30.379684032223235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDIyJzQ4LjkiTiA5wrAzMCcxNi44Ilc!5e0!3m2!1sfr!2sma!4v1716639938880!5m2!1sfr!2sma"
+                allowfullscreen=""
+                loading="lazy"
+                className="w-full h-[500px] border-none"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
