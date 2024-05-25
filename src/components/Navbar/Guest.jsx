@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/img/logo_02.png";
+import logo from "../../assets/img/logo.png";
 import Button from "../../components/Buttons/Button";
 import LayerIcon from "../../assets/img/layericon.png";
 import LinkButton from "../Buttons/LinkButton";
