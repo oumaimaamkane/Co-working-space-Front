@@ -20,7 +20,7 @@ export default function Categories() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   //PAGINATION
-  const items = 3;
+  const items = 4;
   const [CurrentPage, setCurrentPage] = useState(1);
   const NbPage = Math.ceil(categories.length / items);
   const StartIndex = (CurrentPage - 1) * items;
@@ -196,7 +196,7 @@ export default function Categories() {
           <button
             onClick={prevPage}
             disabled={CurrentPage === 1}
-            className="flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer"
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${CurrentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <ChevronLeftIcon className="h-5 w-5 mr-1" />
             Previous
@@ -207,7 +207,7 @@ export default function Categories() {
           <button
             onClick={nextPage}
             disabled={EndIndex >= categories.length}
-            className="flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer"
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${EndIndex >= categories.length ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             Next
             <ChevronRightIcon className="h-5 w-5 ml-1" />
