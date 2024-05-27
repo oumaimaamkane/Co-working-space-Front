@@ -1,14 +1,32 @@
 import LinkButton from "../../components/Buttons/LinkButton";
+import { useState } from "react";
 import playIcon from "../../assets/icons/play.svg";
 import images from "../../assets/img/assets";
 import Carousel from "../../components/Testimonials/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faImage } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faImage, faUsers, faXmark, faLocationDot, faPhone, faEnvelope} from "@fortawesome/free-solid-svg-icons";
 
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+//Pagination
+import Pagination from "../../components/Pagination";
+
+const workspaces = [
+  {
+    id: 1,
+    name: "Workspace One",
+    description: "Description one",
+    image: "path/to/image1.jpg",
+  },
+  {
+    id: 2,
+    name: "Workspace Two",
+    description: "Description two",
+    image: "path/to/image2.jpg",
+  },
+];
+
+
+const ITEMS_PER_PAGE = 2;
 
 
 const slides = [
@@ -55,6 +73,19 @@ const reviews = [
 
 
 export default function Home() {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(workspaces.length / ITEMS_PER_PAGE);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const currentWorkspaces = workspaces.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
 
   return (
     <>
@@ -297,6 +328,120 @@ export default function Home() {
             <p className="text-gray-500 text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Coworking Space Area */}
+      <section className="coworking-space-area pb-56">
+        <div className="container">
+          {/* <!-- Section Heading --> */}
+          <div className="w-6/12">
+            <div className="mx-12 pb-12">
+              <span className="text-[#888F96] text-[18px] uppercase">
+                OUR WORKSPACE
+              </span>
+              <h2 className="text-4xl font-bold mt-8 text-[#1E3954]">
+                Workspaces for all
+              </h2>
+              <p className="text-lg leading-8 text-gray-500 mt-10">
+                Whether you’re a startup or a Fortune 500 company, we offer
+                workspace solutions tailored to your needs.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
+            <div className="col-span-12">
+              {/* <!-- workspace item --> */}
+              <div className="container flex flex-wrap">
+                <img
+                  src={images.workspace1}
+                  className="w-1/2 h-[450px]"
+                  alt="workspace image"
+                />
+
+                {/* workspace Description */}
+                <div className="w-1/2 workspace-content p-16">
+                  <h4 className="text-2xl font-semibold text-[#1E3954] mb-2">
+                    Private Office
+                  </h4>
+                  {/* team */}
+                  <div className="pb-4 flex items-center border-b">
+                    <FontAwesomeIcon
+                      icon={faUsers}
+                      className="size-5 text-[#1E3954]"
+                    />
+                    <p className="pl-3 font-semibold text-gray-500 text-sm">
+                      Ideal for team size 5 - 40
+                    </p>
+                  </div>
+
+                  <p className="text-gray-500 text-lg mt-5">
+                    Our private offices are perfect for teams of 1-100 and are
+                    fully serviced so you can focus on your business.
+                  </p>
+
+                  <p className="uppercase text-base font-bold mt-5">
+                    From <span className="text-teal-500">$99/mo</span>
+                  </p>
+
+                  {/* button */}
+                  <button className="py-4 px-12 uppercase bg-teal-700 text-white rounded-full mt-8">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+
+              {/* <!-- workspace item --> */}
+              <div className="container flex flex-row-reverse flex-wrap">
+                <img
+                  src={images.workspace2}
+                  className="w-1/2 h-[450px]"
+                  alt="workspace image"
+                />
+
+                {/* workspace Description */}
+                <div className="bg-white w-1/2 workspace-content p-16">
+                  <h4 className="text-2xl font-semibold text-[#1E3954] mb-2">
+                    Private Office
+                  </h4>
+                  {/* team */}
+                  <div className="pb-4 flex items-center border-b">
+                    <FontAwesomeIcon
+                      icon={faUsers}
+                      className="size-5 text-[#1E3954]"
+                    />
+                    <p className="pl-3 font-semibold text-gray-500 text-sm">
+                      Ideal for team size 5 - 40
+                    </p>
+                  </div>
+
+                  <p className="text-gray-500 text-lg mt-5">
+                    Our private offices are perfect for teams of 1-100 and are
+                    fully serviced so you can focus on your business.
+                  </p>
+
+                  <p className="uppercase text-base font-bold mt-5">
+                    From <span className="text-teal-500">$99/mo</span>
+                  </p>
+
+                  {/* button */}
+                  <button className="py-4 px-12 uppercase bg-teal-700 text-white rounded-full mt-8">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+
+              {/* Pagination */}
+              <div className="container mt-12">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

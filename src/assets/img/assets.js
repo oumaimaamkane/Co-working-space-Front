@@ -14,12 +14,20 @@ import logo from "../img/logo.png";
 import auth from '../img/auth.png'; 
 import testo1 from "../img/1.jpg";
 import testo2 from "../img/2.jpg";
+import workspace1 from "../img/workspace-1.jpg";
+import workspace2 from "../img/workspace-2.jpg";
+import workspace3 from "../img/workspace-3.jpg";
+import workspace4 from "../img/workspace-4.jpg";
 
 
 
 const images = {
   cowSpaceImg2,
   cowSpaceImg,
+  workspace1,
+  workspace2,
+  workspace3,
+  workspace4,
   layerIcon1,
   layerIcon,
   gallery1,
