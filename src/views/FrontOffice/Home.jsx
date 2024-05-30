@@ -94,7 +94,7 @@ export default function Home() {
           Creative coworking
           <br /> startup take off here
         </h1>
-        <LinkButton className="mt-3  md:mt-0">Take A Tour</LinkButton>
+        <LinkButton className="mt-3 text-white md:mt-0">Take A Tour</LinkButton>
       </section>
 
       {/* workspace Search Form */}
@@ -169,7 +169,7 @@ export default function Home() {
               get 100% satisfaction from working here and making the best out of
               this experience.
             </p>
-            <LinkButton>Book A Seet</LinkButton>
+            <LinkButton className="text-white">Book A Seet</LinkButton>
           </div>
         </div>
       </section>
@@ -211,7 +211,7 @@ export default function Home() {
               super-fast internet, industrial style interior, custom made desks,
               state-of-the-art AC system, top notch location,…
             </p>
-            <LinkButton>Explore Spaces</LinkButton>
+            <LinkButton className="text-white">Explore Spaces</LinkButton>
           </div>
         </div>
 
@@ -451,7 +451,7 @@ export default function Home() {
                   </p>
 
                   {/* button */}
-                  <LinkButton className="md:py-4 md:px-12 uppercase rounded-full mt-6 md:mt-8">
+                  <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
                     Learn More
                   </LinkButton>
                 </div>
@@ -491,7 +491,7 @@ export default function Home() {
                   </p>
 
                   {/* button */}
-                  <LinkButton className="md:py-4 md:px-12 uppercase rounded-full mt-6 md:mt-8">
+                  <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
                     Learn More
                   </LinkButton>
                 </div>
@@ -636,7 +636,7 @@ export default function Home() {
                     className="text-red-600 size-[20px]"
                   />
                   <p className="text-sm md:text-base text-white ml-4">
-                    Access to community's online member network
+                    Access to {`community's`} online member network
                   </p>
                 </li>
 
@@ -652,7 +652,7 @@ export default function Home() {
               </div>
 
               {/* button */}
-              <LinkButton>Join Now</LinkButton>
+              <LinkButton className="text-white">Join Now</LinkButton>
             </div>
 
             {/* membership single item */}
@@ -719,7 +719,7 @@ export default function Home() {
                     className="text-[#55BBAF] size-[20px]"
                   />
                   <p className="text-sm leading-7 md:text-base text-white ml-4">
-                    Access to community's online member network
+                  Access to {`community's`} online member network
                   </p>
                 </li>
 
@@ -735,7 +735,7 @@ export default function Home() {
               </div>
 
               {/* button */}
-              <LinkButton>Join Now</LinkButton>
+              <LinkButton className="text-white">Join Now</LinkButton>
             </div>
 
             {/* membership single item */}
@@ -794,7 +794,7 @@ export default function Home() {
                     className="text-[#55BBAF] size-[20px]"
                   />
                   <p className="text-sm leading-7 md:text-base text-white ml-4">
-                    Access to community's online member network
+                    Access to {`community's`} online member network
                   </p>
                 </li>
 
@@ -810,7 +810,7 @@ export default function Home() {
               </div>
 
               {/* button */}
-              <LinkButton>Join Now</LinkButton>
+              <LinkButton className="text-white">Join Now</LinkButton>
             </div>
           </div>
         </div>

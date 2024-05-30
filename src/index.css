@@ -25,16 +25,12 @@ a{
 
 /* :: 1.0 Scroll  to top Area */
 .scroll-top {
-    position: fixed;
-    right: 2rem;
-    bottom: 2.5rem;
-    padding: 1rem;
-    border-radius: 50%;
-    background-color: black;
-    z-index: 30;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 30;
 }
 
 /* :: 2.0 Hero Area */

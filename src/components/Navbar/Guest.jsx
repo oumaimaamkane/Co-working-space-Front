@@ -5,13 +5,14 @@ import Button from "../../components/Buttons/Button";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
-  let Links = [
-    { name: "HOME", link: "/" },
-    { name: "SERVICE", link: "/" },
-    { name: "ABOUT", link: "/" },
-    { name: "BLOG'S", link: "/" },
-    { name: "CONTACT", link: "/" },
-  ];
+    let Links = [
+      { name: "HOME", link: "/" },
+      { name: "SERVICE", link: "/" },
+      { name: "ABOUT", link: "/" },
+      { name: "BLOG'S", link: "/" },
+      { name: "CONTACT", link: "/" },
+      { name: "Plans", link: "/" },
+    ];
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,7 +30,7 @@ const Nav = () => {
     >
       <header className="w-full flex items-center justify-between py-5 px-4 md:px-[70px] md:py-[40px] bg-slate-800 md:bg-transparent md:border-b border-[#8d9faf]">
         <div className="w-52">
-          <img src={logo} alt="logo image" />
+          <img src={logo} className="w-[160px] md:w-auto" alt="logo image" />
         </div>
 
         <div className="hidden md:block">
@@ -38,7 +39,7 @@ const Nav = () => {
               <li key={link.name} className="md:ml-12 text-sm md:my-0 my-7">
                 <a
                   href={link.link}
-                  className="text-white font-semibold hover:text-gray-400 duration-500"
+                  className="text-white font-semibold uppercase hover:text-gray-400 duration-500"
                 >
                   {link.name}
                 </a>
@@ -62,7 +63,6 @@ const Nav = () => {
         >
           <div
             className={`fixed inset-0 bg-black transition-transition opacity-20 duration-100 ease-in-out`}
-              
             onClick={toggleNav}
           />
           <nav
@@ -78,7 +78,7 @@ const Nav = () => {
                 >
                   <a
                     href={link.link}
-                    className="text-white font-semibold hover:text-gray-400 duration-500"
+                    className="text-white font-semibold uppercase hover:text-gray-400 duration-500"
                   >
                     {link.name}
                   </a>

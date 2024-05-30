@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import PropTypes from "prop-types";
+
 export default function Carousel({
   children: slides,
   autoSlide = false,
@@ -28,6 +30,7 @@ export default function Carousel({
         <div className="flex items-center justify-center gap-2">
           {slides.map((_, i) => (
             <div
+              key={i}
               className={`
               transition-all w-[6px] h-[6px] md:w-3 md:h-3 bg-white rounded-full
               ${curr === i ? "p-[6px] md:p-2" : "bg-opacity-50"}`}
@@ -38,3 +41,9 @@ export default function Carousel({
     </div>
   );
 }
+
+Carousel.propTypes = {
+  children: PropTypes.node.isRequired,
+  autoSlide: PropTypes.bool,
+  autoSlideInterval: PropTypes.number,
+};
