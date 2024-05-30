@@ -1,12 +1,13 @@
-import React from "react";
+const Button = ({ children, className }) => {
+  const defaultClasses =
+    "h-fit text-white px-8 py-3 text-sm md:text-base border-2 rounded-full md:ml-8 hover:bg-black  hover:border-transparent duration-200";
 
-const Button = (props) => {
   return (
     <button
-      className="h-fit font-semibold text-white font-[Poppins] py-3 px-8 border-2 rounded-full md:ml-8 hover:bg-[#55BBAF]  hover:border-none
-    duration-500"
+      href="/"
+      className={`${defaultClasses} ${className}`}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

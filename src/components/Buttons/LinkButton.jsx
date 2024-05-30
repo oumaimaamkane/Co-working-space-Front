@@ -1,12 +1,13 @@
-import React from 'react'
+const LinkButton = ({ children, className }) => {
+  const defaultClasses =
+    "inline-block h-fit text-white px-8 py-3 md:py-4 md:px-12 text-sm md:text-base rounded-full bg-black hover:bg-gray-800 duration-200";
 
-const LinkButton = (props) => {
   return (
-    <a href='/'
-      className="h-fit text-white font-[Poppins] py-4 px-12 rounded-full bg-[#55BBAF] hover:bg-[#42938a]
-    duration-500"
+    <a
+      href="/"
+      className={`${defaultClasses} ${className}`}
     >
-      {props.children}
+      {children}
     </a>
   );
 };

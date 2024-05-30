@@ -1,14 +1,11 @@
-import LinkButton from "../../components/Buttons/LinkButton";
 import { useState } from "react";
-import playIcon from "../../assets/icons/play.svg";
 import images from "../../assets/img/assets";
+import playIcon from "../../assets/icons/play.svg";
+import Pagination from "../../components/Pagination";
+import LinkButton from "../../components/Buttons/LinkButton";
 import Carousel from "../../components/Testimonials/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCheck, faImage, faUsers, faXmark, faLocationDot, faPhone, faEnvelope} from "@fortawesome/free-solid-svg-icons";
-
-
-//Pagination
-import Pagination from "../../components/Pagination";
+import {faCheck, faImage, faUsers, faXmark, faLocationDot, faPhone, faEnvelope, faClone,} from "@fortawesome/free-solid-svg-icons";
 
 const workspaces = [
   {
@@ -25,9 +22,7 @@ const workspaces = [
   },
 ];
 
-
 const ITEMS_PER_PAGE = 2;
-
 
 const slides = [
   images.testo1, 
@@ -81,27 +76,92 @@ export default function Home() {
     setCurrentPage(page);
   };
 
-  const currentWorkspaces = workspaces.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  // const currentWorkspaces = workspaces.slice(
+  //   (currentPage - 1) * ITEMS_PER_PAGE,
+  //   currentPage * ITEMS_PER_PAGE
+  // );
 
 
   return (
     <>
+      {/* hero Area */}
+      <section className="px-4 w-full hero text-center">
+        <small className="text-white uppercase">
+          Probably The Best Creative
+          <br className="md:hidden" /> Space In The City
+        </small>
+        <h1 className="text-[28px] leading-9 text-white md:text-5xl pt-3 md:pb-9 font-bold">
+          Creative coworking
+          <br /> startup take off here
+        </h1>
+        <LinkButton className="mt-3  md:mt-0">Take A Tour</LinkButton>
+      </section>
+
+      {/* workspace Search Form */}
+      <section className="workspace-search-container w-full">
+        <div className="workspace-search-form w-11/12 md:w-9/12 mx-auto bg-white shadow-xl rounded-md flex items-center">
+          <div className="flex items-center flex-wrap w-full justify-between py-8 px-6 md:px-10">
+            <div className="w-full md:w-fit mb-3">
+              <label htmlFor="check_in" className="block pb-2 md:pb-3">
+                Check In
+              </label>
+              <input
+                id="check_in"
+                type="date"
+                placeholder="Search for workspace"
+                className="rounded-sm text-sm p-3  border w-full md:w-[180px]"
+              />
+            </div>
+
+            <div className="w-full md:w-fit mb-3">
+              <label htmlFor="check_in" className="block pb-2 md:pb-3">
+                Check Out
+              </label>
+              <input
+                id="check_in"
+                type="date"
+                placeholder="Search for workspace"
+                className="rounded-sm text-sm p-3  border w-full md:w-[180px]"
+              />
+            </div>
+
+            <div className="w-full md:w-fit mb-3">
+              <label htmlFor="personne" className="block pb-2 md:pb-3">
+                Capacity
+              </label>
+
+              <input
+                id="personne"
+                type="Number"
+                placeholder="5 Persons"
+                min={1}
+                className="rounded-sm text-sm p-3  border w-full md:w-[180px]"
+              />
+            </div>
+            <button className="w-full md:w-fit py-3 text-sm px-12 mt-4 md:mt-6 bg-black hover:bg-gray-800 transition-colors duration-200 ease-in text-white">
+              Search
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* About Area */}
-      <section className="pt-24 pb-6">
+      <section className="-mt-36 md:-mt-0 pt-10 pb-16 md:pb-20">
         <div className="container mx-auto">
-          <div className="flex flex-col items-center justify-center pb-20">
-            <span className="mb-10 text-[#888F96] text-[18px] uppercase">
+          <div className="flex flex-col items-center justify-center">
+            <span className="mb-3 md:mb-6 text-[#888F96] text-[18px] uppercase">
               About US
             </span>
-            <h2 className="text-4xl font-bold text-center mb-4 text-[#1E3954]">
+            <h2 className="text-[24px] md:text-4xl font-bold text-center mb-4 text-[#1E3954]">
               Community, creativity,
               <br /> comfort & more
             </h2>
-            <img src={images.layerIcon1} alt="layer icon" />
-            <p className="text-center w-[790px] text-lg leading-8 text-gray-500 mt-12 mb-10">
+            {/* <img src={images.layerIcon1} alt="layer icon" /> */}
+            <FontAwesomeIcon
+              icon={faClone}
+              className="size-8 text-[#1E3954] text-2xl"
+            />
+            <p className="text-center w-[280px] md:w-[790px] text-sm md:text-lg leading-8 text-gray-500 my-8">
               We are a community of bold minds who have decided to work under
               the same roof. Our workspace and the people around us inspire us
               to take action, to grow, to do better. By saying that our
@@ -116,33 +176,37 @@ export default function Home() {
 
       {/* vedio presetenation Area */}
       <section
-        className="mx-12 mb-24 bg-cover flex items-center justify-center leading-tight h-[41rem] bg-center bg-no-repeat"
+        className="md:mx-12 mb-16 md:mb-20 h-[28rem] md:h-[41rem] bg-center bg-no-repeat bg-cover flex items-center justify-center leading-tight"
         style={{ backgroundImage: `url(${images.cowSpaceImg})` }}
       >
         <div className="text-center">
           {/* vedio Icon  */}
-          <div className="vedio-icon p-4 mx-auto rounded-full">
-            <img src={playIcon} className="w-8" alt="play icon" />
+          <div className="vedio-icon md:p-4 mx-auto rounded-full">
+            <img src={playIcon} className="w-5 md:w-8" alt="play icon" />
           </div>
 
-          <p className="text-[20px] text-white my-12">COWORKERS</p>
+          <p className="md:text-[20px] text-white my-7 md:my-12">COWORKERS</p>
 
-          <p className="text-5xl font-[500] leading-[55px] text-white">
+          <p className="text-[24px] md:text-5xl font-[500] md:leading-[55px] text-white">
             Check this video presentation
-            <br /> to know more about our coworking
+            <br className="hidden md:block" /> to know more about our coworking
           </p>
         </div>
       </section>
 
       {/* Services Area */}
-      <section className="pb-24 mx-12">
-        <div className="container mx-auto">
-          <div className="flex flex-col items-center justify-center pb-20">
-            <h2 className="text-4xl font-bold text-center mb-4 text-[#1E3954]">
+      <section className="mb-16 mx-4 md:mx-12">
+        <div className="container mx-auto pb-16 md:pb-20">
+          <div className="flex flex-col items-center justify-center">
+            <h2 className="text-[24px] md:text-4xl font-bold text-center mb-4 text-[#1E3954]">
               Our services
             </h2>
-            <img src={images.layerIcon} alt="layer icon" />
-            <p className="text-center w-[920px] text-lg leading-8 text-gray-500 mt-12 mb-10">
+            {/* <img src={images.layerIcon1} alt="layer icon" /> */}
+            <FontAwesomeIcon
+              icon={faClone}
+              className="size-8 text-[#1E3954] text-2xl"
+            />
+            <p className="text-center w-[280px] md:w-[920px] text-sm md:text-lg leading-8 text-gray-500 my-8">
               Beautiful setting, abundant natural light, amazing comfort,
               super-fast internet, industrial style interior, custom made desks,
               state-of-the-art AC system, top notch location,…
@@ -151,9 +215,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=" flex flex-wrap">
+        <div className="flex flex-wrap">
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 className="card-icon"
@@ -169,13 +233,13 @@ export default function Home() {
             <h3 className=" font-semibold text-[#1E3954] mb-4">
               Highspeed WiFi
             </h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
 
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 className="card-icon"
@@ -190,13 +254,13 @@ export default function Home() {
             <h3 className=" font-semibold text-[#1E3954] mb-4">
               Organic Tea & Coffee
             </h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
 
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 className="card-icon"
@@ -212,13 +276,13 @@ export default function Home() {
             <h3 className=" font-semibold text-[#1E3954] mb-4">
               Relax, entertainment room
             </h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
 
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 className="card-icon"
@@ -231,13 +295,13 @@ export default function Home() {
             </figure>
 
             <h3 className=" font-semibold text-[#1E3954] mb-4">Meeting Room</h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
 
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 className="card-icon"
@@ -254,13 +318,13 @@ export default function Home() {
             <h3 className=" font-semibold text-[#1E3954] mb-4">
               Gallery of books, comics
             </h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
 
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 className="card-icon"
@@ -279,13 +343,13 @@ export default function Home() {
             <h3 className=" font-semibold text-[#1E3954] mb-4">
               Award winning design
             </h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
 
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -300,13 +364,13 @@ export default function Home() {
             <h3 className=" font-semibold text-[#1E3954] mb-4">
               Free public computer
             </h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
 
           {/* single Service item */}
-          <div className="card w-1/4 p-4 py-8 text-center">
+          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <figure className="w-fit p-6 mb-4 bg-[#EEF8F7] mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -325,7 +389,7 @@ export default function Home() {
             <h3 className=" font-semibold text-[#1E3954] mb-4">
               Equipped Kitchen
             </h3>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-base md:text-lg">
               We offer you excellent rates of return paid either monthl.
             </p>
           </div>
@@ -333,18 +397,18 @@ export default function Home() {
       </section>
 
       {/* Coworking Space Area */}
-      <section className="coworking-space-area pb-56">
+      <section className="coworking-space-area pb-16 md:pb-28">
         <div className="container">
           {/* <!-- Section Heading --> */}
-          <div className="w-6/12">
-            <div className="mx-12 pb-12">
+          <div className="w-full md:w-6/12 mx-auto text-center">
+            <div className="mx-4 md:mx-12 pb-16">
               <span className="text-[#888F96] text-[18px] uppercase">
                 OUR WORKSPACE
               </span>
-              <h2 className="text-4xl font-bold mt-8 text-[#1E3954]">
+              <h2 className="text-[24px] md:text-4xl font-bold my-4 md:my-8 text-[#1E3954]">
                 Workspaces for all
               </h2>
-              <p className="text-lg leading-8 text-gray-500 mt-10">
+              <p className="text-sm md:text-lg leading-8 text-gray-500">
                 Whether you’re a startup or a Fortune 500 company, we offer
                 workspace solutions tailored to your needs.
               </p>
@@ -357,13 +421,13 @@ export default function Home() {
               <div className="container flex flex-wrap">
                 <img
                   src={images.workspace1}
-                  className="w-1/2 h-[450px]"
+                  className="w-full md:w-1/2 h-[250px] md:h-[450px]"
                   alt="workspace image"
                 />
 
                 {/* workspace Description */}
-                <div className="w-1/2 workspace-content p-16">
-                  <h4 className="text-2xl font-semibold text-[#1E3954] mb-2">
+                <div className="w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
+                  <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
                     Private Office
                   </h4>
                   {/* team */}
@@ -377,19 +441,19 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <p className="text-gray-500 text-lg mt-5">
+                  <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
                     Our private offices are perfect for teams of 1-100 and are
                     fully serviced so you can focus on your business.
                   </p>
 
-                  <p className="uppercase text-base font-bold mt-5">
+                  <p className="uppercase text-sm md:text-base font-bold mt-5">
                     From <span className="text-teal-500">$99/mo</span>
                   </p>
 
                   {/* button */}
-                  <button className="py-4 px-12 uppercase bg-teal-700 text-white rounded-full mt-8">
+                  <LinkButton className="md:py-4 md:px-12 uppercase rounded-full mt-6 md:mt-8">
                     Learn More
-                  </button>
+                  </LinkButton>
                 </div>
               </div>
 
@@ -397,13 +461,13 @@ export default function Home() {
               <div className="container flex flex-row-reverse flex-wrap">
                 <img
                   src={images.workspace2}
-                  className="w-1/2 h-[450px]"
+                  className="w-full md:w-1/2 h-[250px] md:h-[450px]"
                   alt="workspace image"
                 />
 
                 {/* workspace Description */}
-                <div className="bg-white w-1/2 workspace-content p-16">
-                  <h4 className="text-2xl font-semibold text-[#1E3954] mb-2">
+                <div className="bg-white w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
+                  <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
                     Private Office
                   </h4>
                   {/* team */}
@@ -417,24 +481,24 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <p className="text-gray-500 text-lg mt-5">
+                  <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
                     Our private offices are perfect for teams of 1-100 and are
                     fully serviced so you can focus on your business.
                   </p>
 
-                  <p className="uppercase text-base font-bold mt-5">
+                  <p className="uppercase text-sm md:text-base font-bold mt-5">
                     From <span className="text-teal-500">$99/mo</span>
                   </p>
 
                   {/* button */}
-                  <button className="py-4 px-12 uppercase bg-teal-700 text-white rounded-full mt-8">
+                  <LinkButton className="md:py-4 md:px-12 uppercase rounded-full mt-6 md:mt-8">
                     Learn More
-                  </button>
+                  </LinkButton>
                 </div>
               </div>
 
               {/* Pagination */}
-              <div className="container mt-12">
+              <div className="container md:mt-12">
                 <Pagination
                   currentPage={currentPage}
                   totalPages={totalPages}
@@ -447,24 +511,26 @@ export default function Home() {
       </section>
 
       {/* Testimonials Area */}
-      <section className="coworking-testimonials-area pb-20 mr-11">
+      <section className="coworking-testimonials-area md:pb-24 mx-4 md:mr-11">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
-            <div className="col-span-1 md:col-span-6 lg:grid-cols-6 mx-3">
-              <div className="testimonial-thumbnail pl-10 pb-20">
+            <div className="col-span-1 md:col-span-6 lg:grid-cols-6 md:mx-8">
+              <div className="testimonial-thumbnail pb-10 md:pb-0">
                 <Carousel autoSlide={true} autoSlideInterval={4000}>
                   {slides.map((slide, index) => (
-                    <img src={slide} alt={`Slide ${index + 1}`} />
+                    <img key={index} src={slide} alt={`Slide ${index + 1}`} />
                   ))}
                 </Carousel>
               </div>
             </div>
 
-            <div className="col-span-1 md:col-span-6 lg:grid-cols-6 mx-3">
+            <div className="col-span-1 md:col-span-6 lg:grid-cols-6 ">
               {/* <!-- Section Heading --> */}
-              <div className="section-heading">
-                <h6 className="mb-8 text-[18px] uppercase">Testimonials</h6>
-                <h2 className="font-bold mb-4 text-[36px] text-[#1E3954]">
+              <div className="section-heading mb-8 md:mb-12">
+                <h6 className="mb-2 md:mb-4 text-[18px] uppercase">
+                  Testimonials
+                </h6>
+                <h2 className="font-bold md:text-[36px] text-[#1E3954]">
                   Our Guests Love Us
                 </h2>
               </div>
@@ -472,11 +538,17 @@ export default function Home() {
               <div className="testimonial-slides overflow-auto pb-20">
                 <Carousel autoSlide={true} autoSlideInterval={4000}>
                   {reviews.map((slide, index) => (
-                    <div className="single-testimonial-slide w-full flex-shrink-0">
+                    <div
+                      key={index}
+                      className="single-testimonial-slide w-full flex-shrink-0"
+                    >
                       <h5>{slide.review}</h5>
                       <div className="rating-title">
                         <h6>
-                          {slide.name} <span>- {slide.position}</span>
+                          {slide.name}{" "}
+                          <span className="text-teal-500">
+                            - {slide.position}
+                          </span>
                         </h6>
                       </div>
                     </div>
@@ -490,281 +562,308 @@ export default function Home() {
 
       {/* Membership options Area */}
       <section
-        className="px-12 mb-28 bg-cover leading-tight bg-center bg-no-repeat"
+        className="px-4 md:px-12 mb-14 md:mb-28 bg-cover leading-tight bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${images.cowSpaceImg2})` }}
       >
-        <div className="container mx-auto py-28">
-          <div className="pb-10">
-            <h2 className="text-[50px] font-semibold text-center mb-4 text-white">
-              Membership options
-            </h2>
-            <img className="mx-auto" src={images.layerIcon1} alt="layer icon" />
-            <p className="text-center mx-auto w-[790px] text-lg leading-8 text-white mt-12 mb-16">
-              Beautiful setting, abundant natural light, amazing comfort,
-              super-fast internet, industrial style interior, custom made desks,
-              state-of-the-art AC system, top notch location,…
-            </p>
-            <div className="memdership-container flex gap-8">
-              {/* membership single item */}
-              <div className="py-12 w-1/3 px-8 rounded-xl transition-border duration-200 ease-in hover:border hover:border-[#55BBAF]">
-                <h3 className="text-2xl font-semibold text-white">Desk</h3>
-                <div className="price flex items-center space-x-2 text-[#f6ec26] mt-8 rounded-md">
-                  <span className="text-2xl font-bold ">$</span>
-                  <span className="text-5xl font-semibold">29</span>
-                  <span className="text-lg font-semibold ">/mo</span>
-                </div>
-
-                <p className="mt-6 leading-[35px] text-white">
-                  Monday through Friday access to open workspace with conference
-                  room bookings available.
-                </p>
-
-                {/* benifits */}
-                <div className="mt-6 mb-10 pr-4">
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Mix of sitting and standing workspaces
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">24/7 Access</p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Coffee, tea, still, and sparkling water
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faXmark}
-                      className="text-red-600 size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Access to community's online member network
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faXmark}
-                      className="text-red-600 size-[20px]"
-                    />
-                    <p className="text-white ml-4">Fast Wi-Fi and prints</p>
-                  </li>
-                </div>
-
-                {/* button */}
-                <LinkButton>Join Now</LinkButton>
+        <div className="container mx-auto py-14 md:py-28">
+          <h2 className="text-[24px] md:text-[50px] font-semibold text-center mb-4 text-white">
+            Membership options
+          </h2>
+          {/* <img className="mx-auto" src={images.layerIcon1} alt="layer icon" /> */}
+          <FontAwesomeIcon
+            icon={faClone}
+            className="size-8 w-full mx-auto text-white text-2xl"
+          />
+          <p className="text-center mx-auto text-sm md:w-[795px] md:text-lg leading-8 text-white my-8 mb-12 md:mb-20">
+            Beautiful setting, abundant natural light, amazing comfort,
+            super-fast internet, industrial style interior, custom made desks,
+            state-of-the-art AC system, top notch location,…
+          </p>
+          <div className="memdership-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+            {/* membership single item */}
+            <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in hover:border hover:border-[#55BBAF]">
+              <h3 className="text-lg md:text-2xl font-semibold text-white">
+                Desk
+              </h3>
+              <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
+                <span className="text-lg md:text-2xl font-bold">$</span>
+                <span className="text-[30px] md:text-5xl font-semibold">
+                  29
+                </span>
+                <span className="text-base md:text-lg font-semibold">/mo</span>
               </div>
 
-              {/* membership single item */}
-              <div className="py-12 w-1/3 px-8 relative overflow-hidden transition-border duration-200 ease-in border border-[#55697C] hover:rounded-xl hover:border-[#55BBAF]">
-                <div>
-                  <span className="bg-green-500 absolute w-8 h-60 -top-16 translate-x-16 right-20 -rotate-[50deg]"></span>
-                  <span className="absolute uppercase top-8 right-8 rotate-[40deg] font-bold text-sm text-white">
-                    Best
-                  </span>
-                </div>
+              <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] text-white">
+                Monday through Friday access to open workspace with conference
+                room bookings available.
+              </p>
 
-                <h3 className="text-2xl font-semibold text-white">Virtual</h3>
+              {/* benifits */}
+              <div className="my-6 pr-4">
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm md:text-base text-white ml-4">
+                    Mix of sitting and standing workspaces
+                  </p>
+                </li>
 
-                <div className="price flex items-center space-x-2 text-[#f6ec26] mt-8 rounded-md">
-                  <span className="text-2xl font-bold ">$</span>
-                  <span className="text-5xl font-semibold">60</span>
-                  <span className="text-lg font-semibold ">/mo</span>
-                </div>
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm md:text-base text-white ml-4">
+                    24/7 Access
+                  </p>
+                </li>
 
-                <p className="mt-6 leading-[35px] text-white">
-                  Send and receive packages and mail from our midtown location.
-                  Conference room bookings available.
-                </p>
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm md:text-base text-white ml-4">
+                    Coffee, tea, still, and sparkling water
+                  </p>
+                </li>
 
-                {/* benifits */}
-                <div className="mt-6 mb-10 pr-4">
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Mix of sitting and standing workspaces
-                    </p>
-                  </li>
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faXmark}
+                    className="text-red-600 size-[20px]"
+                  />
+                  <p className="text-sm md:text-base text-white ml-4">
+                    Access to community's online member network
+                  </p>
+                </li>
 
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">24/7 Access</p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Coffee, tea, still, and sparkling water
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Access to community's online member network
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faXmark}
-                      className="text-red-600 size-[20px]"
-                    />
-                    <p className="text-white ml-4">Fast Wi-Fi and prints</p>
-                  </li>
-                </div>
-
-                {/* button */}
-                <LinkButton>Join Now</LinkButton>
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faXmark}
+                    className="text-red-600 size-[20px]"
+                  />
+                  <p className="text-sm md:text-base text-white ml-4">
+                    Fast Wi-Fi and prints
+                  </p>
+                </li>
               </div>
 
-              {/* membership single item */}
-              <div className="py-12 w-1/3 px-8 rounded-xl transition-border duration-200 ease-in hover:border hover:border-[#55BBAF]">
-                <h3 className="text-2xl font-semibold text-white">Office</h3>
-                <div className="price flex items-center space-x-2 text-[#f6ec26] mt-8 rounded-md">
-                  <span className="text-2xl font-bold ">$</span>
-                  <span className="text-5xl font-semibold">90</span>
-                  <span className="text-lg font-semibold ">/mo</span>
-                </div>
+              {/* button */}
+              <LinkButton>Join Now</LinkButton>
+            </div>
 
-                <p className="mt-6 leading-[35px] text-white">
-                  Monday through Friday access to open workspace with conference
-                  room bookings available.
-                </p>
-
-                {/* benifits */}
-                <div className="mt-6 mb-10 pr-4">
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Mix of sitting and standing workspaces
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">24/7 Access</p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Coffee, tea, still, and sparkling water
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">
-                      Access to community's online member network
-                    </p>
-                  </li>
-
-                  <li className="py-3 flex">
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
-                    />
-                    <p className="text-white ml-4">Fast Wi-Fi and prints</p>
-                  </li>
-                </div>
-
-                {/* button */}
-                <LinkButton>Join Now</LinkButton>
+            {/* membership single item */}
+            <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 relative overflow-hidden transition-border duration-200 ease-in border border-[#55697C] hover:rounded-xl hover:border-[#55BBAF]">
+              <div>
+                <span className="bg-green-500 absolute w-8 h-60 -top-16 translate-x-16 right-20 -rotate-[50deg]"></span>
+                <span className="absolute uppercase top-8 right-8 rotate-[40deg] font-bold text-sm text-white">
+                  Best
+                </span>
               </div>
+
+              <h3 className="text-lg md:text-2xl font-semibold text-white">
+                Virtual
+              </h3>
+
+              <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
+                <span className="text-lg md:text-2xl font-bold">$</span>
+                <span className="text-[30px] md:text-5xl font-semibold">
+                  60
+                </span>
+                <span className="text-base md:text-lg font-semibold">/mo</span>
+              </div>
+
+              <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] text-white">
+                Send and receive packages and mail from our midtown location.
+                Conference room bookings available.
+              </p>
+
+              {/* benifits */}
+              <div className="mt-6 mb-10 pr-4">
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Mix of sitting and standing workspaces
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    24/7 Access
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Coffee, tea, still, and sparkling water
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Access to community's online member network
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faXmark}
+                    className="text-red-600 size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Fast Wi-Fi and prints
+                  </p>
+                </li>
+              </div>
+
+              {/* button */}
+              <LinkButton>Join Now</LinkButton>
+            </div>
+
+            {/* membership single item */}
+            <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in hover:border hover:border-[#55BBAF]">
+              <h3 className="text-lg md:text-2xl font-semibold text-white">
+                Office
+              </h3>
+              <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
+                <span className="text-lg md:text-2xl font-bold">$</span>
+                <span className="text-[30px] md:text-5xl font-semibold">
+                  90
+                </span>
+                <span className="text-base md:text-lg font-semibold ">/mo</span>
+              </div>
+
+              <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] text-white">
+                Monday through Friday access to open workspace with conference
+                room bookings available.
+              </p>
+
+              {/* benifits */}
+              <div className="mt-6 mb-10 pr-4">
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Mix of sitting and standing workspaces
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    24/7 Access
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Coffee, tea, still, and sparkling water
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Access to community's online member network
+                  </p>
+                </li>
+
+                <li className="py-3 flex">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-[#55BBAF] size-[20px]"
+                  />
+                  <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    Fast Wi-Fi and prints
+                  </p>
+                </li>
+              </div>
+
+              {/* button */}
+              <LinkButton>Join Now</LinkButton>
             </div>
           </div>
         </div>
       </section>
 
       {/* Benifits Area */}
-      <section className="coworking-testimonials-area pb-20 mx-11">
+      <section className="coworking-testimonials-area mb-14 md:mb-20 md:mx-12">
         <div className="container mx-auto">
           <div className="flex gap-12 justify-between">
-            <div className="mx-3 w-6/12">
+            <div className="mx-3 md:w-6/12">
               {/* <!-- Section Heading --> */}
               <div className="section-heading">
-                <h6 className="mb-10 text-[18px] uppercase">OUR BENEFITS</h6>
-                <h2 className="font-bold mb-4 text-[46px] text-[#1E3954]">
+                <h6 className="mb-3 md:mb-6 text-[18px] uppercase">
+                  OUR BENEFITS
+                </h6>
+                <h2 className="text-[24px] font-bold mb-4 md:text-[46px] text-[#1E3954]">
                   Benefits to Setting Up Your Startup in Our Coworking Space
                 </h2>
-                <img src={images.layerIcon1} alt="layer icon" />
 
-                <p className="text-gray-500 text-lg leading-[35px] my-10">
+                <p className="text-sm md:text-lg leading-8 text-gray-500 my-8 md:leading-[35px]">
                   We are proud of what we have come up to at our center! Only
                   here you get to enjoy with talented people who work in
                   different areas, designers, photographers, engineers etc.
                 </p>
 
-                <div className="mb-12">
-                  <li className="flex text-gray-500 text-lg  border-t border-[#EBEBEB] py-3">
-                    <span className="text-[#56BBB0] mr-2 font-bold">1.</span>
+                <div className="mb-8 md:mb-12">
+                  <li className="flex  text-sm md:text-lg leading-6 md:leading-[35px] text-gray-500  border-t border-[#EBEBEB] py-3">
+                    <span className="text-teal-500 mr-2 font-bold">1.</span>
                     <p>Actual office space that promoting productivity</p>
                   </li>
 
-                  <li className="flex text-gray-500 text-lg border-t border-[#EBEBEB] py-3">
-                    <span className="text-[#56BBB0] mr-2 font-bold">2.</span>
+                  <li className="flex text-sm md:text-lg leading-6 md:leading-[35px]  text-gray-500 border-t border-[#EBEBEB] py-3">
+                    <span className="text-teal-500 mr-2 font-bold">2.</span>
                     <p>Meaningful connections with your team</p>
                   </li>
 
-                  <li className="flex text-gray-500 text-lg border-y border-[#EBEBEB] py-3">
-                    <span className="text-[#56BBB0] mr-2 font-bold">3.</span>
+                  <li className="flex text-sm md:text-lg leading-6 md:leading-[35px]  text-gray-500 border-y border-[#EBEBEB] py-3">
+                    <span className="text-teal-500 mr-2 font-bold">3.</span>
                     <p>Increased productivity to get some work done</p>
                   </li>
                 </div>
 
-                <a
-                  href="/"
-                  className="h-fit text-white font-[Poppins] py-5 px-12 rounded-full bg-[#55BBAF] hover:bg-[#42938a]
+                {/* button */}
+                <LinkButton
+                  className="h-fit text-white md:py-5 md:px-12 rounded-full
                   duration-500"
                 >
                   Schudle My Tour
-                </a>
+                </LinkButton>
               </div>
             </div>
 
-            <div className="col-span-1 md:col-span-5 lg:grid-cols-4 mx-3">
+            <div className="hidden md:block col-span-1 md:col-span-5 lg:grid-cols-4 mx-3">
               <div className=" pl-10 pb-20">
                 <img
                   src={images.banner}
@@ -785,7 +884,7 @@ export default function Home() {
             <a
               href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g1.jpg"
               target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-1/3 my-auto p-4 h-[50vh] py-8 text-center px-12  overflow-hidden"
+              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
             >
               <div
                 className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
@@ -796,7 +895,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-2xl font-bold">View Gallery</p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </a>
 
@@ -804,7 +903,7 @@ export default function Home() {
             <a
               href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g2.jpg"
               target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-1/3 my-auto p-4 h-[50vh] py-8 text-center px-12  overflow-hidden"
+              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
             >
               <div
                 className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
@@ -815,7 +914,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-2xl font-bold">View Gallery</p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </a>
 
@@ -823,7 +922,7 @@ export default function Home() {
             <a
               href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g3.jpg"
               target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-1/3 my-auto p-4 h-[50vh] py-8 text-center px-12  overflow-hidden"
+              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
             >
               <div
                 className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
@@ -834,7 +933,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-2xl font-bold">View Gallery</p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </a>
 
@@ -842,7 +941,7 @@ export default function Home() {
             <a
               href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g4.jpg"
               target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-1/3 my-auto p-4 h-[50vh] py-8 text-center px-12 overflow-hidden"
+              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
             >
               <div
                 className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
@@ -853,7 +952,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-2xl font-bold">View Gallery</p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </a>
 
@@ -861,7 +960,7 @@ export default function Home() {
             <a
               href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g5.jpg"
               target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-1/3 my-auto p-4 h-[50vh] py-8 text-center px-12 overflow-hidden"
+              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
             >
               <div
                 className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
@@ -872,7 +971,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-2xl font-bold">View Gallery</p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </a>
 
@@ -880,7 +979,7 @@ export default function Home() {
             <a
               href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g6.jpg"
               target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-1/3 my-auto p-4 h-[50vh] py-8 text-center px-12 overflow-hidden"
+              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
             >
               <div
                 className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
@@ -891,7 +990,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-2xl font-bold">View Gallery</p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </a>
           </div>
@@ -899,25 +998,27 @@ export default function Home() {
       </section>
 
       {/* Becoming Member Area */}
-      <section className="pt-24 pb-6">
+      <section className="mx-4 pt-14 md:pt-24 pb-6">
         <div className="container mx-auto">
-          <div className="flex flex-col items-center justify-center pb-20">
-            <h2 className="text-4xl font-bold text-center mb-10 text-[#1E3954]">
+          <div className="flex flex-col items-center justify-center pb-12 md:pb-20">
+            <h2 className="text-[24px] md:text-4xl leading-7 md:leading-normal font-bold text-center text-[#1E3954]">
               Our Modern Office Spaces
               <br /> Are Simply Stunning
             </h2>
-            <a
-              href="/"
-              className="h-fit text-white font-[Poppins] py-5 px-10 rounded-full bg-[#55BBAF] hover:bg-[#42938a]
+
+            {/* Member Button */}
+            <LinkButton
+              className="h-fit text-white md:py-5 md:px-10 rounded-full my-4 md:my-8 bg-[#55BBAF] hover:bg-[#42938a]
             duration-500"
             >
               BECOME A MEMBER
-            </a>
-            <p className="text-center text-base  text-[#1E3954] mt-8">
+            </LinkButton>
+
+            <p className="text-center text-sm md:text-base text-[#1E3954]">
               Not Sure?
               <a
                 href="/"
-                className="pl-1 text-[#55BBAF] hover:text-[#42938a]
+                className="pl-1 text-teal-500 hover:text-[#42938a]
             duration-500"
               >
                 BOOK A SEAT
@@ -926,7 +1027,7 @@ export default function Home() {
           </div>
 
           {/* Brands Area */}
-          <div className="flex items-center justify-evenly mb-20 gap-12">
+          <div className="flex items-center flex-wrap justify-evenly mb-12 md:mb-20 gap-12">
             <img
               src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_1.jpg"
               alt="brand"
@@ -956,158 +1057,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hsot Event Area */}
-      <section
-        className="px-12 mb-16  leading-tight bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${images.banner1})` }}
-      >
-        <div className="container flex justify-between items-center  py-36">
-          <div className="w-1/2">
-            <h2 className="text-[50px] font-semibold mb-4 text-white">
-              Host your next event at Coworkshop
-            </h2>
-            <p className="text-lg leading-8 text-white mt-12 mb-16">
-              The perfect place for dev gatherings, demo nights, speaker panels,
-              launch parties and creative brainstorming.
-            </p>
-            <div className="memdership-container flex gap-8"></div>
-          </div>
-
-          <a
-            href="/"
-            className="h-fit text-[#55BBAF] font-[Poppins] py-5 px-14 rounded-full bg-white hover:bg-[#42938a] hover:text-white
-          duration-500"
-          >
-            Host Event
-          </a>
-        </div>
-      </section>
-
-      {/* Contact Area */}
-      <section className="pb-6 mb-28 px-12">
-        {/* Header */}
-        <div className="w-full flex flex-wrap">
-          <div className="w-1/3 flex px-3">
-            <span className="p-5 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
-              <FontAwesomeIcon
-                icon={faLocationDot}
-                className=" size-4 text-[#55BBAF]"
-              />
-            </span>
-
-            <div className="ml-6">
-              <h3 className="text-lg font-semibold text-[#1E3954]">Address</h3>
-              <p className="text-base text-gray-500 leading-7  mt-1 mb-28">
-                MASH Detroit bulding, 14711 Mack Ave., Detroit, MI 48214
-              </p>
-            </div>
-          </div>
-
-          <div className="w-1/3 flex px-3">
-            <span className="p-5 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
-              <FontAwesomeIcon
-                icon={faPhone}
-                className=" size-4 text-[#55BBAF]"
-              />
-            </span>
-
-            <div className="ml-6">
-              <h3 className="text-lg font-semibold text-[#1E3954]">Phone</h3>
-              <p className="text-base text-gray-500 leading-7  mt-1 mb-28">
-                123 - 456 7890 / 123 - 456 7891
-              </p>
-            </div>
-          </div>
-
-          <div className="w-1/3 flex px-3">
-            <span className="p-5 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className=" size-4 text-[#55BBAF]"
-              />
-            </span>
-
-            <div className="ml-6">
-              <h3 className="text-lg font-semibold text-[#1E3954]">Email</h3>
-              <p className="text-base text-gray-500 leading-7  mt-1 mb-28">
-                contact@company.com
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Contact form */}
-        <div className="container">
-          <div className="flex flex-wrap">
-            <div className="w-1/2 pr-8">
-              <h2 className="text-4xl font-bold text-[#1E3954] mb-10">
-                Get in Touch
-              </h2>
-
-              <form>
-                <div className="">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full p-4 border border-[#EBEBEB] rounded-lg mb-4"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full p-4 border border-[#EBEBEB] rounded-lg mb-4"
-                  />
-                  <textarea
-                    name="message"
-                    id="message"
-                    cols="30"
-                    rows="6"
-                    placeholder="Your Message"
-                    className="w-full p-4 border border-[#EBEBEB] rounded-lg mb-4"
-                  ></textarea>
-                </div>
-
-                <div className="flex justify-between">
-                  <button
-                    type="submit"
-                    className="h-fit text-white py-4 px-8 rounded-full bg-[#55BBAF] hover:bg-[#42938a]
-                    duration-500"
-                  >
-                    Submit Now
-                  </button>
-
-                  <div className="flex items-center">
-                    <div className="mr-5">
-                      <p className="text-base text-gray-500 leading-7">
-                        Or call us and get free
-                        <br />
-                        <span className="text-lg text-[#55BBAF] hover:text-[#459b91]">
-                          + 844 123 456 78
-                        </span>
-                      </p>
-                    </div>
-                    <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] hover:bg-[#c7f0ec] leading-4">
-                      <FontAwesomeIcon
-                        icon={faPhone}
-                        className=" size-4 text-[#55BBAF]"
-                      />
-                    </span>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            {/* Afriposte Maps */}
-            <div className="w-1/2 pl-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6883.9770291709465!2d-9.507027072769159!3d30.379684032223235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDIyJzQ4LjkiTiA5wrAzMCcxNi44Ilc!5e0!3m2!1sfr!2sma!4v1716639938880!5m2!1sfr!2sma"
-                allowfullscreen=""
-                loading="lazy"
-                className="w-full h-[500px] border-none"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </>
   );
 }

@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700,900&display=swap');
 
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
 
 body {
   font-family: 'Poppins';
@@ -17,6 +23,21 @@ a{
   text-decoration: none;
 }
 
+/* :: 1.0 Scroll  to top Area */
+.scroll-top {
+    position: fixed;
+    right: 2rem;
+    bottom: 2.5rem;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: black;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* :: 2.0 Hero Area */
 .hero{
     position: absolute;
     top: 65%;
@@ -24,19 +45,32 @@ a{
     transform: translate(-50%, -50%);
 }
 
-.layer-section{
-    position: absolute;
-    top: 98%;
-    left: 10%;
-    transform: translate(-18%, -50%);
+/* :: 3.0 Search Form Area */
+.workspace-search-container{
+    transform: translateY(-50%);
 }
 
+/* :: 4.0 Vedio Area */
 .vedio-icon{
     width: 80px;
     height: 80px;
     position: relative;
     border: 3px solid #ffffff;
     border-radius: 50%;
+}
+
+@media only screen and (max-width: 767px) {
+    /* :: 3.0 Search Form Area */
+    .workspace-search-container{
+        transform: translateY(-45%);
+    }
+
+    /* :: 4.0 Vedio Area */
+    .vedio-icon{
+        width: 60px;
+        height: 60px;
+        border: 2px solid #ffffff;
+    }
 }
 
 .vedio-icon img{
@@ -46,6 +80,7 @@ a{
     transform: translate(-50%, -50%);
 }
 
+/* :: 5.0 Services Area */
 .card {
     display: block;
     position: relative;
@@ -64,7 +99,7 @@ a{
     z-index: -1;
     top: -50%;
     right: -50%;
-    background: #55BBAF;
+    background: black;
     height: 50px;
     width: 50px;
     border-radius: 50px;
@@ -73,12 +108,14 @@ a{
     transition: transform 0.25s ease-out;
 }
 
+
+/* :: 6.0 Gallery Area */
 .gallery:before{
     z-index: 1;
 }
 
 .gallery:before{
-    background: rgba(60, 92, 121, 0.8);
+    background: rgba(10, 10, 10, 0.3);
 }
 
 figure {
@@ -108,25 +145,24 @@ figure {
 }
 
 .card svg {
-    fill: #55bbaf;
+    fill: black;
     width: 50px;
     height: 50px;
     transition: fill 0.3s ease;
 }
 
 .card:hover svg {
-    fill: #ffffff;
+    fill: black;
 }
 
 .card:hover figure {
-    background-color: #119182;
+    background-color: #ffffff;
 }
 
 /* :: 4.0 Heading Area CSS */
 .section-heading {
     position: relative;
     z-index: 1;
-    margin-bottom: 50px;
 }
 .section-heading h6 {
     text-transform: uppercase;
@@ -167,7 +203,6 @@ figure {
 .coworking-testimonials-area .testimonial-thumbnail {
     position: relative;
     z-index: 1;
-    padding-right: 15px;
 }
 .coworking-testimonials-area .testimonial-thumbnail img {
     border-radius: 8px;
@@ -177,7 +212,7 @@ figure {
     color: #636a76;
     font-weight: 400;
     font-size: 18px;
-    line-height: 1.8;
+    line-height: 2;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .coworking-testimonials-area .single-testimonial-slide h5 {
@@ -191,7 +226,7 @@ figure {
 }
 @media only screen and (max-width: 767px) {
     .coworking-testimonials-area .single-testimonial-slide h5 {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 .coworking-testimonials-area .single-testimonial-slide .rating-title {
@@ -211,7 +246,6 @@ figure {
     margin-bottom: 0;
 }
 .coworking-testimonials-area .single-testimonial-slide .rating-title h6 span {
-    color: #55bbaf;
     font-size: 14px;
     font-weight: 400;
 }

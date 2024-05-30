@@ -14,13 +14,13 @@ export default function Footer() {
         { name: "CONTACT", link: "/" },
     ];
   return (
-    <footer className="bg-[#1E3954] py-32">
+    <footer className="bg-gray-900 py-16">
       <div className="flex flex-col items-center">
-        <div className="pb-24">
+        <div className="pb-16">
           <img src={logo} alt="logo image" />
         </div>
 
-        <div className=" w-full flex items-center mb-5 pb-16">
+        <div className=" w-full flex items-center pb-16">
           <ul className="mx-auto md:flex md:items-center md:justify-between md:pb-0 pb-12 w-full md:w-7/12 md:pl-0 pl-9 transition-all duration-500 ease-in">
             {Links.map((link) => (
               <li key={link.name} className="md:ml-8 text-lg md:my-0 my-7">

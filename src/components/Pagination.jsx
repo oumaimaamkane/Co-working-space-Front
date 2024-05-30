@@ -2,9 +2,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = [...Array(totalPages).keys()].map((number) => number + 1);
 
   return (
-    <div className="flex justify-center my-4">
+    <div className="flex justify-center md:my-4">
       <button
-        className="px-4 py-2 mx-1 bg-gray-200 rounded hover:bg-gray-300"
+        className="text-sm md:text-base px-4 py-2 mx-1 bg-gray-200 rounded hover:bg-gray-300"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
@@ -13,9 +13,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       {pages.map((page) => (
         <button
           key={page}
-          className={`px-4 py-2 mx-1 rounded ${
+          className={`px-4 text-sm md:text-base py-2 mx-1 rounded ${
             currentPage === page
-              ? "bg-teal-700 text-white"
+              ? "bg-teal-500 text-white"
               : "bg-gray-200 hover:bg-gray-300"
           }`}
           onClick={() => onPageChange(page)}
@@ -24,7 +24,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         </button>
       ))}
       <button
-        className="px-4 py-2 mx-1 bg-gray-200 rounded hover:bg-gray-300"
+        className="text-sm md:text-base px-4 py-2 mx-1 bg-gray-200 rounded hover:bg-gray-300"
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
