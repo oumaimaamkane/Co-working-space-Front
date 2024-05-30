@@ -998,7 +998,7 @@ export default function Home() {
       </section>
 
       {/* Becoming Member Area */}
-      <section className="mx-4 pt-14 md:pt-24 pb-6">
+      <section className="mx-4 pt-14 md:pt-24 mb-14 md:mb-20">
         <div className="container mx-auto">
           <div className="flex flex-col items-center justify-center pb-12 md:pb-20">
             <h2 className="text-[24px] md:text-4xl leading-7 md:leading-normal font-bold text-center text-[#1E3954]">
@@ -1054,6 +1054,34 @@ export default function Home() {
               loading="lazy"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Hsot Event Area */}
+      <section
+        className="px-4 md:px-12 mb-14 md:mb-20 leading-tight bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${images.banner1})` }}
+      >
+        <div className="container flex flex-wrap justify-between items-center py-14 md:py-24">
+          <div className="w-full md:w-1/2">
+            <h2 className="text-[26px] md:text-[50px] font-semibold mb-4 text-white">
+              Host your next event at Coworkshop
+            </h2>
+
+            <p className="text-sm md:text-lg leading-8 text-white md:mt-12 mb-8 md:mb-16">
+              The perfect place for dev gatherings, demo nights, speaker panels,
+              launch parties and creative brainstorming.
+            </p>
+            <div className="memdership-container flex gap-8"></div>
+          </div>
+
+          <a
+            href="/"
+            className="text-black py-5 px-14 rounded-full bg-white hover:bg-black hover:text-white
+          duration-500"
+          >
+            Host Event
+          </a>
         </div>
       </section>
 
