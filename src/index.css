@@ -23,23 +23,16 @@ a{
   text-decoration: none;
 }
 
-/* :: 1.0 Scroll  to top Area */
+/* :: 1.0 Backtotop Area CSS */
 .scroll-top {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: #030303;
     border-radius: 50%;
     z-index: 30;
 }
 
-/* :: 2.0 Hero Area */
-.hero{
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 /* :: 3.0 Search Form Area */
 .workspace-search-container{
@@ -47,6 +40,14 @@ a{
 }
 
 /* :: 4.0 Vedio Area */
+.vedio-area{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
 .vedio-icon{
     width: 80px;
     height: 80px;
@@ -56,12 +57,12 @@ a{
 }
 
 @media only screen and (max-width: 767px) {
-    /* :: 3.0 Search Form Area */
+    /* :: Search Form Area */
     .workspace-search-container{
         transform: translateY(-45%);
     }
 
-    /* :: 4.0 Vedio Area */
+    /* :: Vedio Area */
     .vedio-icon{
         width: 60px;
         height: 60px;
@@ -95,7 +96,7 @@ a{
     z-index: -1;
     top: -50%;
     right: -50%;
-    background: black;
+    background: #030303;
     height: 50px;
     width: 50px;
     border-radius: 50px;
@@ -141,14 +142,14 @@ figure {
 }
 
 .card svg {
-    fill: black;
+    fill: #030303;
     width: 50px;
     height: 50px;
     transition: fill 0.3s ease;
 }
 
 .card:hover svg {
-    fill: black;
+    fill: #030303;
 }
 
 .card:hover figure {
