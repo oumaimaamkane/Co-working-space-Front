@@ -131,7 +131,7 @@ export default function Services() {
   };
 
   return (
-    <div className="p-6 min-h-screen dark:bg-neutral-800 bg-gray-100">
+    <div className="p-6 min-h-screen dark:bg-neutral-800">
       <div className="flex justify-between items-center py-4 px-8 bg-white dark:bg-neutral-600 rounded-lg shadow-md mb-6">
         <span className="text-xl font-semibold text-gray-800 dark:text-white">
           List of Services
@@ -164,7 +164,8 @@ export default function Services() {
               <div className="overflow-hidden rounded-xl bg-gray-200 group-hover:opacity-75 lg:h-40 flex items-center justify-center">
                 <img
                   src={service.image}
-                  alt={service.name}
+
+                  alt={service.name}  
                   className="h-20 w-20 object-cover"
                 />
               </div>
@@ -200,9 +201,7 @@ export default function Services() {
           <button
             onClick={prevPage}
             disabled={CurrentPage === 1}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
-              CurrentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${CurrentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <ChevronLeftIcon className="h-5 w-5 mr-1" />
             Previous
@@ -213,9 +212,7 @@ export default function Services() {
           <button
             onClick={nextPage}
             disabled={EndIndex >= services.length}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
-              EndIndex >= services.length ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${EndIndex >= services.length ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             Next
             <ChevronRightIcon className="h-5 w-5 ml-1" />

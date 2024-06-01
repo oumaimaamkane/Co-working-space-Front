@@ -161,8 +161,8 @@ export default function Equipements() {
                   {equipement.name}
                 </td>
                 <td
-                  className="border px-2 py-4 flex justify-center items-center gap-6 dark:border-neutral-500"
-                  style={{ width: "80px" }}
+                  className="border px-8 py-5 flex justify-center items-center gap-6 dark:border-neutral-500"
+                  style={{ width: "85px" }}
                 >
                   <button
                     aria-label="Update"
