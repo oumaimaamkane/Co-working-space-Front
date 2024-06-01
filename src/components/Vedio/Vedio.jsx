@@ -1,8 +1,7 @@
 import { useState } from "react";
 import images from "../../assets/img/assets";
 import playIcon from "../../assets/icons/play.svg";
-import { Fade,} from "react-awesome-reveal";
-
+import { Fade } from "react-awesome-reveal";
 
 export default function Vedio() {
   const [showVideo, setShowVideo] = useState(false);
@@ -16,7 +15,7 @@ export default function Vedio() {
       className="relative md:mx-12 mb-16 md:mb-20 h-[28rem] md:h-[41rem] bg-center bg-no-repeat bg-cover flex items-center justify-center leading-tight"
       style={{ backgroundImage: `url(${images.cowSpaceImg})` }}
     >
-      <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+      <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
         <div className="text-center">
           {/* vedio Icon  */}
           <div

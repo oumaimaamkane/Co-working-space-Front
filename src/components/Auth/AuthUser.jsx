@@ -26,7 +26,7 @@ export default function AuthUser() {
 
     setToken(token);
     setUser(user);
-    navigate(user.role === "admin" ? "/dashboard" : "/");
+    navigate(user.role_id === 1 ? "/Admin/dashboard" : "/");
   };
 
   const logout = () => {

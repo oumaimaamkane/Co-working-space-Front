@@ -1,12 +1,21 @@
 import { useState } from "react";
-import 'animate.css';
+import "animate.css";
 import images from "../../assets/img/assets";
 import Pagination from "../../components/Pagination";
 import LinkButton from "../../components/Buttons/LinkButton";
 import Carousel from "../../components/Testimonials/Carousel";
 import Services from "../../components/Services/Services";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCheck, faImage, faUsers, faXmark, faLocationDot, faPhone, faEnvelope, faClone,} from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faImage,
+  faUsers,
+  faXmark,
+  faLocationDot,
+  faPhone,
+  faEnvelope,
+  faClone,
+} from "@fortawesome/free-solid-svg-icons";
 import Vedio from "../../components/Vedio/Vedio";
 import HomeSlides from "../../components/Testimonials/HomeSlides";
 import { Fade, Slide } from "react-awesome-reveal";
@@ -29,10 +38,10 @@ const workspaces = [
 const ITEMS_PER_PAGE = 2;
 
 const REVIEW_IMAGE = [
-  images.testo1, 
-  images.testo2, 
-  images.testo1, 
-  images.testo2
+  images.testo1,
+  images.testo2,
+  images.testo1,
+  images.testo2,
 ];
 
 const REVIEWS = [
@@ -91,9 +100,7 @@ const HOME_SLIDES = [
   },
 ];
 
-
 export default function Home() {
-
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(workspaces.length / ITEMS_PER_PAGE);
 
@@ -106,7 +113,6 @@ export default function Home() {
   //   currentPage * ITEMS_PER_PAGE
   // );
 
-
   return (
     <>
       {/* hero Area */}
@@ -117,18 +123,18 @@ export default function Home() {
             <HomeSlides autoSlide={true} autoSlideInterval={4000}>
               {HOME_SLIDES.map((slide, index) => (
                 <div
-                  className="min-w-full flex-shrink-0 px-4 md:pt-24 flex items-center justify-center single-welcome-slide h-[135vh] md:h-[120vh] bg-cover bg-top text-center"
+                  className="min-w-full flex-shrink-0 md:pt-24 flex items-center justify-center single-welcome-slide h-[120vh] md:h-[135vh] bg-cover bg-top text-center"
                   key={index}
                   style={{
                     backgroundImage: `url(${slide.image})`,
                   }}
                 >
-                  <Fade delay={1e3} cascade damping={1e-1}>
+                  <Fade delay={1e2} cascade damping={1e-1}>
                     <div className="slide-content">
                       <small className="text-white uppercase">
                         {slide.title}
                       </small>
-                      <h1 className="text-[28px] md:max-w-xl mx-auto leading-9 text-white md:text-5xl pt-3 md:pb-9 font-bold">
+                      <h1 className="text-[28px] max-w-[300px] md:max-w-xl mx-auto leading-9 text-white md:text-5xl pt-3 md:pb-9 font-bold">
                         {slide.description}
                       </h1>
 
@@ -146,7 +152,7 @@ export default function Home() {
 
       {/* workspace Search Form */}
       <section className="workspace-search-container w-full">
-        <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+        <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
           <div className="workspace-search-form w-11/12 md:w-9/12 mx-auto bg-white shadow-xl rounded-md flex items-center">
             <div className="flex items-center flex-wrap w-full justify-between py-8 px-6 md:px-10">
               <div className="w-full md:w-fit mb-3">
@@ -198,7 +204,7 @@ export default function Home() {
       <section className="-mt-36 md:-mt-0 pt-10 pb-16 md:pb-20">
         <div className="container mx-auto">
           <div className="flex flex-col items-center justify-center">
-            <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
               <span className="block mb-3 md:mb-6 text-[#888F96] text-[18px] uppercase">
                 About US
               </span>
@@ -239,7 +245,7 @@ export default function Home() {
       <section className="coworking-space-area pb-16 md:pb-28">
         <div className="container">
           {/* <!-- Section Heading --> */}
-          <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+          <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
             <div className="w-full md:w-6/12 mx-auto text-center">
               <div className="mx-4 md:mx-12 pb-16">
                 <span className="text-[#888F96] text-[18px] uppercase">
@@ -256,11 +262,11 @@ export default function Home() {
             </div>
           </Fade>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 overflow-hidden">
             <div className="col-span-12">
               {/* <!-- workspace item --> */}
               <Slide
-                delay={1e3}
+                delay={1e2}
                 direction="right"
                 triggerOnce
                 cascade
@@ -275,7 +281,7 @@ export default function Home() {
 
                   {/* workspace Description */}
                   <div className="w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-                    <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                       <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
                         Private Office
                       </h4>
@@ -309,7 +315,7 @@ export default function Home() {
               </Slide>
 
               <Slide
-                delay={1e3}
+                delay={1e2}
                 direction="left"
                 triggerOnce
                 cascade
@@ -325,7 +331,7 @@ export default function Home() {
 
                   {/* workspace Description */}
                   <div className="bg-white w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-                    <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                       <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
                         Private Office
                       </h4>
@@ -358,7 +364,7 @@ export default function Home() {
                 </div>
               </Slide>
 
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 {/* Pagination */}
                 <div className="container md:mt-12">
                   <Pagination
@@ -379,7 +385,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
             {/* <!-- Testimonial Thumbnail --> */}
             <div className="col-span-1 md:col-span-6 lg:grid-cols-6 md:mx-8">
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div className="testimonial-thumbnail pb-10 md:pb-0">
                   <Carousel autoSlide={true} autoSlideInterval={4000}>
                     {REVIEW_IMAGE.map((slide, index) => (
@@ -392,7 +398,7 @@ export default function Home() {
 
             {/* <!-- Testimonial Slide --> */}
             <div className="col-span-1 md:col-span-6 lg:grid-cols-6 ">
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 {/* <!-- Section Heading --> */}
                 <div className="section-heading mb-8 md:mb-12">
                   <h6 className="mb-2 md:mb-4 text-[18px] uppercase">
@@ -435,7 +441,7 @@ export default function Home() {
         style={{ backgroundImage: `url(${images.cowSpaceImg2})` }}
       >
         <div className="container mx-auto py-14 md:py-28">
-          <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+          <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
             <h2 className="text-[24px] md:text-[50px] font-semibold text-center mb-4 text-white">
               Membership options
             </h2>
@@ -454,7 +460,7 @@ export default function Home() {
           <div className="memdership-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
             {/* membership single item */}
             <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:border-0 md:hover:border hover:border-[#55BBAF]">
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <h3 className="text-lg md:text-2xl font-semibold text-white">
                   Desk
                 </h3>
@@ -533,7 +539,7 @@ export default function Home() {
 
             {/* membership single item */}
             <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 relative overflow-hidden transition-border duration-200 ease-in border border-[#55697C] hover:rounded-xl hover:border-[#55BBAF]">
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div>
                   <span className="bg-green-500 absolute w-8 h-60 -top-16 translate-x-16 right-20 -rotate-[50deg]"></span>
                   <span className="absolute uppercase top-8 right-8 rotate-[40deg] font-bold text-sm text-white">
@@ -620,7 +626,7 @@ export default function Home() {
 
             {/* membership single item */}
             <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:border-0 md:hover:border hover:border-[#55BBAF]">
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <h3 className="text-lg md:text-2xl font-semibold text-white">
                   Office
                 </h3>
@@ -707,7 +713,7 @@ export default function Home() {
             <div className="mx-3 md:w-6/12">
               {/* <!-- Section Heading --> */}
               <div className="section-heading">
-                <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+                <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                   <h6 className="mb-3 md:mb-6 text-[18px] uppercase">
                     OUR BENEFITS
                   </h6>
@@ -750,7 +756,7 @@ export default function Home() {
             </div>
 
             <div className="hidden md:block col-span-1 md:col-span-5 lg:grid-cols-4 mx-3">
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div className=" pl-10 pb-20">
                   <img
                     src={images.banner}
@@ -774,7 +780,7 @@ export default function Home() {
               target="_blank"
               className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
             >
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div
                   className="bg-img absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
                   style={{ backgroundImage: `url(${images.gallery1})` }}
@@ -797,7 +803,7 @@ export default function Home() {
               target="_blank"
               className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
             >
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div
                   className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
                   style={{ backgroundImage: `url(${images.gallery2})` }}
@@ -820,7 +826,7 @@ export default function Home() {
               target="_blank"
               className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
             >
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div
                   className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
                   style={{ backgroundImage: `url(${images.gallery3})` }}
@@ -843,7 +849,7 @@ export default function Home() {
               target="_blank"
               className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
             >
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div
                   className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
                   style={{ backgroundImage: `url(${images.gallery4})` }}
@@ -866,7 +872,7 @@ export default function Home() {
               target="_blank"
               className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
             >
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div
                   className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
                   style={{ backgroundImage: `url(${images.gallery5})` }}
@@ -889,7 +895,7 @@ export default function Home() {
               target="_blank"
               className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
             >
-              <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div
                   className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
                   style={{ backgroundImage: `url(${images.gallery6})` }}
@@ -913,58 +919,68 @@ export default function Home() {
       <section className="mx-4 pt-14 md:pt-16 mb-14 md:mb-20">
         <div className="container mx-auto">
           <div className="flex flex-col items-center justify-center pb-12 md:pb-20">
-            <h2 className="text-[24px] md:text-4xl leading-7 md:leading-normal font-bold text-center text-[#1E3954]">
-              Our Modern Office Spaces
-              <br /> Are Simply Stunning
-            </h2>
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <h2 className="text-[24px] md:text-4xl leading-7 md:leading-normal font-bold text-center text-[#1E3954]">
+                Our Modern Office Spaces
+                <br /> Are Simply Stunning
+              </h2>
 
-            {/* Member Button */}
-            <LinkButton
-              className="h-fit text-white md:py-5 md:px-10 rounded-full my-4 md:my-8 bg-[#55BBAF] hover:bg-[#42938a]
-            duration-500"
-            >
-              BECOME A MEMBER
-            </LinkButton>
-
-            <p className="text-center text-sm md:text-base text-[#1E3954]">
-              Not Sure?
-              <a
-                href="/"
-                className="pl-1 text-teal-500 hover:text-[#42938a]
-            duration-500"
+              {/* Member Button */}
+              <LinkButton
+                className="h-fit text-white md:py-5 md:px-10 rounded-full my-4 md:my-8 
+              duration-500"
               >
-                BOOK A SEAT
-              </a>
-            </p>
+                BECOME A MEMBER
+              </LinkButton>
+
+              <p className="text-center text-sm md:text-base text-[#1E3954]">
+                Not Sure?
+                <a
+                  href="/"
+                  className="pl-1 text-teal-500 hover:text-[#42938a]
+              duration-500"
+                >
+                  BOOK A SEAT
+                </a>
+              </p>
+            </Fade>
           </div>
 
           {/* Brands Area */}
           <div className="flex items-center flex-wrap justify-evenly mb-12 md:mb-20 gap-12">
-            <img
-              src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_1.jpg"
-              alt="brand"
-              loading="lazy"
-            />
-            <img
-              src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_2.jpg"
-              loading="lazy"
-              alt="brand"
-            />
-            <img
-              src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_3.jpg"
-              alt="brand"
-              loading="lazy"
-            />
-            <img
-              src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_4.jpg"
-              alt="brand"
-              loading="lazy"
-            />
-            <img
-              src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_5.jpg"
-              alt="brand"
-              loading="lazy"
-            />
+            <Fade
+              delay={1e2}
+              direction="top-left"
+              triggerOnce
+              cascade
+              damping={1e-1}
+            >
+              <img
+                src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_1.jpg"
+                alt="brand"
+                loading="lazy"
+              />
+              <img
+                src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_2.jpg"
+                loading="lazy"
+                alt="brand"
+              />
+              <img
+                src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_3.jpg"
+                alt="brand"
+                loading="lazy"
+              />
+              <img
+                src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_4.jpg"
+                alt="brand"
+                loading="lazy"
+              />
+              <img
+                src="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/brand_5.jpg"
+                alt="brand"
+                loading="lazy"
+              />
+            </Fade>
           </div>
         </div>
       </section>
@@ -976,23 +992,26 @@ export default function Home() {
       >
         <div className="container flex flex-wrap justify-between items-center py-14 md:py-24">
           <div className="w-full md:w-1/2">
-            <h2 className="text-[26px] md:text-[50px] font-semibold mb-4 text-white">
-              Host your next event at Coworkshop
-            </h2>
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <h2 className="text-[26px] md:text-[50px] font-semibold mb-4 text-white">
+                Host your next event at Coworkshop
+              </h2>
 
-            <p className="text-sm md:text-lg leading-8 text-white md:mt-12 mb-8 md:mb-16">
-              The perfect place for dev gatherings, demo nights, speaker panels,
-              launch parties and creative brainstorming.
-            </p>
-            <div className="memdership-container flex gap-8"></div>
+              <p className="text-sm md:text-lg leading-8 text-white md:mt-12 mb-8 md:mb-16">
+                The perfect place for dev gatherings, demo nights, speaker
+                panels, launch parties and creative brainstorming.
+              </p>
+              <div className="memdership-container flex gap-8"></div>
+            </Fade>
           </div>
-
-          <LinkButton
-            className="text-[#030303] md:py-5 md:px-14 rounded-full bg-white hover:bg-[#030303] hover:text-white
-          duration-500 h-fit"
-          >
-            Host Event
-          </LinkButton>
+          <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+            <LinkButton
+              className="text-[#030303] md:py-5 md:px-14 rounded-full bg-white hover:bg-[#030303] hover:text-white
+            duration-500 h-fit"
+            >
+              Host Event
+            </LinkButton>
+          </Fade>
         </div>
       </section>
 
@@ -1001,57 +1020,63 @@ export default function Home() {
         {/* Header */}
         <div className="w-full flex flex-wrap">
           <div className="w-full md:w-1/3 flex md:px-3">
-            <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
-              <FontAwesomeIcon
-                icon={faLocationDot}
-                className=" size-4 text-[#030303]"
-              />
-            </span>
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
+                <FontAwesomeIcon
+                  icon={faLocationDot}
+                  className=" size-4 text-[#030303]"
+                />
+              </span>
 
-            <div className="ml-4 md:ml-6">
-              <h3 className="text-base md:text-lg font-semibold text-[#1E3954]">
-                Address
-              </h3>
-              <p className="text-sm md:text-base text-gray-500 md:leading-7  mt-1 mb-14 md:mb-28">
-                MASH Detroit bulding, 14711 Mack Ave., Detroit, MI 48214
-              </p>
-            </div>
+              <div className="ml-4 md:ml-6">
+                <h3 className="text-base md:text-lg font-semibold text-[#1E3954]">
+                  Address
+                </h3>
+                <p className="text-sm md:text-base text-gray-500 md:leading-7  mt-1 mb-14 md:mb-28">
+                  MASH Detroit bulding, 14711 Mack Ave., Detroit, MI 48214
+                </p>
+              </div>
+            </Fade>
           </div>
 
           <div className="w-full md:w-1/3 flex md:px-3">
-            <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
-              <FontAwesomeIcon
-                icon={faPhone}
-                className=" size-4 text-[#030303]"
-              />
-            </span>
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className=" size-4 text-[#030303]"
+                />
+              </span>
 
-            <div className="ml-4 md:ml-6">
-              <h3 className="text-base md:text-lg font-semibold text-[#1E3954]">
-                Phone
-              </h3>
-              <p className="text-sm md:text-base text-gray-500 md:leading-7  mt-1 mb-14 md:mb-28">
-                123 - 456 7890 / 123 - 456 7891
-              </p>
-            </div>
+              <div className="ml-4 md:ml-6">
+                <h3 className="text-base md:text-lg font-semibold text-[#1E3954]">
+                  Phone
+                </h3>
+                <p className="text-sm md:text-base text-gray-500 md:leading-7  mt-1 mb-14 md:mb-28">
+                  123 - 456 7890 / 123 - 456 7891
+                </p>
+              </div>
+            </Fade>
           </div>
 
           <div className="w-full md:w-1/3 flex md:px-3">
-            <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className=" size-4 text-[#030303]"
-              />
-            </span>
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] leading-5">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className=" size-4 text-[#030303]"
+                />
+              </span>
 
-            <div className="ml-4 md:ml-6">
-              <h3 className="text-base md:text-lg font-semibold text-[#1E3954]">
-                Email
-              </h3>
-              <p className="text-sm md:text-base text-gray-500 md:leading-7  mt-1 mb-14 md:mb-28">
-                contact@company.com
-              </p>
-            </div>
+              <div className="ml-4 md:ml-6">
+                <h3 className="text-base md:text-lg font-semibold text-[#1E3954]">
+                  Email
+                </h3>
+                <p className="text-sm md:text-base text-gray-500 md:leading-7  mt-1 mb-14 md:mb-28">
+                  contact@company.com
+                </p>
+              </div>
+            </Fade>
           </div>
         </div>
 
@@ -1059,69 +1084,75 @@ export default function Home() {
         <div className="container">
           <div className="flex gap-y-10 flex-wrap">
             <div className="w-full md:w-1/2 md:pr-8">
-              <h2 className="text-[24px] md:text-4xl font-bold mb-8 text-[#1E3954]">
-                Get in Touch
-              </h2>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                <h2 className="text-[24px] md:text-4xl font-bold mb-8 text-[#1E3954]">
+                  Get in Touch
+                </h2>
 
-              <form>
-                <div className="">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full text-sm md:text-base p-4 border border-[#EBEBEB] rounded-lg mb-4"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full text-sm md:text-base p-4 border border-[#EBEBEB] rounded-lg mb-4"
-                  />
-                  <textarea
-                    name="message"
-                    id="message"
-                    cols="30"
-                    rows="6"
-                    placeholder="Your Message"
-                    className="w-full text-sm md:text-base p-4 border border-[#EBEBEB] rounded-lg mb-4"
-                  ></textarea>
-                </div>
-
-                <div className="flex flex-wrap gap-y-6 justify-between">
-                  <LinkButton
-                    className="h-fit text-white md:py-4 md:px-8 rounded-full
-                    duration-500"
-                  >
-                    Submit Now
-                  </LinkButton>
-
-                  <div className="w-full md:w-1/2 flex items-center justify-between">
-                    <div className="mr-5">
-                      <p className="text-sm md:text-base text-gray-500 leading-7">
-                        Or call us and get free
-                        <br />
-                        <span className="text-sm md:text-lg font-[500] text-[#030303] hover:text-teal-600">
-                          + 844 123 456 78
-                        </span>
-                      </p>
-                    </div>
-                    <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] hover:bg-[#c7f0ec] leading-4">
-                      <FontAwesomeIcon
-                        icon={faPhone}
-                        className=" size-4 text-[#030303]"
-                      />
-                    </span>
+                <form>
+                  <div className="">
+                    <input
+                      type="text"
+                      placeholder="Your Name"
+                      className="w-full text-sm md:text-base p-4 border border-[#EBEBEB] rounded-lg mb-4"
+                    />
+                    <input
+                      type="email"
+                      placeholder="Your Email"
+                      className="w-full text-sm md:text-base p-4 border border-[#EBEBEB] rounded-lg mb-4"
+                    />
+                    <textarea
+                      name="message"
+                      id="message"
+                      cols="30"
+                      rows="6"
+                      placeholder="Your Message"
+                      className="w-full text-sm md:text-base p-4 border border-[#EBEBEB] rounded-lg mb-4"
+                    ></textarea>
                   </div>
-                </div>
-              </form>
+
+                  <div className="flex flex-wrap gap-y-6 justify-between">
+                    <LinkButton
+                      className="h-fit text-white md:py-4 md:px-8 rounded-full
+                      duration-500"
+                    >
+                      Submit Now
+                    </LinkButton>
+
+                    <div className="w-full md:w-1/2 flex items-center justify-between">
+                      <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                        <div className="mr-5">
+                          <p className="text-sm md:text-base text-gray-500 leading-7">
+                            Or call us and get free
+                            <br />
+                            <span className="text-sm md:text-lg font-[500] text-[#030303] hover:text-teal-600">
+                              + 844 123 456 78
+                            </span>
+                          </p>
+                        </div>
+                        <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] hover:bg-[#c7f0ec] leading-4">
+                          <FontAwesomeIcon
+                            icon={faPhone}
+                            className=" size-4 text-[#030303]"
+                          />
+                        </span>
+                      </Fade>
+                    </div>
+                  </div>
+                </form>
+              </Fade>
             </div>
 
             {/* Afriposte Maps */}
             <div className="w-full md:w-1/2 md:pl-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6883.9770291709465!2d-9.507027072769159!3d30.379684032223235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDIyJzQ4LjkiTiA5wrAzMCcxNi44Ilc!5e0!3m2!1sfr!2sma!4v1716639938880!5m2!1sfr!2sma"
-                allowfullscreen=""
-                loading="lazy"
-                className="w-full h-[500px] border-none"
-              ></iframe>
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6883.9770291709465!2d-9.507027072769159!3d30.379684032223235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDIyJzQ4LjkiTiA5wrAzMCcxNi44Ilc!5e0!3m2!1sfr!2sma!4v1716639938880!5m2!1sfr!2sma"
+                  allowfullscreen=""
+                  loading="lazy"
+                  className="w-full h-[500px] border-none"
+                ></iframe>
+              </Fade>
             </div>
           </div>
         </div>

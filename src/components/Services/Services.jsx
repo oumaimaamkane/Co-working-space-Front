@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LinkButton from "../Buttons/LinkButton";
 import { faClone } from "@fortawesome/free-solid-svg-icons";
-import { Fade} from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 export default function Services() {
   return (
@@ -10,7 +10,7 @@ export default function Services() {
       <section className="mb-16 mx-4 md:mx-12">
         <div className="container mx-auto pb-16 md:pb-20">
           <div className="flex flex-col items-center justify-center">
-            <Fade delay={1e3} cascade triggerOnce damping={1e-1}>
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
               <h2 className="text-[24px] md:text-4xl font-bold text-center mb-4 text-[#1E3954]">
                 Our services
               </h2>
@@ -36,7 +36,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="top-left"
               triggerOnce
               cascade
@@ -66,7 +66,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="top-left"
               triggerOnce
               cascade
@@ -95,7 +95,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="top-left"
               triggerOnce
               cascade
@@ -125,7 +125,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="top-left"
               triggerOnce
               cascade
@@ -154,7 +154,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="bottom-right"
               cascade
               triggerOnce
@@ -185,7 +185,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="bottom-right"
               cascade
               triggerOnce
@@ -218,7 +218,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="bottom-right"
               cascade
               triggerOnce
@@ -247,7 +247,7 @@ export default function Services() {
           {/* single Service item */}
           <div className="card w-full md:w-1/4 p-4 py-8 text-center">
             <Fade
-              delay={1e3}
+              delay={1e2}
               direction="bottom-right"
               cascade
               triggerOnce
