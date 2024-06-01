@@ -30,6 +30,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         icon: <HiOutlineDeviceTablet />
     },
     {
+        key: 'services',
+        label: 'Services',
+        path: '/Admin/manage-services',
+        icon: <HiOutlineSupport />
+    },
+    {
         key: 'espaces',
         label: 'Espaces',
         path: '/Admin/manage-espaces',
@@ -42,22 +48,16 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         icon: <HiOutlineClipboardList />
     },
     {
-        key: 'roles',
-        label: 'Roles',
-        path: '/Admin/manage-roles',
-        icon: <HiOutlineKey />
-    },
-    {
-        key: 'services',
-        label: 'Services',
-        path: '/Admin/manage-services',
-        icon: <HiOutlineSupport />
-    },
-    {
         key: 'users',
         label: 'Users',
         path: '/Admin/manage-users',
         icon: <HiOutlineUserGroup />
+    },
+    {
+        key: 'roles',
+        label: 'Roles',
+        path: '/Admin/manage-roles',
+        icon: <HiOutlineKey />
     },
 ];
 

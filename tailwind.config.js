@@ -9,6 +9,8 @@ export default {
   },
   plugins: [
     require('tailwind-scrollbar'),
+    require('@tailwindcss/aspect-ratio'),
   ],
+  darkMode: "class",
 }
 
