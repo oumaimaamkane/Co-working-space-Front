@@ -148,10 +148,9 @@ export default function Home() {
             </HomeSlides>
           </Fade>
         </div>
-      </section>
 
-      {/* workspace Search Form */}
-      <section className="workspace-search-container w-full">
+        {/* workspace Search Form */}
+      <div className="workspace-search-container w-full">
         <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
           <div className="workspace-search-form w-11/12 md:w-9/12 mx-auto bg-white shadow-xl rounded-md flex items-center">
             <div className="flex items-center flex-wrap w-full justify-between py-8 px-6 md:px-10">
@@ -198,6 +197,7 @@ export default function Home() {
             </div>
           </div>
         </Fade>
+      </div>
       </section>
 
       {/* About Area */}
