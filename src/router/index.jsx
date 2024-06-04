@@ -18,6 +18,7 @@ import Register from "../views/Auth/Register";
 import Login from "../views/Auth/Login";
 import MainLayout from "../components/Layouts/Home/MainLayout";
 import Home from "../views/FrontOffice/Home";
+import About from '../views/FrontOffice/About';
 
 const Router = () => {
   return (
@@ -43,6 +44,7 @@ const Router = () => {
       {/*Front Office Routes */}
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
       </Route>
 
     </Routes>

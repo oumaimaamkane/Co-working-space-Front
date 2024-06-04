@@ -1,5 +1,5 @@
 import { Fade } from "react-awesome-reveal";
-import Carousel from "../Testimonials/Carousel";
+import Carousel from "../Slider/Carousel";
 import images from "../../assets/img/assets";
 
 const REVIEWS = [

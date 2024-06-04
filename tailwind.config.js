@@ -8,8 +8,8 @@ export default {
     extend: {},
   },
   plugins: [
-    require('tailwind-scrollbar'),
-    require('@tailwindcss/aspect-ratio'),
+    // require('tailwind-scrollbar'),
+    // require('@tailwindcss/aspect-ratio'),
   ],
   darkMode: "class",
 }

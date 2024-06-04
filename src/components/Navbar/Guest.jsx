@@ -7,11 +7,11 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 const Nav = () => {
     let Links = [
       { name: "HOME", link: "/" },
-      { name: "SERVICE", link: "/" },
       { name: "ABOUT", link: "/" },
+      { name: "SERVICES", link: "/" },
+      { name: "Packs", link: "/" },
       { name: "BLOG'S", link: "/" },
       { name: "CONTACT", link: "/" },
-      { name: "Plans", link: "/" },
     ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ const Nav = () => {
   };
 
   return (
-    <header className="absolute top-0 left-0 z-20 w-full flex items-center justify-between py-5 px-4 md:px-[70px] md:py-[40px] bg-slate-800 md:bg-transparent md:border-b border-[#8d9faf]">
+    <header className="w-full absolute top-0 left-0 z-20 flex items-center justify-between py-5 px-4 md:px-12 md:py-[40px] bg-slate-800 md:bg-transparent md:border-b border-[#8d9faf]">
       <div className="w-52">
         <img src={logo} className="w-[160px] md:w-auto" alt="logo image" />
       </div>
