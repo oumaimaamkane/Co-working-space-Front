@@ -64,7 +64,7 @@ export default function Home() {
   // );
 
   return (
-    <>
+    <div>
       {/* hero Area */}
       <section>
         <div className="welcome-sildes">
@@ -853,6 +853,6 @@ export default function Home() {
       {/* Contact Area */}
       <Contact />
 
-    </>
+    </div>
   );
 }

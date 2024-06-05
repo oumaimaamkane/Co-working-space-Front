@@ -7,8 +7,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 const Nav = () => {
     let Links = [
       { name: "HOME", link: "/" },
-      { name: "ABOUT", link: "/" },
-      { name: "SERVICES", link: "/" },
+      { name: "ABOUT", link: "/about" },
+      { name: "SERVICES", link: "/services" },
       { name: "Packs", link: "/" },
       { name: "BLOG'S", link: "/" },
       { name: "CONTACT", link: "/" },
