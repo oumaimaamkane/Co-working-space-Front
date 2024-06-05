@@ -9,9 +9,9 @@ const Nav = () => {
       { name: "HOME", link: "/" },
       { name: "ABOUT", link: "/about" },
       { name: "SERVICES", link: "/services" },
-      { name: "Packs", link: "/" },
-      { name: "BLOG'S", link: "/" },
-      { name: "CONTACT", link: "/" },
+      { name: "Packs", link: "/packs" },
+      { name: "BLOG'S", link: "/blogs" },
+      { name: "CONTACT", link: "/contact" },
     ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -21,12 +21,12 @@ const Nav = () => {
   };
 
   return (
-    <header className="w-full absolute top-0 left-0 z-20 flex items-center justify-between py-5 px-4 md:px-12 md:py-[40px] bg-slate-800 md:bg-transparent md:border-b border-[#8d9faf]">
+    <header className="w-full absolute top-0 left-0 z-20 flex items-center justify-between py-5 px-4 md:px-12 md:py-[40px] bg-slate-800 lg:bg-transparent md:border-b border-[#8d9faf]">
       <div className="w-52">
         <img src={logo} className="w-[160px] md:w-auto" alt="logo image" />
       </div>
 
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <ul className="md:flex md:items-center md:justify-evenly transition-all duration-500 ease-in">
           {Links.map((link) => (
             <li key={link.name} className="md:ml-12 text-sm md:my-0 my-7">
@@ -40,17 +40,17 @@ const Nav = () => {
           ))}
         </ul>
       </div>
-      <Button className="hidden md:block">Book A Seet</Button>
+      <Button className="hidden lg:block">Book A Seet</Button>
 
       <FontAwesomeIcon
         icon={faBars}
-        className="md:hidden text-white text-2xl"
+        className="lg:hidden text-white text-2xl"
         onClick={() => toggleNav()}
       />
 
       {/* mobile navbar */}
       <div
-        className={`md:hidden fixed inset-0 transition-transform duration-500 ease-in-out z-40 flex ${
+        className={`lg:hidden fixed inset-0 transition-transform duration-500 ease-in-out z-40 flex ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

@@ -11,6 +11,7 @@ import gallery5 from "../img/gallery-5.jpg";
 import gallery6 from "../img/gallery-6.jpg";
 import banner from "../img/bannercw1.jpg";
 import banner3 from "../img/banner-3.jpg";
+import blog1 from "../img/blog-1.webp";
 import logo from "../img/logo.png";
 import auth from '../img/auth.png'; 
 import testo1 from "../img/1.jpg";
@@ -42,6 +43,7 @@ const images = {
   banner,
   testo1,
   testo2,
+  blog1,
   logo,
   auth,
 

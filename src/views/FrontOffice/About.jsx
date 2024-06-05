@@ -9,7 +9,7 @@ export default function About() {
       {/* Breadcrumb Area Start */}
       <Fade>
         <section
-          className="px-4 md:px-12 leading-tight bg-center bg-no-repeat"
+          className="px-4 md:px-12 leading-tight bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${images.banner1})` }}
         >
           <div className="container h-[250px] md:h-[400px] flex justify-center items-center pt-20 md:pt-36">
@@ -23,7 +23,7 @@ export default function About() {
                       </h2>
                       <ul className="flex justify-center items-center text-white font-[500]">
                         <li>
-                          <a href="#" className="hover:text-black">
+                          <a href="/" className="hover:text-black">
                             Home
                           </a>
                         </li>

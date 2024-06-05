@@ -38,43 +38,41 @@ export default function Service() {
   return (
     <div>
       {/* Breadcrumb Area Start */}
-      <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-        <section
-          className="px-4 md:px-12 leading-tight bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${images.banner1})` }}
-        >
-          <div className="container h-[250px] md:h-[400px] flex justify-center items-center pt-20 md:pt-36">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="breadcrumb-content text-center">
-                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                      <h2 className="text-white uppercase font-semibold mb-1 md:mb-3 text-[24px] md:text-4xl">
-                        Our Services
-                      </h2>
-                      <ul className="flex justify-center items-center text-white font-[500]">
-                        <li>
-                          <a href="#" className="hover:text-black">
-                            Home
-                          </a>
-                        </li>
-                        <span className="mx-2">&gt;</span>
-                        <li>Services</li>
-                      </ul>
-                    </Fade>
-                  </div>
-                </div>
-              </div>
+      <Fade
+        delay={1e2}
+        cascade
+        triggerOnce
+        damping={1e-1}
+        className="px-4 md:px-12 leading-tight bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${images.banner1})` }}
+      >
+        <div className="w-full h-[250px] md:h-[400px] flex justify-center items-center pt-20 md:pt-36">
+          <div className="w-full">
+            <div className="breadcrumb-content mx-auto text-center">
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                <h2 className="text-white uppercase font-semibold mb-1 md:mb-3 text-[24px] md:text-4xl">
+                  Our Services
+                </h2>
+                <ul className="flex justify-center items-center text-white font-[500]">
+                  <li>
+                    <a href="/" className="hover:text-black">
+                      Home
+                    </a>
+                  </li>
+                  <span className="mx-2">&gt;</span>
+                  <li>Services</li>
+                </ul>
+              </Fade>
             </div>
           </div>
-        </section>
+        </div>
       </Fade>
 
       {/* Services Area */}
       <section className="bg-white pt-14 md:pt-24 px-4 md:px-12">
         <div className="flex flex-wrap">
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="top-left"
@@ -104,7 +102,7 @@ export default function Service() {
           </div>
 
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="top-left"
@@ -133,7 +131,7 @@ export default function Service() {
           </div>
 
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="top-left"
@@ -163,7 +161,7 @@ export default function Service() {
           </div>
 
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="top-left"
@@ -192,7 +190,7 @@ export default function Service() {
           </div>
 
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="bottom-right"
@@ -223,7 +221,7 @@ export default function Service() {
           </div>
 
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="bottom-right"
@@ -256,7 +254,7 @@ export default function Service() {
           </div>
 
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="bottom-right"
@@ -285,7 +283,7 @@ export default function Service() {
           </div>
 
           {/* single Service item */}
-          <div className="card w-full md:w-1/4 p-4 py-8 text-center">
+          <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
             <Fade
               delay={1e2}
               direction="bottom-right"
@@ -522,7 +520,7 @@ export default function Service() {
                 news.
               </p>
 
-              <div className="w-full md:w-[750px] mx-auto bg-white rounded-full mt-6 p-2 flex items-center justify-between">
+              <div className="w-full md:w-7/12 mx-auto bg-white rounded-full mt-6 p-2 flex items-center justify-between">
                 <input
                   type="email"
                   placeholder="Sign up to your newsletter"

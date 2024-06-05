@@ -20,6 +20,9 @@ import MainLayout from "../components/Layouts/Home/MainLayout";
 import Home from "../views/FrontOffice/Home";
 import About from '../views/FrontOffice/About';
 import Service from '../views/FrontOffice/Service';
+import Contact from "../views/FrontOffice/Contact";
+import Blogs from '../views/FrontOffice/Blogs';
+import SingleBlog from '../views/FrontOffice/SingleBlog';
 
 const Router = () => {
   return (
@@ -46,6 +49,9 @@ const Router = () => {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Service />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/single-blog" element={<SingleBlog />} />
       </Route>
     </Routes>
   );

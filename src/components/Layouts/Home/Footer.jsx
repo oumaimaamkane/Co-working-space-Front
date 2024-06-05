@@ -9,12 +9,13 @@ import { Fade } from "react-awesome-reveal";
 export default function Footer() {
     let Links = [
       { name: "HOME", link: "/" },
-      { name: "SERVICE", link: "/" },
-      { name: "ABOUT", link: "/" },
-      { name: "BLOG'S", link: "/" },
-      { name: "CONTACT", link: "/" },
-      { name: "Plans", link: "/" },
+      { name: "ABOUT", link: "/about" },
+      { name: "SERVICES", link: "/services" },
+      { name: "Packs", link: "/packs" },
+      { name: "BLOG'S", link: "/blogs" },
+      { name: "CONTACT", link: "/contact" },
     ];
+    
   return (
     <footer className="bg-gray-900 py-10 md:py-16">
       <div className="flex flex-col items-center">

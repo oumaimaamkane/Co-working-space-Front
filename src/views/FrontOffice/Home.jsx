@@ -102,10 +102,13 @@ export default function Home() {
         {/* workspace Search Form */}
         <div className="workspace-search-container w-full">
           <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-            <div className="workspace-search-form w-11/12 md:w-9/12 mx-auto bg-white shadow-xl rounded-md flex items-center">
+            <div className="workspace-search-form w-11/12 md:w-10/12 mx-auto bg-white shadow-xl rounded-md flex items-center">
               <div className="flex items-center flex-wrap w-full justify-between py-8 px-6 md:px-10">
                 <div className="w-full md:w-fit mb-3">
-                  <label htmlFor="check_in" className="block pb-2 md:pb-3">
+                  <label
+                    htmlFor="check_in"
+                    className="text-[15px] block pb-2 md:pb-3"
+                  >
                     Check In
                   </label>
                   <input
@@ -117,7 +120,10 @@ export default function Home() {
                 </div>
 
                 <div className="w-full md:w-fit mb-3">
-                  <label htmlFor="check_in" className="block pb-2 md:pb-3">
+                  <label
+                    htmlFor="check_in"
+                    className="text-[15px] block pb-2 md:pb-3"
+                  >
                     Check Out
                   </label>
                   <input
@@ -129,7 +135,24 @@ export default function Home() {
                 </div>
 
                 <div className="w-full md:w-fit mb-3">
-                  <label htmlFor="personne" className="block pb-2 md:pb-3">
+                  <label
+                    htmlFor="check_in"
+                    className="text-[15px] block pb-2 md:pb-3"
+                  >
+                    Workspace Type
+                  </label>
+                  <select className="rounded-sm text-sm p-3 border w-full md:w-[180px]">
+                    <option value="1">Private Office</option>
+                    <option value="2">Shared Office</option>
+                    <option value="3">Meeting Room</option>
+                  </select>
+                </div>
+
+                <div className="w-full md:w-fit mb-3">
+                  <label
+                    htmlFor="personne"
+                    className="text-[15px] block pb-2 md:pb-3"
+                  >
                     Capacity
                   </label>
 
@@ -328,7 +351,7 @@ export default function Home() {
           </div>
         </div>
       </section>
- 
+
       <Testimonials />
 
       {/* Membership options Area */}
@@ -852,7 +875,6 @@ export default function Home() {
 
       {/* Contact Area */}
       <Contact />
-
     </div>
   );
 }
