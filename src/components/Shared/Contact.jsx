@@ -99,35 +99,12 @@ export default function Contact() {
                     className="w-full text-sm md:text-base p-4 border border-[#EBEBEB] rounded-lg mb-4"
                   ></textarea>
                 </div>
-
-                <div className="flex flex-wrap gap-y-6 justify-between">
-                  <LinkButton
-                    className="h-fit text-white md:py-4 md:px-8 rounded-full
-                      duration-500"
-                  >
-                    Submit Now
-                  </LinkButton>
-
-                  <div className="w-full md:w-1/2 flex items-center justify-between">
-                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                      <div className="mr-5">
-                        <p className="text-sm md:text-base text-gray-500 leading-7">
-                          Or call us and get free
-                          <br />
-                          <span className="text-sm md:text-lg font-[500] text-[#030303] hover:text-teal-600">
-                            + 844 123 456 78
-                          </span>
-                        </p>
-                      </div>
-                      <span className="p-4 h-fit rounded-[50%] bg-[#EEF8F7] hover:bg-[#c7f0ec] leading-4">
-                        <FontAwesomeIcon
-                          icon={faPhone}
-                          className=" size-4 text-[#030303]"
-                        />
-                      </span>
-                    </Fade>
-                  </div>
-                </div>
+                <LinkButton
+                  className="h-fit text-white md:py-4 md:px-8 rounded-full
+                    duration-500"
+                >
+                  Submit Now
+                </LinkButton>
               </form>
             </Fade>
           </div>

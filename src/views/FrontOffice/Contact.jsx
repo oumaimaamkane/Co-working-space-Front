@@ -4,7 +4,7 @@ import { default as ContactComponent } from "../../components/Shared/Contact";
 
 export default function Contact() {
   return (
-    <div>
+    <>
       {/* Breadcrumb Area Start */}
       <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
         <section
@@ -42,6 +42,6 @@ export default function Contact() {
       <section className="pt-14 md:pt-24">
         <ContactComponent />
       </section>
-    </div>
+    </>
   );
 }

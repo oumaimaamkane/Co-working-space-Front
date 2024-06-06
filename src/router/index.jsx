@@ -23,6 +23,7 @@ import Service from '../views/FrontOffice/Service';
 import Contact from "../views/FrontOffice/Contact";
 import Blogs from '../views/FrontOffice/Blogs';
 import SingleBlog from '../views/FrontOffice/SingleBlog';
+import SingleWorkspace from '../views/FrontOffice/SingleWorkspace';
 
 const Router = () => {
   return (
@@ -52,6 +53,7 @@ const Router = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/single-blog" element={<SingleBlog />} />
+        <Route path="/single-workspace" element={<SingleWorkspace />} />
       </Route>
     </Routes>
   );

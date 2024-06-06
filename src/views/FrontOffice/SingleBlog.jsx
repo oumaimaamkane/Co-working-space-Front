@@ -4,6 +4,7 @@ import { useState } from "react";
 import Pagination from "../../components/Pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faUser } from  "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faLinkedin, faPinterest, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const blogs = [
   {
@@ -24,7 +25,7 @@ export default function SingleBlog() {
     setCurrentPage(page);
   };
   return (
-    <div>
+    <>
       {/* Breadcrumb Area Start */}
       <Fade
         delay={1e2}
@@ -59,15 +60,15 @@ export default function SingleBlog() {
         </div>
       </Fade>
 
-      {/* Blog Area Start */}
+      {/* Main Blog Area Start */}
       <Fade
         delay={1e2}
         cascade
         triggerOnce
         damping={1e-1}
-        className="px-4 md:px-12"
+        className="px-4 md:px-12 bg-white"
       >
-        <div className="container pt-10 lg:pt-20 w-full lg:w-8/12  mx-auto">
+        <div className="bg-white container pt-10 lg:pt-20 w-full lg:w-8/12  mx-auto">
           <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
             {/* Blog item */}
             <div className="blog-item">
@@ -79,7 +80,7 @@ export default function SingleBlog() {
                 cascade
                 triggerOnce
                 damping={1e-1}
-                className="blog-content leading-8 text-[15px] mt-5"
+                className=" blog-content leading-8 text-[15px] mt-5"
               >
                 <h3 className="text-xl md:text-2xl mt-10 font-semibold text-[#1E3954]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. sit
@@ -110,12 +111,45 @@ export default function SingleBlog() {
                   turpis nec malesuada.
                 </p>
               </Fade>
+
+              <div className="flex items-center mt-10 py-4 border-t">
+                <div className="flex items-center">
+                  <h3 className="text-[#666] text-[14px] md:text-lg font-[500]">
+                    Share:
+                  </h3>
+                  <ul className="flex gap-4 ml-6">
+                    <li>
+                      <a href="/" className="text-[#666]">
+                        <FontAwesomeIcon icon={faFacebook} />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/" className="text-[#666]">
+                        <FontAwesomeIcon icon={faTwitter} />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/" className="text-[#666]">
+                        <FontAwesomeIcon icon={faLinkedin} />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/" className="text-[#666]">
+                        <FontAwesomeIcon icon={faPinterest} />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </Fade>
         </div>
 
-        {/* Blog Area Start */}
-        <div className="container pb-10 pt-10 lg:pt-16 lg:pb-20 mx-auto">
+        {/* Blogs Area Start */}
+        <div className="container pb-10 pt-10 lg:pt-28 lg:pb-20 mx-auto">
+          <h2 className="text-[#1E3954] text-[24px] md:text-[36px] font-bold text-center mb-10">
+            Related Blogs
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-10 md:gap-y-12 md:gap-6">
             {/* Blog item */}
             <div className="blog-item">
@@ -193,6 +227,56 @@ export default function SingleBlog() {
           </div>
         </div>
       </Fade>
-    </div>
+
+      {/* Cta Area */}
+      <div className="relative">
+        <div className="py-16 md:py-24 container mx-auto px-4">
+          <div className="flex flex-col items-center justify-center">
+            <Fade
+              delay={1e2}
+              className="w-full"
+              cascade
+              triggerOnce
+              damping={1e-1}
+            >
+              <h2 className="text-[24px] text-white md:text-4xl font-bold text-center">
+                Connect with us
+              </h2>
+
+              <p className="text-center text-sm text-white md:text-lg my-3 md:my-5">
+                Subscribe to our e-mail list and stay up-to-date with all our
+                news.
+              </p>
+
+              <div className="w-full md:w-7/12 mx-auto bg-white rounded-full mt-6 p-2 flex items-center justify-between">
+                <input
+                  type="email"
+                  placeholder="Sign up to your newsletter"
+                  className="w-8/12 text-[13px] md:text-base md:w-9/12 border-none outline-none pl-2 md:pl-8 rounded-l-full"
+                />
+
+                <button className="md:w-auto bg-teal-500 px-4 md:px-6 py-2 md:py-3 text-white text-[13px] md:text-base rounded-full">
+                  Sign Up
+                </button>
+              </div>
+            </Fade>
+          </div>
+
+          <Fade
+            delay={1e2}
+            cascade
+            triggerOnce
+            damping={1e-1} className="absolute top-0 left-0 -z-50 w-full h-full overflow-hidden pointer-events-none">
+            <div
+              className="w-full h-full fixed bottom-0 left-0 bg-cover bg-no-repeat overflow-hidden pointer-events-none"
+              style={{
+                backgroundPosition: "center",
+                backgroundImage: `url(${images.banner3})`,
+              }}
+            ></div>
+          </Fade>
+        </div>
+      </div>
+    </>
   );
 }

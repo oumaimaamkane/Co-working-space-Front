@@ -1,6 +1,6 @@
 const Button = ({ children, className }) => {
   const defaultClasses =
-    "h-fit text-white px-8 py-3 text-sm md:text-base border-2 rounded-full md:ml-8 hover:bg-[#030303]  hover:border-transparent duration-200";
+    "h-fit text-white px-8 py-3 text-sm md:text-base rounded-full border-2 hover:bg-[#030303]";
 
   return (
     <button

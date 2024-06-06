@@ -399,7 +399,7 @@ export default function Home() {
                 </p>
 
                 {/* benifits */}
-                <div className="my-6 pr-4">
+                <div className="mt-6 mb-10 pr-4">
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}

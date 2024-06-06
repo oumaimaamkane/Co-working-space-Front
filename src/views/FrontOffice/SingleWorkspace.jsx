@@ -1,42 +1,27 @@
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import images from "../../assets/img/assets";
+import Carousel from "../../components/Slider/Carousel";
 import LinkButton from "../../components/Buttons/LinkButton";
-import Pagination from "../../components/Pagination";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const workspaces = [
-  {
-    id: 1,
-    name: "Workspace One",
-    description: "Description one",
-    image: "path/to/image1.jpg",
-  },
-  {
-    id: 2,
-    name: "Workspace Two",
-    description: "Description two",
-    image: "path/to/image2.jpg",
-  },
+const REVIEW_IMAGE = [
+  images.workspace1,
+  images.workspace2,
+  images.workspace3,
+  images.workspace4,
 ];
 
-const ITEMS_PER_PAGE = 2;
+export default function SingleWorkspace() {
+  const [isOpen, setIsOpen] = useState(false);
 
-export default function Service() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(workspaces.length / ITEMS_PER_PAGE);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
   };
 
-  // const currentWorkspaces = workspaces.slice(
-  //   (currentPage - 1) * ITEMS_PER_PAGE,
-  //   currentPage * ITEMS_PER_PAGE
-  // );
   return (
-    <div>
+    <>
       {/* Breadcrumb Area Start */}
       <Fade
         delay={1e2}
@@ -46,30 +31,370 @@ export default function Service() {
         className="px-4 md:px-12 leading-tight bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${images.banner1})` }}
       >
-        <div className="w-full h-[250px] md:h-[400px] flex justify-center items-center pt-20 md:pt-36">
-          <div className="w-full">
-            <div className="breadcrumb-content mx-auto text-center">
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <h2 className="text-white uppercase font-semibold mb-1 md:mb-3 text-[24px] md:text-4xl">
-                  Our Services
-                </h2>
-                <ul className="flex justify-center items-center text-white font-[500]">
-                  <li>
-                    <a href="/" className="hover:text-black">
-                      Home
-                    </a>
-                  </li>
-                  <span className="mx-2">&gt;</span>
-                  <li>Services</li>
-                </ul>
-              </Fade>
+        <div className="container h-[250px] md:h-[400px] flex justify-center items-center pt-20 md:pt-36">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="breadcrumb-content text-center">
+                  <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                    <h2 className="text-white uppercase font-semibold mb-1 md:mb-3 text-[24px] md:text-4xl">
+                      Private Office
+                    </h2>
+                    <ul className="flex justify-center items-center text-white font-[500]">
+                      <li>
+                        <a href="/" className="hover:text-black">
+                          Home
+                        </a>
+                      </li>
+                      <span className="mx-2">&gt;</span>
+                      <li>Private Office</li>
+                    </ul>
+                  </Fade>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </Fade>
 
+      {/* Workspace Area */}
+      <section className="bg-white coworking-testimonials-area py-16 px-4 md:pr-11">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
+            {/* <!-- Testimonial Thumbnail --> */}
+            <div className="col-span-1 md:col-span-7 lg:grid-cols-7 md:mx-8">
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                <div className="testimonial-thumbnail">
+                  <Carousel autoSlide={true} autoSlideInterval={1800}>
+                    {REVIEW_IMAGE.map((slide, index) => (
+                      <img key={index} src={slide} alt={`Slide ${index + 1}`} />
+                    ))}
+                  </Carousel>
+                </div>
+              </Fade>
+            </div>
+
+            <div className="col-span-1 md:col-span-5 lg:grid-cols-5">
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                {/* <!-- Section Heading --> */}
+                <div className="section-heading w-11/12">
+                  <h2 className="font-bold text-[24px] md:text-[30px] mb-3 text-[#1E3954]">
+                    Private Office
+                  </h2>
+
+                  <div className="container flex items-center">
+                    <div className="border-black border-2 w-1/2 text-center py-1 md:py-2">
+                      <p className="text-gray-500 uppercase md:mb-1 text-sm md:text-base leading-8">
+                        STARTING FROM
+                      </p>
+                      <p className="text-teal-500 text-[14px] md:text-base font-bold">
+                        $20 / HR
+                      </p>
+                    </div>
+
+                    <div className="border-black border-2 border-l-0 w-1/2 text-center py-1 md:py-2">
+                      <p className="text-gray-500 uppercase md:mb-1 text-sm md:text-base leading-8">
+                        ideal for
+                      </p>
+                      <p className="text-teal-500 text-[14px] md:text-base font-bold">
+                        20+
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <!-- Workspace Content --> */}
+                <div className="overflow-auto w-11/12">
+                  <div className="about-content text-sm md:text-base">
+                    <p className="leading-8 text-gray-500 my-4">
+                      Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia dese mollit anim id est laborum. Sed ut
+                      perspiciatis unde omnis iste. Lorem Ipsum available.
+                      Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia dese mollit anim id est laborum. Sed ut
+                      perspiciatis unde omnis iste. Lorem Ipsum available.
+                    </p>
+
+                    <button
+                      className="inline-block h-fit px-8 py-3 md:py-4 md:px-12 text-sm md:text-base rounded-full bg-[#030303] border-transparent hover:bg-gray-800 duration-200 text-white mt-3"
+                      onClick={toggleModal}
+                    >
+                      Reserve Now
+                    </button>
+                  </div>
+                </div>
+              </Fade>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Modal Area */}
+      <div
+        className={`fixed inset-0 overflow-auto z-50 transition-all duration-500 ease-in-out transform 
+        ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
+        style={{
+          backgroundImage: `url(${images.cowSpaceImg2})`,
+        }}
+      >
+        <div
+          className={`w-full h-full px-4 transition-all duration-500 ease-in-out shadow-lg video-area ${
+            isOpen ? "visible" : "invisible"
+          }`}
+        >
+          {/* Membership options Area */}
+          <div className="px-4 md:px-12 mb-14 md:mb-28 leading-tight bg-center">
+            <div className="container mx-auto py-14 md:pb-28">
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                <h2 className="text-[24px] md:text-[50px] font-semibold text-center mb-10 text-white">
+                  Membership options
+                </h2>
+              </Fade>
+
+              <div className="memdership-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+                {/* membership single item */}
+                <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:border-0 md:hover:border hover:border-[#55BBAF]">
+                  <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                    <h3 className="text-lg md:text-2xl font-semibold text-white">
+                      Desk
+                    </h3>
+                    <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
+                      <span className="text-lg md:text-2xl font-bold">$</span>
+                      <span className="text-[30px] md:text-5xl font-semibold">
+                        29
+                      </span>
+                      <span className="text-base md:text-lg font-semibold">
+                        /mo
+                      </span>
+                    </div>
+
+                    {/* benifits */}
+                    <div className="mt-6 mb-10 pr-4">
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm md:text-base text-white ml-4">
+                          Mix of sitting and standing workspaces
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm md:text-base text-white ml-4">
+                          24/7 Access
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm md:text-base text-white ml-4">
+                          Coffee, tea, still, and sparkling water
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faXmark}
+                          className="text-red-600 size-[20px]"
+                        />
+                        <p className="text-sm md:text-base text-white ml-4">
+                          Access to {`community's`} online member network
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faXmark}
+                          className="text-red-600 size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Fast Wi-Fi and prints
+                        </p>
+                      </li>
+                    </div>
+
+                    {/* button */}
+                    <LinkButton className="text-white">Join Now</LinkButton>
+                  </Fade>
+                </div>
+
+                {/* membership single item */}
+                <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 relative overflow-hidden transition-border duration-200 ease-in border border-[#55697C] hover:rounded-xl hover:border-[#55BBAF]">
+                  <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                    <div>
+                      <span className="bg-green-500 absolute w-8 h-60 -top-16 translate-x-16 right-20 -rotate-[50deg]"></span>
+                      <span className="absolute uppercase top-8 right-8 rotate-[40deg] font-bold text-sm text-white">
+                        Best
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg md:text-2xl font-semibold text-white">
+                      Virtual
+                    </h3>
+
+                    <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
+                      <span className="text-lg md:text-2xl font-bold">$</span>
+                      <span className="text-[30px] md:text-5xl font-semibold">
+                        60
+                      </span>
+                      <span className="text-base md:text-lg font-semibold">
+                        /mo
+                      </span>
+                    </div>
+
+                    {/* benifits */}
+                    <div className="mt-6 mb-10 pr-4">
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Mix of sitting and standing workspaces
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          24/7 Access
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Coffee, tea, still, and sparkling water
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Access to {`community's`} online member network
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faXmark}
+                          className="text-red-600 size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Fast Wi-Fi and prints
+                        </p>
+                      </li>
+                    </div>
+
+                    {/* button */}
+                    <LinkButton className="text-white">Join Now</LinkButton>
+                  </Fade>
+                </div>
+
+                {/* membership single item */}
+                <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:border-0 md:hover:border hover:border-[#55BBAF]">
+                  <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                    <h3 className="text-lg md:text-2xl font-semibold text-white">
+                      Office
+                    </h3>
+                    <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
+                      <span className="text-lg md:text-2xl font-bold">$</span>
+                      <span className="text-[30px] md:text-5xl font-semibold">
+                        90
+                      </span>
+                      <span className="text-base md:text-lg font-semibold ">
+                        /mo
+                      </span>
+                    </div>
+
+                    {/* benifits */}
+                    <div className="mt-6 mb-10 pr-4">
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Mix of sitting and standing workspaces
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          24/7 Access
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Coffee, tea, still, and sparkling water
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Access to {`community's`} online member network
+                        </p>
+                      </li>
+
+                      <li className="py-3 flex">
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="text-[#55BBAF] size-[20px]"
+                        />
+                        <p className="text-sm leading-7 md:text-base text-white ml-4">
+                          Fast Wi-Fi and prints
+                        </p>
+                      </li>
+                    </div>
+
+                    {/* button */}
+                    <LinkButton className="text-white">Join Now</LinkButton>
+                  </Fade>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Services Area */}
-      <section className="bg-white pt-14 md:pt-24 px-4 md:px-12">
+      <section className="bg-[white] pb-14 md:pb-24 px-4 md:px-12">
+        <div className="section-heading">
+          <h2 className="font-bold text-[20px] md:text-[30px] mb-16 text-[#1E3954]">
+            Workspace Services
+          </h2>
+        </div>
+
         <div className="flex flex-wrap">
           {/* single Service item */}
           <div className="card w-full min-[640px]:w-1/2 lg:w-1/4 p-4 py-8 text-center">
@@ -317,192 +642,8 @@ export default function Service() {
         </div>
       </section>
 
-      {/* work Space Area */}
-      <section className="bg-white coworking-space-area pt-14 md:pt-24">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 overflow-hidden">
-            <div className="col-span-12">
-              {/* <!-- workspace item --> */}
-              <Slide
-                delay={1e2}
-                direction="right"
-                triggerOnce
-                cascade
-                damping={1e-1}
-              >
-                <div className="container flex flex-wrap">
-                  <img
-                    src={images.workspace1}
-                    className="w-full md:w-1/2 h-[250px] md:h-[450px]"
-                    alt="workspace image"
-                  />
-
-                  {/* workspace Description */}
-                  <div className="w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                      <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
-                        Private Office
-                      </h4>
-                      {/* team */}
-                      <div className="pb-4 flex items-center border-b">
-                        <FontAwesomeIcon
-                          icon={faUsers}
-                          className="size-5 text-[#1E3954]"
-                        />
-                        <p className="pl-3 font-semibold text-gray-500 text-sm">
-                          Ideal for team size 5 - 40
-                        </p>
-                      </div>
-
-                      <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
-                        Our private offices are perfect for teams of 1-100 and
-                        are fully serviced so you can focus on your business.
-                      </p>
-
-                      <p className="uppercase text-sm md:text-base font-bold mt-5">
-                        From <span className="text-teal-500">$99/mo</span>
-                      </p>
-
-                      {/* button */}
-                      <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
-                        Learn More
-                      </LinkButton>
-                    </Fade>
-                  </div>
-                </div>
-              </Slide>
-
-              <Slide
-                delay={1e2}
-                direction="left"
-                triggerOnce
-                cascade
-                damping={1e-1}
-              >
-                {/* <!-- workspace item --> */}
-                <div className="container flex flex-row-reverse flex-wrap">
-                  <img
-                    src={images.workspace2}
-                    className="w-full md:w-1/2 h-[250px] md:h-[450px]"
-                    alt="workspace image"
-                  />
-
-                  {/* workspace Description */}
-                  <div className="bg-white w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                      <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
-                        Private Office
-                      </h4>
-                      {/* team */}
-                      <div className="pb-4 flex items-center border-b">
-                        <FontAwesomeIcon
-                          icon={faUsers}
-                          className="size-5 text-[#1E3954]"
-                        />
-                        <p className="pl-3 font-semibold text-gray-500 text-sm">
-                          Ideal for team size 5 - 40
-                        </p>
-                      </div>
-
-                      <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
-                        Our private offices are perfect for teams of 1-100 and
-                        are fully serviced so you can focus on your business.
-                      </p>
-
-                      <p className="uppercase text-sm md:text-base font-bold mt-5">
-                        From <span className="text-teal-500">$99/mo</span>
-                      </p>
-
-                      {/* button */}
-                      <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
-                        Learn More
-                      </LinkButton>
-                    </Fade>
-                  </div>
-                </div>
-              </Slide>
-
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                {/* Pagination */}
-                <div className="container md:mt-12">
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                  />
-                </div>
-              </Fade>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benifits Area */}
-      <section className="bg-white coworking-testimonials-area pt-14 md:pt-24 px-4 md:px-12">
-        <div className="container">
-          <div className="flex gap-12 justify-between">
-            <div className="pb-14 md:w-6/12">
-              {/* <!-- Section Heading --> */}
-              <div className="section-heading">
-                <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                  <h6 className="mb-3 md:mb-6 text-[18px] uppercase">
-                    OUR BENEFITS
-                  </h6>
-                  <h2 className="font-bold mb-4 md:text-[46px] text-[#1E3954]">
-                    Benefits to Setting Up Your Startup in Our Coworking Space
-                  </h2>
-
-                  <p className="text-sm md:text-lg leading-8 text-gray-500 my-8 md:leading-[35px]">
-                    We are proud of what we have come up to at our center! Only
-                    here you get to enjoy with talented people who work in
-                    different areas, designers, photographers, engineers etc.
-                  </p>
-
-                  <div className="mb-8 md:mb-12">
-                    <li className="flex  text-sm md:text-lg leading-6 md:leading-[35px] text-gray-500  border-t border-[#EBEBEB] py-3">
-                      <span className="text-teal-500 mr-2 font-bold">1.</span>
-                      <p>Actual office space that promoting productivity</p>
-                    </li>
-
-                    <li className="flex text-sm md:text-lg leading-6 md:leading-[35px]  text-gray-500 border-t border-[#EBEBEB] py-3">
-                      <span className="text-teal-500 mr-2 font-bold">2.</span>
-                      <p>Meaningful connections with your team</p>
-                    </li>
-
-                    <li className="flex text-sm md:text-lg leading-6 md:leading-[35px]  text-gray-500 border-y border-[#EBEBEB] py-3">
-                      <span className="text-teal-500 mr-2 font-bold">3.</span>
-                      <p>Increased productivity to get some work done</p>
-                    </li>
-                  </div>
-
-                  {/* button */}
-                  <LinkButton
-                    className="h-fit text-white md:py-5 md:px-12 rounded-full
-                    duration-500"
-                  >
-                    Schudle My Tour
-                  </LinkButton>
-                </Fade>
-              </div>
-            </div>
-
-            <div className="hidden md:block col-span-1 md:col-span-5 lg:grid-cols-4">
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div className="pl-10 pb-20">
-                  <img
-                    src={images.banner}
-                    className="h-full w-full"
-                    alt={`Image`}
-                  />
-                </div>
-              </Fade>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Cta Area */}
-      <section className="relative">
+      <div className="relative">
         <div className="py-16 md:py-24 container mx-auto px-4">
           <div className="flex flex-col items-center justify-center">
             <Fade
@@ -535,7 +676,13 @@ export default function Service() {
             </Fade>
           </div>
 
-          <div className="absolute top-0 left-0 -z-50 w-full h-full overflow-hidden pointer-events-none">
+          <Fade
+            delay={1e2}
+            cascade
+            triggerOnce
+            damping={1e-1}
+            className="absolute top-0 left-0 -z-50 w-full h-full overflow-hidden pointer-events-none"
+          >
             <div
               className="w-full h-full fixed bottom-0 left-0 bg-cover bg-no-repeat overflow-hidden pointer-events-none"
               style={{
@@ -543,9 +690,9 @@ export default function Service() {
                 backgroundImage: `url(${images.banner3})`,
               }}
             ></div>
-          </div>
+          </Fade>
         </div>
-      </section>
-    </div>
+      </div>
+    </>
   );
 }

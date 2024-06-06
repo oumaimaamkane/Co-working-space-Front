@@ -79,7 +79,7 @@ const Nav = () => {
             ))}
           </ul>
 
-          <Button className="ml-8 bg-[#030303] border-transparent">
+          <Button className="border-transparent duration-200 ml-8 bg-[#030303]">
             Book A Seet
           </Button>
         </nav>
