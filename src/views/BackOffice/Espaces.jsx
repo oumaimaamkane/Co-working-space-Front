@@ -12,7 +12,6 @@ import axios from "axios";
 export default function Espaces() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newEspace, setNewEspace] = useState({
-    name: "",
     floor: "",
     description: "",
     status: "",
@@ -25,7 +24,6 @@ export default function Espaces() {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [updatingEspace, setUpdatingEspace] = useState({
     id: "",
-    name: "",
     floor: "",
     description: "",
     status: "",
@@ -46,27 +44,20 @@ export default function Espaces() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // const handleChange = (selectedOptions, actionMeta) => {
-  //   setNewEspace((prev) => ({
-  //     ...prev,
-  //     [actionMeta.name]: selectedOptions.map(option => option.value),
-  //   }));
-  // };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewEspace((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setNewEspace((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleFileChange = (e) => {
-  //   setNewEspace((prev) => ({
-  //     ...prev,
-  //     images: e.target.files,
-  //   }));
-  // };
+  const handleFileChange = (e) => {
+    setNewEspace((prev) => ({
+      ...prev,
+      images: e.target.files,
+    }));
+  };
 
   // Pagination
   const items = 4;
@@ -198,11 +189,18 @@ export default function Espaces() {
   }
 
   // ADD ESPACES
-  const handleAddEspace = async () => {
+  const handleAddEspace = async (e) => {
+    e.preventDefault();
     try {
       const formData = new FormData();
       Object.keys(newEspace).forEach((key) => {
-        formData.append(key, newEspace[key]);
+        if (key === "images" && newEspace[key]) {
+          for (let i = 0; i < newEspace[key].length; i++) {
+            formData.append("images", newEspace[key][i]);
+          }
+        } else {
+          formData.append(key, newEspace[key]);
+        }
       });
 
       const response = await axios.post(
@@ -210,6 +208,7 @@ export default function Espaces() {
         formData,
         {
           headers: {
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": "multipart/form-data",
           },
         }
@@ -217,7 +216,6 @@ export default function Espaces() {
 
       setEspaces([...espaces, response.data]);
       setNewEspace({
-        name: "",
         floor: "",
         description: "",
         status: "",
@@ -234,40 +232,6 @@ export default function Espaces() {
       setTimeout(() => setSuccess(""), 2000);
     } catch (error) {
       setError("Failed to add Espace. Please try again.");
-    }
-  };
-
-  // UPDATE ESPACES
-  const handleUpdateEspace = async () => {
-    try {
-      const formData = new FormData();
-      Object.keys(updatingEspace).forEach((key) => {
-        formData.append(key, updatingEspace[key]);
-      });
-
-      await axios.post(
-        `http://127.0.0.1:8000/api/espaces/${updatingEspace.id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      const updatedEspaces = espaces.map((espace) => {
-        if (espace.id === updatingEspace.id) {
-          return { ...espace, ...updatingEspace };
-        }
-        return espace;
-      });
-
-      setEspaces(updatedEspaces);
-      setIsUpdateModalOpen(false);
-      setSuccess("Espace updated successfully!");
-      setTimeout(() => setSuccess(""), 2000);
-    } catch (error) {
-      setError("Failed to update Espace. Please try again.");
     }
   };
 
@@ -295,7 +259,6 @@ export default function Espaces() {
           onClick={() => {
             setIsAddModalOpen(true);
             setNewEspace({
-              name: "",
               floor: "",
               description: "",
               status: "",
@@ -483,7 +446,7 @@ export default function Espaces() {
                     name="floor"
                     id="floor"
                     value={newEspace.floor}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     placeholder="Floor"
                     className="h-9 mt-1 block w-full rounded-sm border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
                     required
@@ -503,7 +466,7 @@ export default function Espaces() {
                     name="price"
                     id="price"
                     value={newEspace.price}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     min={0}
                     placeholder="Price"
                     step="0.01"
@@ -525,7 +488,7 @@ export default function Espaces() {
                     name="capacity"
                     placeholder="Capacity"
                     value={newEspace.capacity}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     id="capacity"
                     min={1}
                     className="mt-1 h-9  block w-full rounded-sm border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
@@ -644,7 +607,7 @@ export default function Espaces() {
                     name="description"
                     placeholder="Description"
                     value={newEspace.description}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     rows={3}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
                     required
@@ -678,7 +641,7 @@ export default function Espaces() {
                             className="sr-only"
                             accept="image/*"
                             multiple
-                            // onChange={handleFileChange}
+                            onChange={handleFileChange}
                           />
                         </label>
                       </div>
@@ -715,184 +678,6 @@ export default function Espaces() {
   </div>
 )}
 
-
-
-      {/* Update Modal */}
-      {isUpdateModalOpen && (
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div
-              className="fixed inset-0 transition-opacity"
-              aria-hidden="true"
-            >
-              <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-
-            <span
-              className="hidden sm:inline-block sm:align-middle sm:h-screen"
-              aria-hidden="true"
-            >
-              &#8203;
-            </span>
-
-            <div
-              className="inline-block align-bottom bg-white dark:bg-neutral-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-headline"
-            >
-              <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
-                <button
-                  type="button"
-                  className="bg-white dark:bg-neutral-800 rounded-md text-gray-400 hover:text-gray-500 focus:outline-none"
-                  onClick={() => setIsUpdateModalOpen(false)}
-                >
-                  <span className="sr-only">Close</span>
-                  <FiX className="h-6 w-6" />
-                </button>
-              </div>
-              <div>
-                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
-                  <BiCommentError className="h-6 w-6 text-blue-600" />
-                </div>
-                <div className="mt-3 text-center sm:mt-5">
-                  <h3
-                    className="text-lg leading-6 font-medium text-gray-900 dark:text-white"
-                    id="modal-headline"
-                  >
-                    Update Espace
-                  </h3>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.name}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          name: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="Floor"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.floor}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          floor: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="Description"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.description}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          description: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="Status"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.status}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          status: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="number"
-                      placeholder="Price"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.price}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          price: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="number"
-                      placeholder="Capacity"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.capacity}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          capacity: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="Client Categorie"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.client_categorie}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          client_categorie: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="Category ID"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      value={selectedEspace.category_id}
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          category_id: e.target.value,
-                        })
-                      }
-                    />
-                    <input
-                      type="file"
-                      placeholder="Images"
-                      className="w-full px-4 py-2 mt-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                      onChange={(e) =>
-                        setSelectedEspace({
-                          ...selectedEspace,
-                          images: e.target.files[0],
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3">
-                <button
-                  type="button"
-                  className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:col-start-2 sm:text-sm"
-                  onClick={handleUpdateEspace}
-                >
-                  Update
-                </button>
-                <button
-                  type="button"
-                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 sm:mt-0 sm:col-start-1 sm:text-sm"
-                  onClick={() => setIsUpdateModalOpen(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {isDeleteModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300">

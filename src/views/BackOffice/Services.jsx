@@ -99,10 +99,7 @@ export default function Services() {
 
   // UPDATE SERVICES
   const handleUpdateService = async (serviceId) => {
-    if (!updatedServiceName || !updatedServiceImage) {
-      setError("Service name and image are required");
-      return;
-    }
+
     try {
       const formData = new FormData();
       formData.append("name", updatedServiceName); // Include the name field
@@ -114,8 +111,7 @@ export default function Services() {
         console.log(pair[0] + ', ' + pair[1]);
       }
 
-      const response = await axios.put(
-        `http://127.0.0.1:8000/api/services/${serviceId}`,
+      const response = await axios.put(`http://127.0.0.1:8000/api/services/${serviceId}`,
         formData,
         {
           headers: {
@@ -127,6 +123,7 @@ export default function Services() {
 
       const updatedService = response.data.service;
       updatedService.image = response.data.image; // Ensure image URL is set
+
       const updatedServices = services.map((service) => {
         if (service.id === serviceId) {
           return { ...service, name: updatedService.name, image: updatedService.image };

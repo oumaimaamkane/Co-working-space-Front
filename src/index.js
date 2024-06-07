@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const cors = require("cors")
+App.use(cors({
+  origin:"http://localhost:3000",
+  method:["GET","POST","PUT","DELETE"],
+}))
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
