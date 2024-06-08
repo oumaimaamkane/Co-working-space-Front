@@ -26,8 +26,11 @@
     "classnames": "^2.5.1",
     "postcss-cli": "^11.0.0",
     "react": "^18.2.0",
+    "react-awesome-reveal": "^4.2.11",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^6.23.1",
+    "tw-elements-react": "^1.0.0-alpha-end"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
