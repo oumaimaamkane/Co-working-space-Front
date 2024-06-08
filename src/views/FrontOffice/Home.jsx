@@ -216,7 +216,7 @@ export default function Home() {
 
       {/* work Space Area */}
       <section className="coworking-space-area pb-16 md:pb-28">
-        <div className="container">
+        <div className="">
           {/* <!-- Section Heading --> */}
           <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
             <div className="w-full md:w-6/12 mx-auto text-center">
