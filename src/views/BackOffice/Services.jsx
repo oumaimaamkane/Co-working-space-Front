@@ -97,33 +97,30 @@ export default function Services() {
     }
   };
 
-  // UPDATE SERVICES
   const handleUpdateService = async (serviceId) => {
-
     try {
       const formData = new FormData();
-      formData.append("name", updatedServiceName); // Include the name field
+      formData.append("name", updatedServiceName);
       formData.append("image", updatedServiceImage);
-      
-
+  
       // Log the FormData content
       for (let pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
       }
-
-      const response = await axios.put(`http://127.0.0.1:8000/api/services/${serviceId}`,
+  
+      const response = await axios.put(
+        `http://127.0.0.1:8000/api/services/${serviceId}`,
         formData,
         {
           headers: {
-            "Access-Control-Allow-Origin": "*",
             "Content-Type": "multipart/form-data",
           },
         }
       );
-
+  
       const updatedService = response.data.service;
       updatedService.image = response.data.image; // Ensure image URL is set
-
+  
       const updatedServices = services.map((service) => {
         if (service.id === serviceId) {
           return { ...service, name: updatedService.name, image: updatedService.image };
@@ -137,9 +134,12 @@ export default function Services() {
       setSuccess("Service updated successfully!");
       setTimeout(() => setSuccess(""), 2000);
     } catch (error) {
+      console.error(error); // Log the error for debugging
       setError("Failed to update service. Please try again.");
     }
   };
+  
+  
   
   
   
