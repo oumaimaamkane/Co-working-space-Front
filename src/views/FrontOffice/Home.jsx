@@ -215,141 +215,123 @@ export default function Home() {
       <Services />
 
       {/* work Space Area */}
-      <section className="coworking-space-area pb-16 md:pb-28">
-        <div className="container">
-          {/* <!-- Section Heading --> */}
-          <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-            <div className="w-full md:w-6/12 mx-auto text-center">
-              <div className="mx-4 md:mx-12 pb-16">
-                <span className="text-[#888F96] text-[18px] uppercase">
-                  OUR WORKSPACE
-                </span>
-                <h2 className="text-[24px] md:text-4xl font-bold my-4 md:my-8 text-[#1E3954]">
-                  Workspaces for all
-                </h2>
-                <p className="text-sm md:text-lg leading-8 text-gray-500">
-                  Whether you’re a startup or a Fortune 500 company, we offer
-                  workspace solutions tailored to your needs.
-                </p>
-              </div>
+      <section className="w-full overflow-hidden coworking-space-area pb-16 md:pb-28">
+        {/* <!-- Section Heading --> */}
+        <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+          <div className="w-full md:w-6/12 mx-auto text-center">
+            <div className="mx-4 md:mx-12 pb-16">
+              <span className="text-[#888F96] text-[18px] uppercase">
+                OUR WORKSPACE
+              </span>
+              <h2 className="text-[24px] md:text-4xl font-bold my-4 md:my-8 text-[#1E3954]">
+                Workspaces for all
+              </h2>
+              <p className="text-sm md:text-lg leading-8 text-gray-500">
+                Whether you’re a startup or a Fortune 500 company, we offer
+                workspace solutions tailored to your needs.
+              </p>
             </div>
-          </Fade>
+          </div>
+        </Fade>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 overflow-hidden">
-            <div className="col-span-12">
-              {/* <!-- workspace item --> */}
-              <Slide
-                delay={1e2}
-                direction="right"
-                triggerOnce
-                cascade
-                damping={1e-1}
-              >
-                <div className="container flex flex-wrap">
-                  <img
-                    src={images.workspace1}
-                    className="w-full md:w-1/2 h-[250px] md:h-[450px]"
-                    alt="workspace image"
-                  />
+        {/* <!-- workspace item --> */}
+        <Slide delay={1e2} direction="right" triggerOnce cascade damping={1e-1}>
+          <div className="w-full flex flex-wrap">
+            <img
+              src={images.workspace1}
+              className="w-full md:w-1/2 h-[250px] md:h-[450px]"
+              alt="workspace image"
+            />
 
-                  {/* workspace Description */}
-                  <div className="w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                      <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
-                        Private Office
-                      </h4>
-                      {/* team */}
-                      <div className="pb-4 flex items-center border-b">
-                        <FontAwesomeIcon
-                          icon={faUsers}
-                          className="size-5 text-[#1E3954]"
-                        />
-                        <p className="pl-3 font-semibold text-gray-500 text-sm">
-                          Ideal for team size 5 - 40
-                        </p>
-                      </div>
-
-                      <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
-                        Our private offices are perfect for teams of 1-100 and
-                        are fully serviced so you can focus on your business.
-                      </p>
-
-                      <p className="uppercase text-sm md:text-base font-bold mt-5">
-                        From <span className="text-teal-500">$99/mo</span>
-                      </p>
-
-                      {/* button */}
-                      <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
-                        Learn More
-                      </LinkButton>
-                    </Fade>
-                  </div>
-                </div>
-              </Slide>
-
-              <Slide
-                delay={1e2}
-                direction="left"
-                triggerOnce
-                cascade
-                damping={1e-1}
-              >
-                {/* <!-- workspace item --> */}
-                <div className="container flex flex-row-reverse flex-wrap">
-                  <img
-                    src={images.workspace2}
-                    className="w-full md:w-1/2 h-[250px] md:h-[450px]"
-                    alt="workspace image"
-                  />
-
-                  {/* workspace Description */}
-                  <div className="bg-white w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                      <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
-                        Private Office
-                      </h4>
-                      {/* team */}
-                      <div className="pb-4 flex items-center border-b">
-                        <FontAwesomeIcon
-                          icon={faUsers}
-                          className="size-5 text-[#1E3954]"
-                        />
-                        <p className="pl-3 font-semibold text-gray-500 text-sm">
-                          Ideal for team size 5 - 40
-                        </p>
-                      </div>
-
-                      <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
-                        Our private offices are perfect for teams of 1-100 and
-                        are fully serviced so you can focus on your business.
-                      </p>
-
-                      <p className="uppercase text-sm md:text-base font-bold mt-5">
-                        From <span className="text-teal-500">$99/mo</span>
-                      </p>
-
-                      {/* button */}
-                      <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
-                        Learn More
-                      </LinkButton>
-                    </Fade>
-                  </div>
-                </div>
-              </Slide>
-
+            {/* workspace Description */}
+            <div className="w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
               <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                {/* Pagination */}
-                <div className="container md:mt-12">
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
+                <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
+                  Private Office
+                </h4>
+                {/* team */}
+                <div className="pb-4 flex items-center border-b">
+                  <FontAwesomeIcon
+                    icon={faUsers}
+                    className="size-5 text-[#1E3954]"
                   />
+                  <p className="pl-3 font-semibold text-gray-500 text-sm">
+                    Ideal for team size 5 - 40
+                  </p>
                 </div>
+
+                <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
+                  Our private offices are perfect for teams of 1-100 and are
+                  fully serviced so you can focus on your business.
+                </p>
+
+                <p className="uppercase text-sm md:text-base font-bold mt-5">
+                  From <span className="text-teal-500">$99/mo</span>
+                </p>
+
+                {/* button */}
+                <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
+                  Learn More
+                </LinkButton>
               </Fade>
             </div>
           </div>
-        </div>
+        </Slide>
+
+        <Slide delay={1e2} direction="left" triggerOnce cascade damping={1e-1}>
+          {/* <!-- workspace item --> */}
+          <div className="w-full flex flex-row-reverse flex-wrap">
+            <img
+              src={images.workspace2}
+              className="w-full md:w-1/2 h-[250px] md:h-[450px]"
+              alt="workspace image"
+            />
+
+            {/* workspace Description */}
+            <div className="bg-white w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
+                  Private Office
+                </h4>
+                {/* team */}
+                <div className="pb-4 flex items-center border-b">
+                  <FontAwesomeIcon
+                    icon={faUsers}
+                    className="size-5 text-[#1E3954]"
+                  />
+                  <p className="pl-3 font-semibold text-gray-500 text-sm">
+                    Ideal for team size 5 - 40
+                  </p>
+                </div>
+
+                <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
+                  Our private offices are perfect for teams of 1-100 and are
+                  fully serviced so you can focus on your business.
+                </p>
+
+                <p className="uppercase text-sm md:text-base font-bold mt-5">
+                  From <span className="text-teal-500">$99/mo</span>
+                </p>
+
+                {/* button */}
+                <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
+                  Learn More
+                </LinkButton>
+              </Fade>
+            </div>
+          </div>
+        </Slide>
+
+        <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+          {/* Pagination */}
+          <div className="md:mt-12">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        </Fade>
       </section>
 
       <Testimonials />
@@ -630,146 +612,144 @@ export default function Home() {
 
       {/* Gallery Area */}
       <section className="coworking-testimonials-area">
-        <div className="container">
-          <div className="flex flex-wrap">
-            {/* single Gallery item */}
-            <a
-              href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g1.jpg"
-              target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
-            >
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div
-                  className="bg-img absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
-                  style={{ backgroundImage: `url(${images.gallery1})` }}
-                ></div>
-                <div className="z-10">
-                  <FontAwesomeIcon
-                    icon={faImage}
-                    className="gal-img text-white size-12 mb-4"
-                  />
-                  <p className="text-white text-xl font-semibold">
-                    View Gallery
-                  </p>
-                </div>
-              </Fade>
-            </a>
+        <div className="w-full flex flex-wrap">
+          {/* single Gallery item */}
+          <a
+            href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g1.jpg"
+            target="_blank"
+            className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
+          >
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <div
+                className="bg-img absolute inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
+                style={{ backgroundImage: `url(${images.gallery1})` }}
+              ></div>
+              <div className="z-10">
+                <FontAwesomeIcon
+                  icon={faImage}
+                  className="gal-img text-white size-12 mb-4"
+                />
+                <p className="text-white text-xl font-semibold">
+                  View Gallery
+                </p>
+              </div>
+            </Fade>
+          </a>
 
-            {/* single Gallery item */}
-            <a
-              href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g2.jpg"
-              target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
-            >
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div
-                  className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
-                  style={{ backgroundImage: `url(${images.gallery2})` }}
-                ></div>
-                <div className="z-10">
-                  <FontAwesomeIcon
-                    icon={faImage}
-                    className="gal-img text-white size-12 mb-4"
-                  />
-                  <p className="text-white text-xl font-semibold">
-                    View Gallery
-                  </p>
-                </div>
-              </Fade>
-            </a>
+          {/* single Gallery item */}
+          <a
+            href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g2.jpg"
+            target="_blank"
+            className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
+          >
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <div
+                className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
+                style={{ backgroundImage: `url(${images.gallery2})` }}
+              ></div>
+              <div className="z-10">
+                <FontAwesomeIcon
+                  icon={faImage}
+                  className="gal-img text-white size-12 mb-4"
+                />
+                <p className="text-white text-xl font-semibold">
+                  View Gallery
+                </p>
+              </div>
+            </Fade>
+          </a>
 
-            {/* single Gallery item */}
-            <a
-              href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g3.jpg"
-              target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
-            >
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div
-                  className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
-                  style={{ backgroundImage: `url(${images.gallery3})` }}
-                ></div>
-                <div className="z-10">
-                  <FontAwesomeIcon
-                    icon={faImage}
-                    className="gal-img text-white size-12 mb-4"
-                  />
-                  <p className="text-white text-xl font-semibold">
-                    View Gallery
-                  </p>
-                </div>
-              </Fade>
-            </a>
+          {/* single Gallery item */}
+          <a
+            href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g3.jpg"
+            target="_blank"
+            className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12  overflow-hidden"
+          >
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <div
+                className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
+                style={{ backgroundImage: `url(${images.gallery3})` }}
+              ></div>
+              <div className="z-10">
+                <FontAwesomeIcon
+                  icon={faImage}
+                  className="gal-img text-white size-12 mb-4"
+                />
+                <p className="text-white text-xl font-semibold">
+                  View Gallery
+                </p>
+              </div>
+            </Fade>
+          </a>
 
-            {/* single Gallery item */}
-            <a
-              href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g4.jpg"
-              target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
-            >
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div
-                  className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
-                  style={{ backgroundImage: `url(${images.gallery4})` }}
-                ></div>
-                <div className="z-10">
-                  <FontAwesomeIcon
-                    icon={faImage}
-                    className="gal-img text-white size-12 mb-4"
-                  />
-                  <p className="text-white text-xl font-semibold">
-                    View Gallery
-                  </p>
-                </div>
-              </Fade>
-            </a>
+          {/* single Gallery item */}
+          <a
+            href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g4.jpg"
+            target="_blank"
+            className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
+          >
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <div
+                className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
+                style={{ backgroundImage: `url(${images.gallery4})` }}
+              ></div>
+              <div className="z-10">
+                <FontAwesomeIcon
+                  icon={faImage}
+                  className="gal-img text-white size-12 mb-4"
+                />
+                <p className="text-white text-xl font-semibold">
+                  View Gallery
+                </p>
+              </div>
+            </Fade>
+          </a>
 
-            {/* single Gallery item */}
-            <a
-              href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g5.jpg"
-              target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
-            >
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div
-                  className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
-                  style={{ backgroundImage: `url(${images.gallery5})` }}
-                ></div>
-                <div className="z-10">
-                  <FontAwesomeIcon
-                    icon={faImage}
-                    className="gal-img text-white size-12 mb-4"
-                  />
-                  <p className="text-white text-xl font-semibold">
-                    View Gallery
-                  </p>
-                </div>
-              </Fade>
-            </a>
+          {/* single Gallery item */}
+          <a
+            href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g5.jpg"
+            target="_blank"
+            className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
+          >
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <div
+                className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
+                style={{ backgroundImage: `url(${images.gallery5})` }}
+              ></div>
+              <div className="z-10">
+                <FontAwesomeIcon
+                  icon={faImage}
+                  className="gal-img text-white size-12 mb-4"
+                />
+                <p className="text-white text-xl font-semibold">
+                  View Gallery
+                </p>
+              </div>
+            </Fade>
+          </a>
 
-            {/* single Gallery item */}
-            <a
-              href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g6.jpg"
-              target="_blank"
-              className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
-            >
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div
-                  className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
-                  style={{ backgroundImage: `url(${images.gallery6})` }}
-                ></div>
-                <div className="z-10">
-                  <FontAwesomeIcon
-                    icon={faImage}
-                    className="gal-img text-white size-12 mb-4"
-                  />
-                  <p className="text-white text-xl font-semibold">
-                    View Gallery
-                  </p>
-                </div>
-              </Fade>
-            </a>
-          </div>
+          {/* single Gallery item */}
+          <a
+            href="https://demo2.wpopal.com/co-workshop/wp-content/uploads/2018/11/h6-g6.jpg"
+            target="_blank"
+            className="gallery relative z-0 flex items-center justify-center w-full md:w-1/3 my-auto p-4 h-[220px] md:h-[50vh] py-8 text-center px-12 overflow-hidden"
+          >
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <div
+                className="bg-img absolute  inset-0 bg-cover bg-center bg-no-repeat transform transition-transform duration-500 hover:scale-125"
+                style={{ backgroundImage: `url(${images.gallery6})` }}
+              ></div>
+              <div className="z-10">
+                <FontAwesomeIcon
+                  icon={faImage}
+                  className="gal-img text-white size-12 mb-4"
+                />
+                <p className="text-white text-xl font-semibold">
+                  View Gallery
+                </p>
+              </div>
+            </Fade>
+          </a>
         </div>
       </section>
 

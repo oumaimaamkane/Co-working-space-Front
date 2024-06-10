@@ -19,11 +19,12 @@ import Login from "../views/Auth/Login";
 import MainLayout from "../components/Layouts/Home/MainLayout";
 import Home from "../views/FrontOffice/Home";
 import About from '../views/FrontOffice/About';
-import Service from '../views/FrontOffice/Service';
+import Service from '../views/FrontOffice/Services';
 import Contact from "../views/FrontOffice/Contact";
 import Blogs from '../views/FrontOffice/Blogs';
 import SingleBlog from '../views/FrontOffice/SingleBlog';
 import SingleWorkspace from '../views/FrontOffice/SingleWorkspace';
+import Packs from '../views/FrontOffice/Packs';
 
 const Router = () => {
   return (
@@ -52,6 +53,7 @@ const Router = () => {
         <Route path="/services" element={<Service />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/packs" element={<Packs />} />
         <Route path="/blogs/single-blog" element={<SingleBlog />} />
         <Route path="/single-workspace" element={<SingleWorkspace />} />
       </Route>

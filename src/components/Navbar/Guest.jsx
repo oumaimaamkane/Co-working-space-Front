@@ -40,7 +40,9 @@ const Nav = () => {
           ))}
         </ul>
       </div>
-      <Button className="hidden lg:block">Book A Seet</Button>
+      <Button className="hidden lg:block hover:border-transparent">
+        Book A Seet
+      </Button>
 
       <FontAwesomeIcon
         icon={faBars}

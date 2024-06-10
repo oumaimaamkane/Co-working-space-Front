@@ -46,7 +46,7 @@ const REVIEW_IMAGE = [
 
 export default function Testimonials() {
   return (
-    <section className="coworking-testimonials-area md:pb-24 mx-4 md:mr-11">
+    <section className="bg-white coworking-testimonials-area md:pb-24 px-4 md:px-11">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
           {/* <!-- Testimonial Thumbnail --> */}
