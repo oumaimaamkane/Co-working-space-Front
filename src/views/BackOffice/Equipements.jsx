@@ -56,7 +56,7 @@ export default function Equipements() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-cyan-500"></div>
       </div>
     );
   }
@@ -126,7 +126,7 @@ export default function Equipements() {
           List des Equipements
         </span>
         <button
-          className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300 font-medium"
+          className="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300 font-medium"
           onClick={() => setIsAddModalOpen(true)}
         >
           Add Equipement
@@ -185,7 +185,7 @@ export default function Equipements() {
           <button
             onClick={prevPage}
             disabled={CurrentPage === 1}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
               CurrentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -198,7 +198,7 @@ export default function Equipements() {
           <button
             onClick={nextPage}
             disabled={EndIndex >= equipements.length}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
               EndIndex >= equipements.length
                 ? "opacity-50 cursor-not-allowed"
                 : ""

@@ -8,6 +8,7 @@ import Equipements from '../views/BackOffice/Equipements';
 import Dashboard from '../views/BackOffice/Dashboard';
 import Reservations from '../views/BackOffice/Reservations';
 import Roles from '../views/BackOffice/Roles';
+import Profil from '../views/BackOffice/Profil';
 
 
 
@@ -34,6 +35,7 @@ const Router = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="manage-reservations" element={<Reservations />} />
         <Route path="manage-roles" element={<Roles />} />
+        <Route path="manage-profil" element={<Profil />} />
       </Route>
       
       {/*Auth Routes */}

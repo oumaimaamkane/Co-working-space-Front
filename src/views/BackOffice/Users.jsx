@@ -58,7 +58,7 @@ export default function Users() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-cyan-500"></div>
       </div>
     );
   }
@@ -221,7 +221,7 @@ export default function Users() {
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
               currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -235,7 +235,7 @@ export default function Users() {
           <button
             onClick={nextPage}
             disabled={endIndex >= filteredUsers.length}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
               endIndex >= filteredUsers.length
                 ? "opacity-50 cursor-not-allowed"
                 : ""

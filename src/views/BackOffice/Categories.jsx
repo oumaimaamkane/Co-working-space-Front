@@ -56,7 +56,7 @@ export default function Categories() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-gray-500"></div>
       </div>
     );
   }
@@ -183,7 +183,7 @@ export default function Categories() {
           <button
             onClick={prevPage}
             disabled={CurrentPage === 1}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
               CurrentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -196,7 +196,7 @@ export default function Categories() {
           <button
             onClick={nextPage}
             disabled={EndIndex >= categories.length}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
               EndIndex >= categories.length
                 ? "opacity-50 cursor-not-allowed"
                 : ""
