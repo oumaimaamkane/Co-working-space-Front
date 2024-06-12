@@ -4,10 +4,23 @@ import { BsPersonCircle } from "react-icons/bs";
 import { MdNotificationsNone } from "react-icons/md";
 import { RxPerson } from "react-icons/rx";
 import { CiSettings, CiLogout } from "react-icons/ci";
-import { Menu, Transition, MenuItem, MenuButton, MenuItems } from "@headlessui/react";
+import Profil from "../../../views/BackOffice/Profil";
+import {
+  Menu,
+  Transition,
+  MenuItem,
+  MenuButton,
+  MenuItems,
+} from "@headlessui/react";
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
+
+  const [active, setActive] = useState(null);
+
+  const handleProfileClick = () => {
+    setActive("profil");
+  };
 
   useEffect(() => {
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
@@ -33,7 +46,10 @@ const Header = () => {
   return (
     <header className="bg-white dark:bg-neutral-600 h-16 px-10 mt-4 mx-5 py-2 flex justify-between items-center rounded-lg shadow-md">
       <div className="flex items-center">
-        <HiOutlineSearch fontSize={20} className="text-gray-600 dark:text-neutral-100" />
+        <HiOutlineSearch
+          fontSize={20}
+          className="text-gray-600 dark:text-neutral-100"
+        />
         <input
           type="text"
           placeholder="Search"
@@ -54,7 +70,10 @@ const Header = () => {
           {({ open }) => (
             <>
               <MenuButton className="focus:outline-none">
-                <BsPersonCircle fontSize={22} className="dark:text-neutral-100" />
+                <BsPersonCircle
+                  fontSize={22}
+                  className="dark:text-neutral-100"
+                />
               </MenuButton>
               <Transition
                 show={open}
@@ -65,16 +84,16 @@ const Header = () => {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <MenuItems
-                  className="absolute right-0 mt-2 w-48 bg-white dark:bg-neutral-700 border border-gray-200 dark:border-neutral-600 rounded-md shadow-lg focus:outline-none z-10"
-                >
+                <MenuItems className="absolute right-0 mt-2 w-48 bg-white dark:bg-neutral-700 border border-gray-200 dark:border-neutral-600 rounded-md shadow-lg focus:outline-none z-10">
                   <MenuItem>
                     {({ active }) => (
                       <button
                         className={`${
-                          active ? "bg-gray-100 dark:bg-neutral-800" : ""
+                          active === "profil"
+                            ? "bg-gray-100 dark:bg-neutral-800"
+                            : ""
                         } flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 w-full text-left`}
-                        onClick={() => console.log("Profile clicked")}
+                        onClick={handleProfileClick}
                       >
                         <RxPerson fontSize={16} />
                         Profile

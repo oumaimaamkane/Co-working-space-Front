@@ -11,16 +11,17 @@ export default function Services() {
   const [newServiceName, setNewServiceName] = useState("");
   const [newServiceImage, setNewServiceImage] = useState(null);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-  const [updatingServiceName, setUpdatingServiceName] = useState("");
-  const [updatingServiceImage, setUpdatingServiceImage] = useState("");
-  const [updatingServiceId, setUpdatingServiceId] = useState("");
+  const [updatedServiceName, setUpdatedServiceName] = useState("");
+  const [updatedServiceImage, setUpdatedServiceImage] = useState(null);
+  const [updatedServiceId, setUpdatedServiceId] = useState("");
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deletingServiceName, setDeletingServiceName] = useState("");
   const [deletingServiceId, setDeletingServiceId] = useState("");
   const [success, setSuccess] = useState("");
   const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
   // Pagination
   const items = 4;
   const [CurrentPage, setCurrentPage] = useState(1);
@@ -31,19 +32,18 @@ export default function Services() {
 
   useEffect(() => {
     const fetchServices = async () => {
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/services');
-            setServices(response.data);
-            setLoading(false);
-        } catch (error) {
-            setError('Failed to fetch services from the server');
-            setLoading(false);
-        }
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/services");
+        setServices(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError("Failed to fetch services from the server");
+        setLoading(false);
+      }
     };
 
     fetchServices();
-}, []);
-
+  }, []);
 
   // Pagination functions
   const nextPage = () => {
@@ -57,7 +57,7 @@ export default function Services() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-cyan-500"></div>
       </div>
     );
   }
@@ -65,57 +65,85 @@ export default function Services() {
   // ADD SERVICES
   const handleAddService = async () => {
     if (!newServiceName || !newServiceImage) {
-        setError('Service name and image are required');
-        return;
+      setError("Service name and image are required");
+      return;
     }
 
     try {
-        const formData = new FormData();
-        formData.append('name', newServiceName);
-        formData.append('image', newServiceImage);
+      const formData = new FormData();
+      formData.append("name", newServiceName);
+      formData.append("image", newServiceImage);
 
-        const response = await axios.post('http://127.0.0.1:8000/api/services', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/services",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-        const newService = response.data.service;
-        newService.image = response.data.image; // Ensure image URL is set
-        setServices([...services, newService]);
-        setNewServiceName('');
-        setNewServiceImage(null);
-        setIsAddModalOpen(false);
-        setSuccess('Service added successfully!');
-        setTimeout(() => setSuccess(''), 2000);
+      const newService = response.data.service;
+      newService.image = response.data.image; // Ensure image URL is set
+      setServices([...services, newService]);
+      setNewServiceName("");
+      setNewServiceImage(null);
+      setIsAddModalOpen(false);
+      setSuccess("Service added successfully!");
+      setTimeout(() => setSuccess(""), 2000);
     } catch (error) {
-        setError('Failed to add service. Please try again.');
+      setError("Failed to add service. Please try again.");
     }
-};
+  };
 
-  
-
-  // UPDATE SERVICES
-  const handleUpdateService = async (serviceId, newName, newImage) => {
+  const handleUpdateService = async (serviceId) => {
     try {
-      await axios.put(`http://127.0.0.1:8000/api/services/${serviceId}`, {
-        name: newName,
-        image: newImage,
-      });
+      const formData = new FormData();
+      formData.append("name", updatedServiceName);
+      formData.append("image", updatedServiceImage);
+  
+      // Log the FormData content
+      for (let pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
+      }
+  
+      const response = await axios.put(
+        `http://127.0.0.1:8000/api/services/${serviceId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+  
+      const updatedService = response.data.service;
+      updatedService.image = response.data.image; // Ensure image URL is set
+  
       const updatedServices = services.map((service) => {
         if (service.id === serviceId) {
-          return { ...service, name: newName, image: newImage };
+          return { ...service, name: updatedService.name, image: updatedService.image };
         }
         return service;
       });
       setServices(updatedServices);
+      setUpdatedServiceName("");
+      setUpdatedServiceImage(null);
       setIsUpdateModalOpen(false);
       setSuccess("Service updated successfully!");
       setTimeout(() => setSuccess(""), 2000);
     } catch (error) {
+      console.error(error); // Log the error for debugging
       setError("Failed to update service. Please try again.");
     }
   };
+  
+  
+  
+  
+  
+  
 
   // DELETE SERVICES
   const handleDeleteService = async (serviceId) => {
@@ -137,7 +165,7 @@ export default function Services() {
           List of Services
         </span>
         <button
-          className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300 font-medium"
+          className="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300 font-medium"
           onClick={() => setIsAddModalOpen(true)}
         >
           Add Service
@@ -159,38 +187,41 @@ export default function Services() {
           {servicesPerPage.map((service) => (
             <div
               key={service.id}
-              className="group relative bg-gray-50 dark:bg-neutral-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="group relative bg-gray-200 dark:bg-neutral-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="overflow-hidden rounded-xl bg-gray-200 group-hover:opacity-75 lg:h-40 flex items-center justify-center">
+              <div className="overflow-hidden rounded-xl bg-white group-hover:opacity-90 lg:h-40 flex items-center justify-center transition-all duration-300">
                 <img
                   src={service.image}
-
-                  alt={service.name}  
-                  className="h-20 w-20 object-cover"
+                  alt={service.name}
+                  className=" w-8/12 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <h3 className="text-sm pl-2 text-gray-700 dark:text-gray-200">
+              <h3 className="text-sm mt-4 text-gray-800 dark:text-gray-200 font-semibold">
                 {service.name}
               </h3>
-              <div className="flex justify-end gap-3 space-x-2 mt-3">
-                <MdModeEdit
-                  className="text-white dark:text-neutral-200 p-0.5 hover:bg-blue-700 cursor-pointer bg-blue-500 rounded-full"
-                  onClick={() => {
-                    setIsUpdateModalOpen(true);
-                    setUpdatingServiceName(service.name);
-                    setUpdatingServiceId(service.id);
-                  }}
-                  fontSize={22}
-                />
-                <AiFillDelete
-                  className="text-white dark:text-neutral-200 p-0.5 hover:bg-red-700 cursor-pointer bg-red-500 rounded-full"
+              <div className="flex justify-end gap-2 mt-3">
+              <button
+            aria-label="Update"
+            className="text-blue-500 hover:text-white bg-blue-100 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 transition-colors p-1 rounded-full"
+            onClick={() => {
+              setIsUpdateModalOpen(true);
+              setUpdatedServiceName(service.name);
+              setUpdatedServiceId(service.id);
+            }}
+          >
+            <MdModeEdit fontSize={20} />
+          </button>
+                <button
+                  aria-label="Delete"
+                  className="text-red-500 hover:text-white bg-red-100 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600 transition-colors p-1 rounded-full"
                   onClick={() => {
                     setIsDeleteModalOpen(true);
                     setDeletingServiceName(service.name);
                     setDeletingServiceId(service.id);
                   }}
-                  fontSize={22}
-                />
+                >
+                  <AiFillDelete fontSize={20} />
+                </button>
               </div>
             </div>
           ))}
@@ -201,7 +232,9 @@ export default function Services() {
           <button
             onClick={prevPage}
             disabled={CurrentPage === 1}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${CurrentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
+              CurrentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             <ChevronLeftIcon className="h-5 w-5 mr-1" />
             Previous
@@ -212,7 +245,9 @@ export default function Services() {
           <button
             onClick={nextPage}
             disabled={EndIndex >= services.length}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-orange-500 dark:hover:text-orange-400 cursor-pointer ${EndIndex >= services.length ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
+              EndIndex >= services.length ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             Next
             <ChevronRightIcon className="h-5 w-5 ml-1" />
@@ -287,21 +322,17 @@ export default function Services() {
             >
               <FiX fontSize={24} />
             </button>
-            <h2 className="text-2xl font-semibold mb-4 dark:text-white">
-              Update Service
-            </h2>
+            <h2 className="text-2xl font-semibold mb-4 dark:text-white">Update Service</h2>
             <input
               type="text"
-              value={updatingServiceName}
-              onChange={(e) => setUpdatingServiceName(e.target.value)}
-              placeholder="Service Name"
+              value={updatedServiceName}
+              onChange={(e) => setUpdatedServiceName(e.target.value)}
               className="w-full px-4 py-2 mb-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300 dark:bg-neutral-600 dark:border-neutral-500 dark:text-gray-200"
             />
             <label className="m-2 dark:text-white">Image :</label>
             <input
               type="file"
-              value={updatingServiceImage}
-              onChange={(e) => setUpdatingServiceImage(e.target.value)}
+              onChange={(e) => setUpdatedServiceImage(e.target.files[0])}
               placeholder="Image URL"
               className="w-full px-4 py-2 mb-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300 dark:bg-neutral-600 dark:border-neutral-500 dark:text-gray-200"
             />
@@ -322,13 +353,7 @@ export default function Services() {
               </button>
               <button
                 className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
-                onClick={() =>
-                  handleUpdateService(
-                    updatingServiceId,
-                    updatingServiceName,
-                    updatingServiceImage
-                  )
-                }
+                onClick={() => handleUpdateService(updatedServiceId)}
               >
                 Save
               </button>
