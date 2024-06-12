@@ -31,7 +31,10 @@ export default function Register() {
   };
 
   return (
-    <div className="font-mono h-screen flex items-center justify-center bg-orange-500">
+    <div
+      className="font-mono h-screen flex items-center justify-center"
+      style={{ background: "linear-gradient(to right, #D1F1FF, #16B8A6)" }}
+    >
       <div className="container mx-auto">
         <div className="flex items-center h-screen justify-center px-6">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">

@@ -25,12 +25,13 @@ import Blogs from '../views/FrontOffice/Blogs';
 import SingleBlog from '../views/FrontOffice/SingleBlog';
 import SingleWorkspace from '../views/FrontOffice/SingleWorkspace';
 import Packs from '../views/FrontOffice/Packs';
+import Profile from '../views/FrontOffice/Profile';
+import RequireAuth from '../components/Auth/RequireAuth';
 
 const Router = () => {
   return (
     <Routes>
       {/*Back Office Routes */}
-
       <Route path="/Admin" element={<Sidebar />}>
         <Route path="manage-users" element={<Users />} />
         <Route path="manage-services" element={<Services />} />
@@ -42,12 +43,16 @@ const Router = () => {
         <Route path="manage-roles" element={<Roles />} />
       </Route>
 
-      {/*Auth Routes */}
+      {/* public routes */}
       <Route path="register" element={<Register />} />
       <Route path="login" element={<Login />} />
 
       {/*Front Office Routes */}
       <Route path="/" element={<MainLayout />}>
+        {/* private routes */}
+        <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+
+        {/* public routes */}
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Service />} />

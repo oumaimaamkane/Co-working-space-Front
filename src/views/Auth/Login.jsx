@@ -1,34 +1,46 @@
 import { useState } from "react";
 import AuthUser from "../../components/Auth/AuthUser";
+import useAuth from "../../hooks/useAuth";
 import authImage from "../../assets/img/auth.png";
+import axios from "../../api/axios";
+
+
+const LOGIN_URL = "/login";
 
 export default function Login() {
-  const { http, setToken } = AuthUser();
+  const { setAuth } = useAuth();
+  const {setToken } = AuthUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+const handleSubmit = async (event) => {
+  event.preventDefault();
 
-    http
-      .post("/login", { email, password })
-      .then((res) => {
-        setToken(res.data.user, res.data.access_token);
-      })
-      .catch((error) => {
-        if (error.response && error.response.data.errors) {
-          setErrors(error.response.data.errors);
-        }else if (error.response && error.response.status === 401) {
-          setErrors({ password: error.response.data.error });
-        } else {
-          setErrors({});
-        }
-      });
-  };
+  try {
+    const res = await axios.post(LOGIN_URL, { email, password });
+    console.log(res.data);
+    setToken(res.data.user, res.data.access_token);
+    setAuth(res.data);
+
+  } catch (error) {
+    if (error.response) {
+      if (error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else if (error.response.status === 401) {
+        setErrors({ password: error.response.data.error });
+      } else {
+        setErrors({});
+      }
+    }
+  }
+};
 
   return (
-    <div className="font-mono h-screen flex items-center justify-center bg-orange-500">
+    <div
+      className="font-mono h-screen flex items-center justify-center"
+      style={{ background: "linear-gradient(to right, #D1F1FF, #16B8A6)" }}
+    >
       <div className="container mx-auto">
         <div className="flex items-center h-screen justify-center px-6">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">
