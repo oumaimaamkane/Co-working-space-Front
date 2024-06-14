@@ -102,18 +102,19 @@ export default function Services() {
       const formData = new FormData();
       formData.append("name", updatedServiceName);
       formData.append("image", updatedServiceImage);
+      formData.append("_method", "PUT");
   
       // Log the FormData content
       for (let pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
       }
   
-      const response = await axios.put(
+      const response = await axios.post(
         `http://127.0.0.1:8000/api/services/${serviceId}`,
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
       );
