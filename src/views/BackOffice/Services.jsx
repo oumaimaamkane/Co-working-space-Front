@@ -57,12 +57,13 @@ export default function Services() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-cyan-500"></div>
+        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-zinc-900 dark:border-zinc-50"></div>
       </div>
     );
   }
 
   // ADD SERVICES
+
   const handleAddService = async () => {
     if (!newServiceName || !newServiceImage) {
       setError("Service name and image are required");
@@ -97,17 +98,16 @@ export default function Services() {
     }
   };
 
+  // UPDATE SERVICES
   const handleUpdateService = async (serviceId) => {
     try {
       const formData = new FormData();
       formData.append("name", updatedServiceName);
-      formData.append("image", updatedServiceImage);
-      formData.append("_method", "PUT");
-  
-      // Log the FormData content
-      for (let pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
+      if (updatedServiceImage) {
+        formData.append("image", updatedServiceImage);
       }
+      formData.append("_method", "PUT");
+
   
       const response = await axios.post(
         `http://127.0.0.1:8000/api/services/${serviceId}`,
@@ -139,12 +139,6 @@ export default function Services() {
       setError("Failed to update service. Please try again.");
     }
   };
-  
-  
-  
-  
-  
-  
 
   // DELETE SERVICES
   const handleDeleteService = async (serviceId) => {
@@ -166,7 +160,7 @@ export default function Services() {
           List of Services
         </span>
         <button
-          className="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300 font-medium"
+          className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300 font-medium"
           onClick={() => setIsAddModalOpen(true)}
         >
           Add Service
@@ -203,7 +197,7 @@ export default function Services() {
               <div className="flex justify-end gap-2 mt-3">
               <button
             aria-label="Update"
-            className="text-blue-500 hover:text-white bg-blue-100 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 transition-colors p-1 rounded-full"
+            className="text-blue-500 dark:text-zinc-100 hover:text-white bg-blue-100 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors p-1 rounded-full"
             onClick={() => {
               setIsUpdateModalOpen(true);
               setUpdatedServiceName(service.name);
@@ -214,7 +208,7 @@ export default function Services() {
           </button>
                 <button
                   aria-label="Delete"
-                  className="text-red-500 hover:text-white bg-red-100 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600 transition-colors p-1 rounded-full"
+                  className="text-red-500 dark:text-zinc-100 hover:text-white bg-red-100 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 transition-colors p-1 rounded-full"
                   onClick={() => {
                     setIsDeleteModalOpen(true);
                     setDeletingServiceName(service.name);
@@ -233,7 +227,7 @@ export default function Services() {
           <button
             onClick={prevPage}
             disabled={CurrentPage === 1}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
+            className={`flex items-center text-gray-800 dark:text-gray-100 hover:text-zinc-950 dark:hover:text-zinc-950 cursor-pointer ${
               CurrentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -246,7 +240,7 @@ export default function Services() {
           <button
             onClick={nextPage}
             disabled={EndIndex >= services.length}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
+            className={`flex items-center text-gray-800 dark:text-gray-100 hover:text-zinc-950 dark:hover:text-zinc-950 cursor-pointer ${
               EndIndex >= services.length ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -311,6 +305,8 @@ export default function Services() {
           </div>
         </div>
       )}
+
+      {/* Update Service Modal */}
       {isUpdateModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300">
           <div className="bg-white dark:bg-neutral-700 p-6 rounded-lg shadow-lg w-full max-w-md relative">

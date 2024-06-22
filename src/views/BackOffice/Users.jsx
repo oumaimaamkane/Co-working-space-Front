@@ -58,7 +58,7 @@ export default function Users() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-cyan-500"></div>
+        <div className="animate-spin rounded-full h-14 w-14 border-b-4 border-zinc-950 dark:border-zinc-50"></div>
       </div>
     );
   }
@@ -119,8 +119,8 @@ export default function Users() {
           <button
             className={`px-6 py-2 rounded-tl-lg font-medium ${
               activeTab === "unbanned"
-                ? "bg-gray-500 text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-950"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-600"
             } transition duration-200`}
             onClick={() => setActiveTab("unbanned")}
             aria-selected={activeTab === "unbanned"}
@@ -130,8 +130,8 @@ export default function Users() {
           <button
             className={`px-6 py-2 rounded-tr-lg font-medium ${
               activeTab === "banned"
-                ? "bg-gray-500 text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-950"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-600"
             } transition duration-200`}
             onClick={() => setActiveTab("banned")}
             aria-selected={activeTab === "banned"}
@@ -140,10 +140,10 @@ export default function Users() {
           </button>
         </div>
 
-        <table className="table-auto w-full text-left border">
-          <thead>
-            <tr className="bg-gray-100 dark:bg-neutral-800">
-              <th className="px-4 py-2 text-gray-800 dark:text-gray-100 font-semibold text-xs tracking-wide text-center">
+        <table className="min-w-full bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 shadow-sm rounded-lg">
+        <thead>
+        <tr className="bg-gray-100 dark:bg-neutral-800">
+        <th className="px-4 py-2 text-gray-800 dark:text-gray-100 font-semibold text-xs tracking-wide text-center">
                 #
               </th>
               <th className="px-4 py-2 text-gray-800 dark:text-gray-100 font-semibold text-xs tracking-wide text-center">
@@ -163,12 +163,11 @@ export default function Users() {
               </th>
             </tr>
           </thead>
-          <tbody className="dark:border-neutral-300">
+          <tbody>
             {usersToShow.map((user, index) => (
               <tr
                 key={user.id}
-                className="hover:bg-gray-50 border dark:hover:bg-neutral-600 transition duration-200"
-              >
+                className="hover:bg-gray-50 border-t dark:hover:bg-neutral-700 transition-colors duration-200">
                 <td className="px-4 py-2 dark:text-gray-300 text-center">
                   {startIndex + index + 1}
                 </td>
@@ -221,7 +220,7 @@ export default function Users() {
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
+            className={`flex items-center text-gray-800 dark:text-gray-100 hover:text-zinc-950 dark:hover:text-zinc-950 cursor-pointer ${
               currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -235,7 +234,7 @@ export default function Users() {
           <button
             onClick={nextPage}
             disabled={endIndex >= filteredUsers.length}
-            className={`flex items-center text-gray-600 dark:text-gray-200 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer ${
+            className={`flex items-center text-gray-800 dark:text-gray-100 hover:text-zinc-950 dark:hover:text-zinc-950 cursor-pointer ${
               endIndex >= filteredUsers.length
                 ? "opacity-50 cursor-not-allowed"
                 : ""

@@ -74,7 +74,7 @@ const Sidebar = () => {
       <button
         onClick={toggleSidebar}
         className={classNames(
-          "absolute top-14 right-1 flex items-center justify-center bg-gray-100 text-gray-600 rounded-full focus:outline-none shadow-sm transition-all duration-300",
+          "absolute top-14 right-1 flex items-center justify-center bg-gray-100 text-zinc-900 rounded-full focus:outline-none shadow-sm transition-all duration-300",
           "w-10 h-10" // Always maintain this size
         )}
       >
