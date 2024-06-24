@@ -1,33 +1,20 @@
-import { useState } from "react";
 import images from "../../assets/img/assets";
-import Pagination from "../../components/Pagination";
 import LinkButton from "../../components/Buttons/LinkButton";
 import Services from "../../components/Services/Services";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faImage, faUsers, faXmark, faClone,} from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faImage,
+  faXmark,
+  faClone,
+} from "@fortawesome/free-solid-svg-icons";
 import Vedio from "../../components/Shared/Vedio";
 import HomeSlides from "../../components/Slider/HomeSlides";
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import Testimonials from "../../components/Shared/Testimonials";
 import Benifits from "../../components/Shared/Benifits";
 import Contact from "../../components/Shared/Contact";
-
-const workspaces = [
-  {
-    id: 1,
-    name: "Workspace One",
-    description: "Description one",
-    image: "path/to/image1.jpg",
-  },
-  {
-    id: 2,
-    name: "Workspace Two",
-    description: "Description two",
-    image: "path/to/image2.jpg",
-  },
-];
-
-const ITEMS_PER_PAGE = 2;
+import Workspace from "../../components/Workspace.jsx/Workspace";
 
 const HOME_SLIDES = [
   {
@@ -51,18 +38,6 @@ const HOME_SLIDES = [
 ];
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(workspaces.length / ITEMS_PER_PAGE);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  // const currentWorkspaces = workspaces.slice(
-  //   (currentPage - 1) * ITEMS_PER_PAGE,
-  //   currentPage * ITEMS_PER_PAGE
-  // );
-
   return (
     <div>
       {/* hero Area */}
@@ -81,10 +56,10 @@ export default function Home() {
                 >
                   <Fade delay={1e2} cascade damping={1e-1}>
                     <div className="slide-content">
-                      <small className="text-white uppercase">
+                      <small className="text-white 2xl:text-2xl uppercase">
                         {slide.title}
                       </small>
-                      <h1 className="text-[28px] max-w-[300px] md:max-w-xl mx-auto leading-9 text-white md:text-5xl pt-3 md:pb-9 font-bold">
+                      <h1 className="text-[28px] max-w-[300px] md:max-w-xl 2xl:max-w-5xl mx-auto leading-9 text-white md:text-5xl 2xl:text-7xl pt-3 md:pb-9 font-bold">
                         {slide.description}
                       </h1>
 
@@ -102,12 +77,12 @@ export default function Home() {
         {/* workspace Search Form */}
         <div className="workspace-search-container w-full">
           <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-            <div className="workspace-search-form w-11/12 md:w-10/12 mx-auto bg-white shadow-xl rounded-md flex items-center">
-              <div className="flex items-center flex-wrap w-full justify-between py-8 px-6 md:px-10">
-                <div className="w-full md:w-fit mb-3">
+            <div className="workspace-search-form mt-[45%] md:mt-auto w-11/12 md:w-10/12 mx-auto bg-white shadow-xl rounded-md flex items-center">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-6 2xl:gap-10 w-full py-8 px-6 md:px-10">
+                <div className="mb-3">
                   <label
                     htmlFor="check_in"
-                    className="text-[15px] block pb-2 md:pb-3"
+                    className="text-[15px] 2xl:text-2xl block pb-2 md:pb-3"
                   >
                     Check In
                   </label>
@@ -115,58 +90,63 @@ export default function Home() {
                     id="check_in"
                     type="date"
                     placeholder="Search for workspace"
-                    className="rounded-sm text-sm p-3  border w-full md:w-[180px]"
+                    className="rounded-sm text-sm 2xl:text-lg p-3 border w-full"
                   />
                 </div>
 
-                <div className="w-full md:w-fit mb-3">
+                <div className="mb-3">
                   <label
-                    htmlFor="check_in"
-                    className="text-[15px] block pb-2 md:pb-3"
+                    htmlFor="check_out"
+                    className="text-[15px] block 2xl:text-2xl pb-2 md:pb-3"
                   >
                     Check Out
                   </label>
                   <input
-                    id="check_in"
+                    id="check_out"
                     type="date"
                     placeholder="Search for workspace"
-                    className="rounded-sm text-sm p-3  border w-full md:w-[180px]"
+                    className="rounded-sm text-sm 2xl:text-lg p-3 border w-full"
                   />
                 </div>
 
-                <div className="w-full md:w-fit mb-3">
+                <div className="mb-3">
                   <label
-                    htmlFor="check_in"
-                    className="text-[15px] block pb-2 md:pb-3"
+                    htmlFor="workspace_type"
+                    className="text-[15px] block 2xl:text-2xl pb-2 md:pb-3"
                   >
                     Workspace Type
                   </label>
-                  <select className="rounded-sm text-sm p-3 border w-full md:w-[180px]">
+                  <select
+                    id="workspace_type"
+                    className="rounded-sm text-sm 2xl:text-lg p-3 border w-full"
+                  >
                     <option value="1">Private Office</option>
                     <option value="2">Shared Office</option>
                     <option value="3">Meeting Room</option>
                   </select>
                 </div>
 
-                <div className="w-full md:w-fit mb-3">
+                <div className="mb-3">
                   <label
-                    htmlFor="personne"
-                    className="text-[15px] block pb-2 md:pb-3"
+                    htmlFor="capacity"
+                    className="text-[15px] block 2xl:text-2xl pb-2 md:pb-3"
                   >
                     Capacity
                   </label>
-
                   <input
-                    id="personne"
+                    id="capacity"
                     type="Number"
                     placeholder="5 Persons"
                     min={1}
-                    className="rounded-sm text-sm p-3  border w-full md:w-[180px]"
+                    className="rounded-sm text-sm 2xl:text-lg p-3 border w-full"
                   />
                 </div>
-                <button className="w-full md:w-fit py-3 text-sm px-12 mt-4 md:mt-6 bg-[#030303] hover:bg-gray-800 transition-colors duration-200 ease-in text-white">
-                  Search
-                </button>
+
+                <div className="flex items-end mb-4">
+                  <button className="w-full py-3 text-sm 2xl:text-lg px-12 bg-[#030303] hover:bg-gray-800 transition-colors duration-200 ease-in text-white">
+                    Search
+                  </button>
+                </div>
               </div>
             </div>
           </Fade>
@@ -174,26 +154,25 @@ export default function Home() {
       </section>
 
       {/* About Area */}
-      <section className="-mt-36 md:-mt-0 pt-10 pb-16 md:pb-20">
+      <section className="-mt-56 md:-mt-0 pt-10 pb-16 md:pb-20">
         <div className="container mx-auto">
           <div className="flex flex-col items-center justify-center">
             <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-              <span className="block mb-3 md:mb-6 text-[#888F96] text-[18px] uppercase">
+              <span className="block mb-3 md:mb-6 text-[#888F96] text-[18px] 2xl:text-[22px] uppercase">
                 About US
               </span>
 
-              <h2 className="text-[24px] md:text-4xl font-bold text-center mb-4 text-[#1E3954]">
+              <h2 className="text-[24px] md:text-4xl 2xl:text-6xl font-bold text-center mb-4 text-[#1E3954]">
                 Community, creativity,
                 <br /> comfort & more
               </h2>
 
-              {/* <img src={images.layerIcon1} alt="layer icon" /> */}
               <FontAwesomeIcon
                 icon={faClone}
-                className="size-8 text-[#1E3954] text-2xl"
+                className="size-8 text-[#1E3954] text-2xl "
               />
 
-              <p className="text-center w-[280px] md:w-[790px] text-sm md:text-lg leading-8 text-gray-500 my-8">
+              <p className="text-center w-[280px] md:w-[790px] 2xl:w-[1200px] text-sm md:text-lg 2xl:text-2xl leading-8 2xl:leading-[50px] text-gray-500 my-8">
                 We are a community of bold minds who have decided to work under
                 the same roof. Our workspace and the people around us inspire us
                 to take action, to grow, to do better. By saying that our
@@ -212,21 +191,46 @@ export default function Home() {
       <Vedio />
 
       {/* Services Area */}
-      <Services />
+      <section className="mb-16 mx-4 md:mx-12 2xl:mx-24">
+        <div className="container mx-auto pb-16 md:pb-20">
+          <div className="flex flex-col items-center justify-center">
+            <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+              <h2 className="text-[24px] md:text-4xl 2xl:text-6xl font-bold text-center mb-4 text-[#1E3954]">
+                Our services
+              </h2>
+
+              <FontAwesomeIcon
+                icon={faClone}
+                className="size-8 text-[#1E3954] text-2xl"
+              />
+
+              <p className="text-center w-[280px] md:w-[920px] text-sm md:text-lg 2xl:text-2xl leading-8 2xl:leading-[50px] text-gray-500 my-8">
+                Beautiful setting, abundant natural light, amazing comfort,
+                super-fast internet, industrial style interior, custom made
+                desks, state-of-the-art AC system, top notch location,…
+              </p>
+
+              <LinkButton className="text-white">Explore Spaces</LinkButton>
+            </Fade>
+          </div>
+        </div>
+
+        <Services />
+      </section>
 
       {/* work Space Area */}
       <section className="w-full overflow-hidden coworking-space-area pb-16 md:pb-28">
         {/* <!-- Section Heading --> */}
         <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
           <div className="w-full md:w-6/12 mx-auto text-center">
-            <div className="mx-4 md:mx-12 pb-16">
-              <span className="text-[#888F96] text-[18px] uppercase">
+            <div className="mx-4 md:mx-12 2xl:mx-24 pb-16">
+              <span className="text-[#888F96] text-[18px] 2xl:text-[22px] uppercase">
                 OUR WORKSPACE
               </span>
-              <h2 className="text-[24px] md:text-4xl font-bold my-4 md:my-8 text-[#1E3954]">
+              <h2 className="text-[24px] md:text-4xl 2xl:text-6xl font-bold my-4 md:my-8 text-[#1E3954]">
                 Workspaces for all
               </h2>
-              <p className="text-sm md:text-lg leading-8 text-gray-500">
+              <p className="text-sm md:text-lg 2xl:text-2xl leading-8 2xl:leading-[50px] text-gray-500">
                 Whether you’re a startup or a Fortune 500 company, we offer
                 workspace solutions tailored to your needs.
               </p>
@@ -235,113 +239,17 @@ export default function Home() {
         </Fade>
 
         {/* <!-- workspace item --> */}
-        <Slide delay={1e2} direction="right" triggerOnce cascade damping={1e-1}>
-          <div className="w-full flex flex-wrap">
-            <img
-              src={images.workspace1}
-              className="w-full md:w-1/2 h-[250px] md:h-[450px]"
-              alt="workspace image"
-            />
-
-            {/* workspace Description */}
-            <div className="w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
-                  Private Office
-                </h4>
-                {/* team */}
-                <div className="pb-4 flex items-center border-b">
-                  <FontAwesomeIcon
-                    icon={faUsers}
-                    className="size-5 text-[#1E3954]"
-                  />
-                  <p className="pl-3 font-semibold text-gray-500 text-sm">
-                    Ideal for team size 5 - 40
-                  </p>
-                </div>
-
-                <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
-                  Our private offices are perfect for teams of 1-100 and are
-                  fully serviced so you can focus on your business.
-                </p>
-
-                <p className="uppercase text-sm md:text-base font-bold mt-5">
-                  From <span className="text-teal-500">$99/mo</span>
-                </p>
-
-                {/* button */}
-                <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
-                  Learn More
-                </LinkButton>
-              </Fade>
-            </div>
-          </div>
-        </Slide>
-
-        <Slide delay={1e2} direction="left" triggerOnce cascade damping={1e-1}>
-          {/* <!-- workspace item --> */}
-          <div className="w-full flex flex-row-reverse flex-wrap">
-            <img
-              src={images.workspace2}
-              className="w-full md:w-1/2 h-[250px] md:h-[450px]"
-              alt="workspace image"
-            />
-
-            {/* workspace Description */}
-            <div className="bg-white w-full md:w-1/2 workspace-content p-6 pb-16 md:p-16">
-              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <h4 className="text-[22px] md:text-2xl font-semibold text-[#1E3954] mb-2">
-                  Private Office
-                </h4>
-                {/* team */}
-                <div className="pb-4 flex items-center border-b">
-                  <FontAwesomeIcon
-                    icon={faUsers}
-                    className="size-5 text-[#1E3954]"
-                  />
-                  <p className="pl-3 font-semibold text-gray-500 text-sm">
-                    Ideal for team size 5 - 40
-                  </p>
-                </div>
-
-                <p className="text-gray-500 text-sm leading-8 md:text-lg mt-5">
-                  Our private offices are perfect for teams of 1-100 and are
-                  fully serviced so you can focus on your business.
-                </p>
-
-                <p className="uppercase text-sm md:text-base font-bold mt-5">
-                  From <span className="text-teal-500">$99/mo</span>
-                </p>
-
-                {/* button */}
-                <LinkButton className="md:py-4 text-white md:px-12 uppercase rounded-full mt-6 md:mt-8">
-                  Learn More
-                </LinkButton>
-              </Fade>
-            </div>
-          </div>
-        </Slide>
-
-        <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-          {/* Pagination */}
-          <div className="md:mt-12">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </div>
-        </Fade>
+        <Workspace />
       </section>
 
       <Testimonials />
 
       {/* Membership options Area */}
       <section
-        className="px-4 md:px-12 mb-14 md:mb-28 bg-cover leading-tight bg-center bg-no-repeat"
+        className="px-4 md:px-12 2xl:px-24 mb-10 md:mb-20 bg-cover leading-tight bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${images.cowSpaceImg2})` }}
       >
-        <div className="container mx-auto py-14 md:py-28">
+        <div className=" mx-auto py-14 md:py-28">
           <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
             <h2 className="text-[24px] md:text-[50px] font-semibold text-center mb-4 text-white">
               Membership options
@@ -351,7 +259,7 @@ export default function Home() {
               icon={faClone}
               className="size-8 w-full mx-auto text-white text-2xl"
             />
-            <p className="text-center mx-auto text-sm md:w-[795px] md:text-lg leading-8 text-white my-8 mb-12 md:mb-20">
+            <p className="text-center mx-auto text-sm md:w-[795px] 2xl:w-[1200px] md:text-lg 2xl:text-2xl 2xl:leading-[50px] leading-8 text-white my-8 mb-12 md:mb-20">
               Beautiful setting, abundant natural light, amazing comfort,
               super-fast internet, industrial style interior, custom made desks,
               state-of-the-art AC system, top notch location,…
@@ -362,11 +270,13 @@ export default function Home() {
             {/* membership single item */}
             <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:border-0 md:hover:border hover:border-[#55BBAF]">
               <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <h3 className="text-lg md:text-2xl font-semibold text-white">
+                <h3 className="text-lg md:text-2xl 2xl:text-4xl font-semibold text-white">
                   Desk
                 </h3>
                 <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
-                  <span className="text-lg md:text-2xl font-bold">$</span>
+                  <span className="text-lg md:text-2xl 2xl:text-4xl font-bold">
+                    $
+                  </span>
                   <span className="text-[30px] md:text-5xl font-semibold">
                     29
                   </span>
@@ -375,7 +285,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] text-white">
+                <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] 2xl:text-2xl 2xl:leading-[50px] text-white">
                   Monday through Friday access to open workspace with conference
                   room bookings available.
                 </p>
@@ -385,9 +295,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm md:text-base text-white ml-4">
+                    <p className="text-sm md:text-base 2xl:text-2xl text-white ml-4">
                       Mix of sitting and standing workspaces
                     </p>
                   </li>
@@ -395,9 +305,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm md:text-base text-white ml-4">
+                    <p className="text-sm md:text-base 2xl:text-2xl text-white ml-4">
                       24/7 Access
                     </p>
                   </li>
@@ -405,9 +315,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm md:text-base text-white ml-4">
+                    <p className="text-sm md:text-base 2xl:text-2xl text-white ml-4">
                       Coffee, tea, still, and sparkling water
                     </p>
                   </li>
@@ -415,9 +325,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faXmark}
-                      className="text-red-600 size-[20px]"
+                      className="text-red-600 size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm md:text-base text-white ml-4">
+                    <p className="text-sm md:text-base 2xl:text-2xl text-white ml-4">
                       Access to {`community's`} online member network
                     </p>
                   </li>
@@ -425,9 +335,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faXmark}
-                      className="text-red-600 size-[20px]"
+                      className="text-red-600 size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm md:text-base text-white ml-4">
+                    <p className="text-sm md:text-base 2xl:text-2xl text-white ml-4">
                       Fast Wi-Fi and prints
                     </p>
                   </li>
@@ -442,18 +352,20 @@ export default function Home() {
             <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 relative overflow-hidden transition-border duration-200 ease-in border border-[#55697C] hover:rounded-xl hover:border-[#55BBAF]">
               <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 <div>
-                  <span className="bg-green-500 absolute w-8 h-60 -top-16 translate-x-16 right-20 -rotate-[50deg]"></span>
-                  <span className="absolute uppercase top-8 right-8 rotate-[40deg] font-bold text-sm text-white">
+                  <span className="bg-green-500 absolute w-8 h-60 2xl:w-12 -top-16 translate-x-16 right-20 2xl:right-24 -rotate-[50deg]"></span>
+                  <span className="absolute uppercase top-8 right-8 2xl:right-9 2xl:top-9 rotate-[40deg] font-bold text-sm 2xl:text-2xl text-white">
                     Best
                   </span>
                 </div>
 
-                <h3 className="text-lg md:text-2xl font-semibold text-white">
+                <h3 className="text-lg md:text-2xl 2xl:text-4xl font-semibold text-white">
                   Virtual
                 </h3>
 
                 <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
-                  <span className="text-lg md:text-2xl font-bold">$</span>
+                  <span className="text-lg md:text-2xl 2xl:text-4xl font-bold">
+                    $
+                  </span>
                   <span className="text-[30px] md:text-5xl font-semibold">
                     60
                   </span>
@@ -462,7 +374,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] text-white">
+                <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] 2xl:text-2xl 2xl:leading-[50px] text-white">
                   Send and receive packages and mail from our midtown location.
                   Conference room bookings available.
                 </p>
@@ -472,9 +384,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Mix of sitting and standing workspaces
                     </p>
                   </li>
@@ -482,9 +394,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       24/7 Access
                     </p>
                   </li>
@@ -492,9 +404,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Coffee, tea, still, and sparkling water
                     </p>
                   </li>
@@ -502,9 +414,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Access to {`community's`} online member network
                     </p>
                   </li>
@@ -512,9 +424,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faXmark}
-                      className="text-red-600 size-[20px]"
+                      className="text-red-600 size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Fast Wi-Fi and prints
                     </p>
                   </li>
@@ -528,11 +440,13 @@ export default function Home() {
             {/* membership single item */}
             <div className="py-8 md:py-12 col-span-1 md:col-span-4 lg:grid-cols-6 px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:border-0 md:hover:border hover:border-[#55BBAF]">
               <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <h3 className="text-lg md:text-2xl font-semibold text-white">
+                <h3 className="text-lg md:text-2xl 2xl:text-4xl font-semibold text-white">
                   Office
                 </h3>
                 <div className="price flex items-center space-x-2 text-[#f6ec26] mt-4 md:mt-8 rounded-md">
-                  <span className="text-lg md:text-2xl font-bold">$</span>
+                  <span className="text-lg md:text-2xl 2xl:text-4xl font-bold">
+                    $
+                  </span>
                   <span className="text-[30px] md:text-5xl font-semibold">
                     90
                   </span>
@@ -541,7 +455,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] text-white">
+                <p className="mt-3 md:mt-6 text-sm md:text-base leading-8 md:leading-[35px] 2xl:text-2xl 2xl:leading-[50px] text-white">
                   Monday through Friday access to open workspace with conference
                   room bookings available.
                 </p>
@@ -551,9 +465,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Mix of sitting and standing workspaces
                     </p>
                   </li>
@@ -561,9 +475,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       24/7 Access
                     </p>
                   </li>
@@ -571,9 +485,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Coffee, tea, still, and sparkling water
                     </p>
                   </li>
@@ -581,9 +495,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Access to {`community's`} online member network
                     </p>
                   </li>
@@ -591,9 +505,9 @@ export default function Home() {
                   <li className="py-3 flex">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-[#55BBAF] size-[20px]"
+                      className="text-[#55BBAF] size-[20px] 2xl:size-[26px]"
                     />
-                    <p className="text-sm leading-7 md:text-base text-white ml-4">
+                    <p className="text-sm leading-7 md:text-base 2xl:text-2xl text-white ml-4">
                       Fast Wi-Fi and prints
                     </p>
                   </li>
@@ -629,9 +543,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-xl font-semibold">
-                  View Gallery
-                </p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </Fade>
           </a>
@@ -652,9 +564,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-xl font-semibold">
-                  View Gallery
-                </p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </Fade>
           </a>
@@ -675,9 +585,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-xl font-semibold">
-                  View Gallery
-                </p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </Fade>
           </a>
@@ -698,9 +606,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-xl font-semibold">
-                  View Gallery
-                </p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </Fade>
           </a>
@@ -721,9 +627,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-xl font-semibold">
-                  View Gallery
-                </p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </Fade>
           </a>
@@ -744,9 +648,7 @@ export default function Home() {
                   icon={faImage}
                   className="gal-img text-white size-12 mb-4"
                 />
-                <p className="text-white text-xl font-semibold">
-                  View Gallery
-                </p>
+                <p className="text-white text-xl font-semibold">View Gallery</p>
               </div>
             </Fade>
           </a>
@@ -755,10 +657,10 @@ export default function Home() {
 
       {/* Becoming Member Area */}
       <section className="mx-4 pt-14 md:pt-16 mb-14 md:mb-20">
-        <div className="container mx-auto">
+        <div className="mx-auto">
           <div className="flex flex-col items-center justify-center pb-12 md:pb-20">
             <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-              <h2 className="text-[24px] md:text-4xl leading-7 md:leading-normal font-bold text-center text-[#1E3954]">
+              <h2 className="text-[24px] md:text-4xl 2xl:text-6xl leading-7 md:leading-normal font-bold text-center text-[#1E3954]">
                 Our Modern Office Spaces
                 <br /> Are Simply Stunning
               </h2>
@@ -771,7 +673,7 @@ export default function Home() {
                 BECOME A MEMBER
               </LinkButton>
 
-              <p className="text-center text-sm md:text-base text-[#1E3954]">
+              <p className="text-center text-sm md:text-base 2xl:text-2xl text-[#1E3954]">
                 Not Sure?
                 <a
                   href="/"
@@ -825,17 +727,17 @@ export default function Home() {
 
       {/* Hsot Event Area */}
       <section
-        className="px-4 md:px-12 mb-14 md:mb-20 leading-tight bg-center bg-no-repeat"
+        className="px-4 md:px-12 2xl:px-24 mb-14 md:mb-20 leading-tight bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${images.banner1})` }}
       >
-        <div className="container flex flex-wrap justify-between items-center py-14 md:py-24">
+        <div className="flex flex-wrap justify-between items-center py-14 md:py-24">
           <div className="w-full md:w-1/2">
             <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
               <h2 className="text-[26px] md:text-[50px] font-semibold mb-4 text-white">
                 Host your next event at Coworkshop
               </h2>
 
-              <p className="text-sm md:text-lg leading-8 text-white md:mt-12 mb-8 md:mb-16">
+              <p className="text-sm md:text-lg 2xl:text-2xl 2xl:leading-[50px] leading-8 text-white md:mt-12 mb-8 md:mb-16">
                 The perfect place for dev gatherings, demo nights, speaker
                 panels, launch parties and creative brainstorming.
               </p>

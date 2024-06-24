@@ -69,3 +69,11 @@ export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
         icon: <HiOutlineCog />
     },
 ];
+// export const DASHBOARD_HEADER_LINKS = [
+//     {
+//         key: 'profil',
+//         label: 'Profil',
+//         path: '/Admin/manage-profil',
+//         icon: <HiOutlineCog />
+//     },
+// ];

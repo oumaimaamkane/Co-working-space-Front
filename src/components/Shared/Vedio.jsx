@@ -12,7 +12,7 @@ export default function Vedio() {
 
   return (
     <section
-      className="relative md:mx-12 mb-16 md:mb-20 h-[28rem] md:h-[41rem] bg-center bg-no-repeat bg-cover flex items-center justify-center leading-tight"
+      className="relative md:mx-12 2xl:mx-24 mb-16 md:mb-20 h-[28rem] md:h-[41rem] bg-center bg-no-repeat bg-cover flex items-center justify-center leading-tight"
       style={{ backgroundImage: `url(${images.cowSpaceImg})` }}
     >
       <Fade delay={1e2} cascade triggerOnce damping={1e-1}>

@@ -28,13 +28,13 @@ const ScrollButton = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`scroll-top fixed right-4 bottom-5 md:bottom-10 md:right-8 p-3 md:p-4 transition duration-500 ease-in-out transform ${
+      className={`scroll-top fixed right-4 bottom-5 md:bottom-10 md:right-8 p-3 md:p-4 2xl:p-8 transition duration-500 ease-in-out transform ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
       }`}
       aria-label="Scroll to top"
       id="scroll-top"
     >
-      <FontAwesomeIcon icon={faChevronUp} className="size-4 text-white" />
+      <FontAwesomeIcon icon={faChevronUp} className="size-4 2xl:size-7 text-white" />
     </button>
   );
 };

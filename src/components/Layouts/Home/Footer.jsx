@@ -5,6 +5,7 @@ import { faGooglePlus } from "@fortawesome/free-brands-svg-icons";
 import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Fade } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     let Links = [
@@ -19,7 +20,11 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 py-10 md:py-16">
       <div className="flex flex-col items-center">
-        <img src={logo} alt="logo image" className="w-[160px] md:w-auto" />
+        <img
+          src={logo}
+          alt="logo image"
+          className="w-[160px] 2xl:w-[300px] md:w-auto"
+        />
 
         <div className="w-full flex items-center justify-center px-4 py-14 md:py-16">
           <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
@@ -27,14 +32,14 @@ export default function Footer() {
               {Links.map((link) => (
                 <li
                   key={link.name}
-                  className="text-sm text-center w-full md:text-lg"
+                  className="text-sm 2xl:text-2xl text-center w-full md:text-lg"
                 >
-                  <a
-                    href={link.link}
+                  <Link
+                    to={link.link}
                     className="text-white font-[500] uppercase md:font-semibold hover:text-[#55BBA4] duration-500"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -44,7 +49,7 @@ export default function Footer() {
         <div className="w-full flex justify-between items-center mb-8">
           <hr className="border-[#51657A] w-5/12" />
           <Fade delay={1e2} triggerOnce damping={1e-1}>
-            <span className="text-white text-xl flex items-center space-x-4 md:space-x-8">
+            <span className="text-white text-xl flex items-center space-x-4 md:space-x-8 2xl:space-x-16">
               <a
                 href="https://plus.google.com"
                 aria-label="Google Plus"
@@ -53,7 +58,7 @@ export default function Footer() {
               >
                 <FontAwesomeIcon
                   icon={faGooglePlus}
-                  className="hover:text-[#55BBA4] transition-colors duration-300"
+                  className="hover:text-[#55BBA4] transition-colors 2xl:size-9 duration-300"
                 />
               </a>
               <a
@@ -64,7 +69,7 @@ export default function Footer() {
               >
                 <FontAwesomeIcon
                   icon={faFacebook}
-                  className="hover:text-[#55BBA4] transition-colors duration-300"
+                  className="hover:text-[#55BBA4] transition-colors 2xl:size-9 duration-300"
                 />
               </a>
               <a
@@ -75,7 +80,7 @@ export default function Footer() {
               >
                 <FontAwesomeIcon
                   icon={faXTwitter}
-                  className="hover:text-[#55BBA4] transition-colors duration-300"
+                  className="hover:text-[#55BBA4] transition-colors 2xl:size-9 duration-300"
                 />
               </a>
               <a
@@ -86,7 +91,7 @@ export default function Footer() {
               >
                 <FontAwesomeIcon
                   icon={faYoutube}
-                  className="hover:text-[#55BBA4] transition-colors duration-300"
+                  className="hover:text-[#55BBA4] transition-colors 2xl:size-9 duration-300"
                 />
               </a>
             </span>
@@ -96,7 +101,7 @@ export default function Footer() {
 
         <div className="flex items-center">
           <Fade delay={1e2} triggerOnce damping={1e-1}>
-            <p className="text-white text-sm md:text-base md:font-semibold">
+            <p className="text-white text-sm md:text-base 2xl:text-xl md:font-semibold">
               Copyright © 2024 - Coworkshop
             </p>
           </Fade>

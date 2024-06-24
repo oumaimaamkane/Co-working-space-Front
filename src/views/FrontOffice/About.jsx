@@ -12,26 +12,24 @@ export default function About() {
           className="px-4 md:px-12 leading-tight bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${images.banner1})` }}
         >
-          <div className="container h-[250px] md:h-[400px] flex justify-center items-center pt-20 md:pt-36">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="breadcrumb-content text-center">
-                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                      <h2 className="text-white uppercase font-semibold mb-1 md:mb-3 text-[24px] md:text-4xl">
-                        About Us
-                      </h2>
-                      <ul className="flex justify-center items-center text-white font-[500]">
-                        <li>
-                          <a href="/" className="hover:text-black">
-                            Home
-                          </a>
-                        </li>
-                        <span className="mx-2">&gt;</span>
-                        <li>About Us</li>
-                      </ul>
-                    </Fade>
-                  </div>
+          <div className="h-[250px] md:h-[400px] flex justify-center items-center pt-20 md:pt-36">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="breadcrumb-content text-center">
+                  <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                    <h2 className="text-white uppercase font-semibold mb-1 md:mb-3 text-[24px] md:text-4xl 2xl:text-5xl">
+                      About Us
+                    </h2>
+                    <ul className="flex justify-center items-center 2xl:text-2xl text-white font-[500]">
+                      <li>
+                        <a href="/" className="hover:text-black">
+                          Home
+                        </a>
+                      </li>
+                      <span className="mx-2">&gt;</span>
+                      <li>About Us</li>
+                    </ul>
+                  </Fade>
                 </div>
               </div>
             </div>
@@ -56,7 +54,7 @@ export default function About() {
               <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
                 {/* <!-- Section Heading --> */}
                 <div className="section-heading">
-                  <h6 className="mb-2 md:mb-4 text-[18px] uppercase">
+                  <h6 className="mb-2 md:mb-4 text-[18px] 2xl:text-2xl uppercase">
                     Testimonials
                   </h6>
                   <h2 className="font-bold text-[24px] md:text-[36px] text-[#1E3954]">
@@ -67,12 +65,12 @@ export default function About() {
                 {/* <!-- Testimonial Slide --> */}
                 <div className="overflow-auto pb-14 w-11/12">
                   <div className="about-content text-sm md:text-base">
-                    <p className="leading-8 text-gray-500 my-4">
+                    <p className="2xl:text-2xl 2xl:leading-[50px] leading-8 text-gray-500 my-4">
                       Excepteur sint occaecat cupidatat non proident, sunt in
                       culpa qui officia dese mollit anim id est laborum. Sed ut
                       perspiciatis unde omnis iste.
                     </p>
-                    <p className="leading-8 text-gray-500">
+                    <p className="2xl:text-2xl 2xl:leading-[50px] leading-8 text-gray-500">
                       Excepteur sint occaecat cupidatat non proident, sunt in
                       culpa qui officia dese mollit anim id est laborum. Sed ut
                       perspiciatis unde omnis iste. Lorem Ipsum available.

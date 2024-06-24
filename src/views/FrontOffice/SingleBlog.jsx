@@ -43,7 +43,7 @@ export default function SingleBlog() {
                   Lorem ipsum dolor sit amet consectetur.
                 </h2>
 
-                <div className="post-meta text-white">
+                <div className="post-meta text-white 2xl:text-2xl">
                   <a href="#">
                     <FontAwesomeIcon icon={faCalendarDays} className="mr-2" />
                     Jan 01, 2024
@@ -82,11 +82,11 @@ export default function SingleBlog() {
                 damping={1e-1}
                 className=" blog-content leading-8 text-[15px] mt-5"
               >
-                <h3 className="text-xl md:text-2xl mt-10 font-semibold text-[#1E3954]">
+                <h3 className="text-xl md:text-2xl 2xl:text-3xl mt-10 font-semibold text-[#1E3954]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. sit
                   amet, consectetur adipiscing elit.
                 </h3>
-                <p className="text-gray-500 mt-2">
+                <p className="text-gray-500 2xl:text-2xl 2xl:leading-[50px] mt-2">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                   eget felis id purus finibus ultrices. Donec auctor, turpis nec
                   malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -95,7 +95,7 @@ export default function SingleBlog() {
                   adipiscing elit. Nunc eget felis id purus finibus ultrices.
                   Donec auctor, turpis nec malesuada.
                 </p>
-                <p className="text-gray-500 mt-2">
+                <p className="text-gray-500 2xl:text-2xl 2xl:leading-[50px] mt-2">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                   eget felis id purus finibus ultrices. Donec auctor, turpis nec
                   malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -103,7 +103,7 @@ export default function SingleBlog() {
                   turpis nec malesuada.
                 </p>
 
-                <p className="text-gray-500 mt-2">
+                <p className="text-gray-500 2xl:text-2xl 2xl:leading-[50px] mt-2">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                   eget felis id purus finibus ultrices. Donec auctor, turpis nec
                   malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -114,27 +114,27 @@ export default function SingleBlog() {
 
               <div className="flex items-center mt-10 py-4 border-t">
                 <div className="flex items-center">
-                  <h3 className="text-[#666] text-[14px] md:text-lg font-[500]">
+                  <h3 className="text-[#666] text-[14px] 2xl:text-2xl md:text-lg font-[500]">
                     Share:
                   </h3>
                   <ul className="flex gap-4 ml-6">
                     <li>
-                      <a href="/" className="text-[#666]">
+                      <a href="/" className="2xl:text-2xl text-[#666]">
                         <FontAwesomeIcon icon={faFacebook} />
                       </a>
                     </li>
                     <li>
-                      <a href="/" className="text-[#666]">
+                      <a href="/" className="2xl:text-2xl text-[#666]">
                         <FontAwesomeIcon icon={faTwitter} />
                       </a>
                     </li>
                     <li>
-                      <a href="/" className="text-[#666]">
+                      <a href="/" className="2xl:text-2xl text-[#666]">
                         <FontAwesomeIcon icon={faLinkedin} />
                       </a>
                     </li>
                     <li>
-                      <a href="/" className="text-[#666]">
+                      <a href="/" className="2xl:text-2xl text-[#666]">
                         <FontAwesomeIcon icon={faPinterest} />
                       </a>
                     </li>
@@ -157,16 +157,16 @@ export default function SingleBlog() {
                 <img src={images.gallery1} alt="blog" />
               </div>
               <div className="blog-content mt-4">
-                <h3 className="text-[#1E3954] text-[18px] md:text-[20px] font-semibold mb-2">
+                <h3 className="text-[#1E3954] text-[18px] md:text-[20px] 2xl:text-3xl font-semibold mb-2">
                   <a href="/">The Best Coworking Spaces in 2021</a>
                 </h3>
-                <p className="text-[14px] md:text-[16px] leading-7 text-[#666] mb-4">
+                <p className="text-[14px] md:text-[16px] leading-7 2xl:text-2xl 2xl:leading-[45px]  text-[#666] mb-4">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <a
                   href="/"
-                  className="text-[14px] md:text-[15px] text-teal-500 hover:text-teal-600 font-semibold"
+                  className="text-[14px] md:text-[15px] 2xl:text-xl text-teal-500 hover:text-teal-600 font-semibold"
                 >
                   Read More
                 </a>
@@ -179,16 +179,16 @@ export default function SingleBlog() {
                 <img src={images.gallery2} alt="blog" />
               </div>
               <div className="blog-content mt-4">
-                <h3 className="text-[#1E3954] text-[18px] md:text-[20px] font-semibold mb-2">
+                <h3 className="text-[#1E3954] text-[18px] md:text-[20px] 2xl:text-3xl font-semibold mb-2">
                   <a href="/">The Best Coworking Spaces in 2021</a>
                 </h3>
-                <p className="text-[14px] md:text-[16px] leading-7 text-[#666] mb-4">
+                <p className="text-[14px] md:text-[16px] leading-7 2xl:text-2xl 2xl:leading-[45px]  text-[#666] mb-4">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <a
                   href="/"
-                  className="text-[14px] md:text-[15px] text-teal-500 hover:text-teal-600 font-semibold"
+                  className="text-[14px] md:text-[15px] 2xl:text-xl text-teal-500 hover:text-teal-600 font-semibold"
                 >
                   Read More
                 </a>
@@ -201,16 +201,16 @@ export default function SingleBlog() {
                 <img src={images.gallery3} alt="blog" />
               </div>
               <div className="blog-content mt-4">
-                <h3 className="text-[#1E3954] text-[18px] md:text-[20px] font-semibold mb-2">
+                <h3 className="text-[#1E3954] text-[18px] md:text-[20px] 2xl:text-3xl font-semibold mb-2">
                   <a href="/">The Best Coworking Spaces in 2021</a>
                 </h3>
-                <p className="text-[14px] md:text-[16px] leading-7 text-[#666] mb-4">
+                <p className="text-[14px] md:text-[16px] leading-7 2xl:text-2xl 2xl:leading-[45px]  text-[#666] mb-4">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <a
                   href="/"
-                  className="text-[14px] md:text-[15px] text-teal-500 hover:text-teal-600 font-semibold"
+                  className="text-[14px] md:text-[15px] 2xl:text-xl text-teal-500 hover:text-teal-600 font-semibold"
                 >
                   Read More
                 </a>
@@ -243,7 +243,7 @@ export default function SingleBlog() {
                 Connect with us
               </h2>
 
-              <p className="text-center text-sm text-white md:text-lg my-3 md:my-5">
+              <p className="text-center text-sm 2xl:text-xl text-white md:text-lg my-3 md:my-5">
                 Subscribe to our e-mail list and stay up-to-date with all our
                 news.
               </p>
@@ -266,7 +266,9 @@ export default function SingleBlog() {
             delay={1e2}
             cascade
             triggerOnce
-            damping={1e-1} className="absolute top-0 left-0 -z-50 w-full h-full overflow-hidden pointer-events-none">
+            damping={1e-1}
+            className="absolute top-0 left-0 -z-50 w-full h-full overflow-hidden pointer-events-none"
+          >
             <div
               className="w-full h-full fixed bottom-0 left-0 bg-cover bg-no-repeat overflow-hidden pointer-events-none"
               style={{

@@ -2,7 +2,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = [...Array(totalPages).keys()].map((number) => number + 1);
 
   return (
-    <div className="flex justify-center md:my-4">
+    <div className="flex justify-center md:py-4">
       <button
         className="text-sm md:text-base px-4 py-2 mx-1 bg-gray-200 rounded hover:bg-gray-300"
         disabled={currentPage === 1}

@@ -30,16 +30,16 @@ export default function HomeSlides({
     <div className="overflow-hidden relative">
       <button
         onClick={goLeft}
-        className="hidden absolute z-30 top-1/2 w-10 h-10 md:w-14 md:h-14 md:flex items-center justify-center rounded-full text-white bg-[#030303] hover:hover:bg-gray-800 md:left-10"
+        className="hidden absolute z-30 top-1/2 w-10 h-10 md:w-14 md:h-14 2xl:w-24 2xl:h-24  md:flex items-center justify-center rounded-full text-white bg-[#030303] hover:hover:bg-gray-800 md:left-10 2xl:left-20"
       >
-        <FontAwesomeIcon icon={faChevronLeft} />
+        <FontAwesomeIcon className="2xl:text-3xl" icon={faChevronLeft} />
       </button>
 
       <button
         onClick={goRight}
-        className="hidden absolute z-30 top-1/2 w-10 h-10 md:w-14 md:h-14 md:flex items-center justify-center rounded-full text-white bg-[#030303] hover:hover:bg-gray-800 md:right-10"
+        className="hidden absolute z-30 top-1/2 w-10 h-10 md:w-14 md:h-14 2xl:w-24 2xl:h-24 md:flex items-center justify-center rounded-full text-white bg-[#030303] hover:hover:bg-gray-800 md:right-10 2xl:right-20"
       >
-        <FontAwesomeIcon icon={faChevronRight} />
+        <FontAwesomeIcon className="2xl:text-3xl" icon={faChevronRight} />
       </button>
 
       <div

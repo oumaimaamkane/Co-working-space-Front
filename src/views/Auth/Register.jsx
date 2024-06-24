@@ -1,33 +1,41 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthUser from "../../components/Auth/AuthUser";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import authImage from "../../assets/img/auth.png";
+import axios from "../../api/axios";
+
+const REGISTER_URL = "/register";
 
 export default function Register() {
-  const { http } = AuthUser();
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  if (isLoggedIn) {
+    return <Navigate to="/" replace />;
+  }
 
-    http
-      .post("/register", {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post(REGISTER_URL, {
         name,
         email,
         password,
         password_confirmation: confirmPassword,
-      })
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        setErrors(error.response.data.errors);
       });
+      navigate("/login");
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        setErrors({ general: "An unexpected error occurred" });
+      }
+    }
   };
 
   return (
@@ -35,7 +43,7 @@ export default function Register() {
       className="font-mono h-screen flex items-center justify-center"
       style={{ background: "linear-gradient(to right, #D1F1FF, #16B8A6)" }}
     >
-      <div className="container mx-auto">
+      <div className="mx-auto">
         <div className="flex items-center h-screen justify-center px-6">
           <div className="w-full xl:w-3/4 lg:w-11/12 flex">
             <div className="w-full h-auto hidden lg:block lg:w-1/2 bg-cover rounded-l-lg">
@@ -52,14 +60,14 @@ export default function Register() {
               >
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
+                    className="block mb-2 text-sm 2xl:text-2xl font-bold text-gray-700"
                     htmlFor="name"
                   >
                     Name
                   </label>
                   <input
                     type="text"
-                    className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 py-2 2xl:py-4 2xl:px-5 text-sm 2xl:text-2xl leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     id="name"
                     placeholder="Enter name"
                     value={name}
@@ -72,7 +80,7 @@ export default function Register() {
 
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
+                    className="block mb-2 text-sm 2xl:text-2xl font-bold text-gray-700"
                     htmlFor="email"
                   >
                     Email
@@ -80,7 +88,7 @@ export default function Register() {
                   <input
                     type="email"
                     name="email"
-                    className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 py-2 2xl:py-4 2xl:px-5 text-sm 2xl:text-2xl leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     id="email"
                     placeholder="Email"
                     value={email}
@@ -93,13 +101,13 @@ export default function Register() {
 
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
+                    className="block mb-2 text-sm 2xl:text-2xl font-bold text-gray-700"
                     htmlFor="password"
                   >
                     Password
                   </label>
                   <input
-                    className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 py-2 2xl:py-4 2xl:px-5 text-sm 2xl:text-2xl leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     id="password"
                     type="password"
                     name="password"
@@ -114,13 +122,13 @@ export default function Register() {
 
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
+                    className="block mb-2 text-sm 2xl:text-2xl font-bold text-gray-700"
                     htmlFor="Confirmpassword"
                   >
                     Confirm Password
                   </label>
                   <input
-                    className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    className="w-full px-3 py-2 2xl:py-4 2xl:px-5 text-sm 2xl:text-2xl leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     id="Confirmpassword"
                     type="password"
                     placeholder="Confirm password"
@@ -131,7 +139,7 @@ export default function Register() {
 
                 <div className="mb-6 text-center">
                   <button
-                    className="w-full px-4 py-2 font-bold text-white bg-[#0E2333] rounded-full hover:bg-blue-900 focus:outline-none focus:shadow-outline"
+                    className="w-full px-4 py-2 2xl:py-4 2xl:px-5 2xl:text-2xl font-bold text-white bg-[#0E2333] rounded-full hover:bg-blue-900 focus:outline-none focus:shadow-outline"
                     type="button"
                     onClick={handleSubmit}
                   >
@@ -141,7 +149,7 @@ export default function Register() {
 
                 <div className="text-center">
                   <a
-                    className="inline-block text-sm text-[#0E2333] align-baseline hover:text-blue-800"
+                    className="inline-block text-sm 2xl:text-2xl text-[#0E2333] align-baseline hover:text-blue-800"
                     href="/login"
                   >
                     Already have an account? Login!

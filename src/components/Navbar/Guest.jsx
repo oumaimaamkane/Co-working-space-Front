@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../../assets/img/logo.png";
 import Button from "../../components/Buttons/Button";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
     let Links = [
@@ -21,21 +22,28 @@ const Nav = () => {
   };
 
   return (
-    <header className="w-full absolute top-0 left-0 z-20 flex items-center justify-between py-5 px-4 md:px-12 md:py-[40px] bg-slate-800 lg:bg-transparent md:border-b border-[#8d9faf]">
-      <div className="w-52">
-        <img src={logo} className="w-[160px] md:w-auto" alt="logo image" />
+    <header className="w-full absolute top-0 left-0 z-20 flex items-center justify-between py-5 px-4 md:px-12 2xl:px-24 md:py-[40px] bg-slate-800 lg:bg-transparent md:border-b border-[#8d9faf]">
+      <div className="w-52 2xl:w-96">
+        <img
+          src={logo}
+          className="w-[160px] md:w-auto 2xl:w-[300px]"
+          alt="logo image"
+        />
       </div>
 
       <div className="hidden lg:block">
-        <ul className="md:flex md:items-center md:justify-evenly transition-all duration-500 ease-in">
+        <ul className="md:flex md:items-center md:justify-evenly 2xl:gap-6 transition-all duration-500 ease-in">
           {Links.map((link) => (
-            <li key={link.name} className="md:ml-12 text-sm md:my-0 my-7">
-              <a
-                href={link.link}
+            <li
+              key={link.name}
+              className="md:ml-12 text-sm 2xl:text-2xl md:my-0 my-7"
+            >
+              <Link
+                to={link.link}
                 className="text-white font-semibold uppercase hover:text-gray-400 duration-500"
               >
                 {link.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

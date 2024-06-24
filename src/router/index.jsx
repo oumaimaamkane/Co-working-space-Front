@@ -8,7 +8,7 @@ import Equipements from '../views/BackOffice/Equipements';
 import Dashboard from '../views/BackOffice/Dashboard';
 import Reservations from '../views/BackOffice/Reservations';
 import Roles from '../views/BackOffice/Roles';
-
+import Profil from '../views/BackOffice/Profil';
 
 
 
@@ -26,7 +26,8 @@ import SingleBlog from '../views/FrontOffice/SingleBlog';
 import SingleWorkspace from '../views/FrontOffice/SingleWorkspace';
 import Packs from '../views/FrontOffice/Packs';
 import Profile from '../views/FrontOffice/Profile';
-import RequireAuth from '../components/Auth/RequireAuth';
+import ProtectedRoute from "../components/Auth/ProtectedRoute";
+import NotFound from '../views/FrontOffice/NotFound';
 
 const Router = () => {
   return (
@@ -41,6 +42,7 @@ const Router = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="manage-reservations" element={<Reservations />} />
         <Route path="manage-roles" element={<Roles />} />
+        <Route path="manage-profil" element={<Profil />} />
       </Route>
 
       {/* public routes */}
@@ -50,7 +52,9 @@ const Router = () => {
       {/*Front Office Routes */}
       <Route path="/" element={<MainLayout />}>
         {/* private routes */}
-        <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="profile" element={<Profile />} />
+        </Route>
 
         {/* public routes */}
         <Route index element={<Home />} />
@@ -62,6 +66,9 @@ const Router = () => {
         <Route path="/blogs/single-blog" element={<SingleBlog />} />
         <Route path="/single-workspace" element={<SingleWorkspace />} />
       </Route>
+
+      {/* Page Not Found */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
