@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { AiFillDelete } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 import { FiX } from "react-icons/fi";
@@ -25,19 +26,19 @@ export default function Espaces() {
   });
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [updatedEspace, setUpdatedEspace] = useState({
-    floor: '',
-    description: '',
-    status: '',
-    price: '',
-    capacity: '',
-    category_id: '',
+    floor: "",
+    description: "",
+    status: "",
+    price: "",
+    capacity: "",
+    category_id: "",
     service_id: [],
     equipement_id: [],
     images: null,
-    first_image_url: '',
+    first_image_url: "",
   });
 
-  const [selectedEquipments, setSelectedEquipments] = useState([]);
+  const [selectedEquipements, setSelectedEquipements] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
   const [espaceId, setEspaceId] = useState(null); // ID of the espace being updated
 
@@ -133,8 +134,6 @@ export default function Espaces() {
     setCurrentPage((prevPage) => prevPage - 1);
   };
 
-
-
   const handleUpdateInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedEspace((prev) => ({
@@ -142,8 +141,6 @@ export default function Espaces() {
       [name]: value,
     }));
   };
-
-
 
   const handleUpdateFileChange = (e) => {
     setUpdatedEspace((prev) => ({
@@ -222,69 +219,115 @@ export default function Espaces() {
     );
   }
 
-    // ADD ESPACES
-    const handleAddEspace = async (e) => {
-      e.preventDefault();
-      try {
-          const formData = new FormData();
-          Object.keys(newEspace).forEach((key) => {
-              if (key === "images" && newEspace[key]) {
-                  for (let i = 0; i < newEspace[key].length; i++) {
-                      formData.append("images[]", newEspace[key][i]);
-                  }
-              } else if (Array.isArray(newEspace[key])) {
-                  newEspace[key].forEach((item) => formData.append(`${key}[]`, item));
-              } else {
-                  formData.append(key, newEspace[key] ?? '');
-              }
-          });
-  
-          const response = await axios.post(
-              "http://127.0.0.1:8000/api/espaces",
-              formData,
-              {
-                  headers: {
-                      'Content-Type': 'multipart/form-data',
-                  },
-              }
-          );
-  
-          const newEspaceData = response.data.espace;
-          // Set first_image_url if it exists
-          newEspaceData.first_image_url = newEspaceData.first_image_url || '';
-  
-          setEspaces((prevEspaces) => [...prevEspaces, newEspaceData]);
-          setNewEspace({
-              floor: "",
-              description: "",
-              status: "",
-              price: "",
-              capacity: "",
-              category_id: "",
-              service_id: [],
-              equipement_id: [],
-              images: null,
-              first_image_url: "",
-          });
-          setIsAddModalOpen(false);
-          setSuccess("Espace added successfully!");
-          setTimeout(() => setSuccess(""), 2000);
-      } catch (error) {
-          setError("Failed to add Espace. Please try again.");
-      }
+  // ADD ESPACES
+  const handleAddEspace = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      Object.keys(newEspace).forEach((key) => {
+        if (key === "images" && newEspace[key]) {
+          for (let i = 0; i < newEspace[key].length; i++) {
+            formData.append("images[]", newEspace[key][i]);
+          }
+        } else if (Array.isArray(newEspace[key])) {
+          newEspace[key].forEach((item) => formData.append(`${key}[]`, item));
+        } else {
+          formData.append(key, newEspace[key] ?? "");
+        }
+      });
+
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/espaces",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      const newEspaceData = response.data.espace;
+      // Set first_image_url if it exists
+      newEspaceData.first_image_url = newEspaceData.first_image_url || "";
+
+      setEspaces((prevEspaces) => [...prevEspaces, newEspaceData]);
+      setNewEspace({
+        floor: "",
+        description: "",
+        status: "",
+        price: "",
+        capacity: "",
+        category_id: "",
+        service_id: [],
+        equipement_id: [],
+        images: null,
+        first_image_url: "",
+      });
+      setIsAddModalOpen(false);
+      setSuccess("Espace added successfully!");
+      setTimeout(() => setSuccess(""), 2000);
+    } catch (error) {
+      setError("Failed to add Espace. Please try again.");
+    }
   };
 
-  
+  const openUpdateModal = async (espaceId) => {
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/espaces/${espaceId}`
+      );
+      const espace = response.data.espace;
 
+      setUpdatedEspace({
+        floor: espace.floor || "",
+        description: espace.description || "",
+        status: espace.status || "",
+        price: espace.price || "",
+        capacity: espace.capacity || "",
+        category_id: espace.category ? espace.category.id : "",
+        service_id: espace.services
+          ? espace.services.map((service) => service.id)
+          : [],
+        equipement_id: espace.equipements
+          ? espace.equipements.map((equipement) => equipement.id)
+          : [],
+        images: null, // Assuming you'll handle images differently
+        first_image_url: espace.first_image_url || "",
+      });
 
+      setSelectedCategory(
+        espace.category
+          ? { value: espace.category.id, label: espace.category.name }
+          : null
+      );
+      setSelectedStatus(
+        StatusOptions.find((option) => option.value === espace.status)
+      );
+      setSelectedServices(
+        espace.services
+          ? espace.services.map((service) => ({
+              value: service.id,
+              label: service.name,
+            }))
+          : []
+      );
+      setSelectedEquipements(
+        espace.equipements
+          ? espace.equipements.map((equipement) => ({
+              value: equipement.id,
+              label: equipement.name,
+            }))
+          : []
+      );
 
+      setIsUpdateModalOpen(true);
+    } catch (error) {
+      console.error("Failed to fetch Espace data", error);
+      setError("Failed to fetch Espace data");
+    }
+  };
 
-
-
-  
-  // UPDATE ESPACES
-  const handleUpdateEspace = async (e) => {
-    e.preventDefault();
+  const handleUpdateEspace = async (espaceId) => {
     try {
       const formData = new FormData();
       Object.keys(updatedEspace).forEach((key) => {
@@ -293,10 +336,12 @@ export default function Espaces() {
             formData.append("images[]", updatedEspace[key][i]);
           }
         } else if (Array.isArray(updatedEspace[key])) {
-          updatedEspace[key].forEach((item) => formData.append(`${key}[]`, item));
+          updatedEspace[key].forEach((item) =>
+            formData.append(`${key}[]`, item)
+          );
           formData.append("_method", "PUT");
         } else {
-          formData.append(key, updatedEspace[key] ?? '');
+          formData.append(key, updatedEspace[key] ?? "");
         }
       });
 
@@ -305,7 +350,7 @@ export default function Espaces() {
         formData,
         {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            "Content-Type": "application/x-www-form-urlencoded",
           },
         }
       );
@@ -317,16 +362,16 @@ export default function Espaces() {
       );
       setIsUpdateModalOpen(false);
       setUpdatedEspace({
-        floor: '',
-        description: '',
-        status: '',
-        price: '',
-        capacity: '',
-        category_id: '',
+        floor: "",
+        description: "",
+        status: "",
+        price: "",
+        capacity: "",
+        category_id: "",
         service_id: [],
         equipement_id: [],
         images: null,
-        first_image_url: '',
+        first_image_url: "",
       });
       setSuccess("Espace updated successfully!");
       setTimeout(() => setSuccess(""), 2000);
@@ -334,7 +379,6 @@ export default function Espaces() {
       setError("Failed to update Espace. Please try again.");
     }
   };
-
 
   // DELETE ESPACES
   const handleDeleteEspace = async (espaceId) => {
@@ -429,7 +473,6 @@ export default function Espaces() {
                     src={espace.first_image_url}
                     alt={`Espace ${espace.id}`}
                   />
-                  
                 </td>
                 <td className="px-4 py-3 dark:border-neutral-700 dark:text-gray-300 text-left">
                   {espace.category.name}
@@ -449,7 +492,7 @@ export default function Espaces() {
                   <button
                     aria-label="Update"
                     className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-600 transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-neutral-800"
-                    onClick={() => setIsUpdateModalOpen(true)}
+                    onClick={() => openUpdateModal(espace.id)}
                   >
                     <MdModeEdit fontSize={18} />
                   </button>
@@ -464,12 +507,12 @@ export default function Espaces() {
                   >
                     <AiFillDelete fontSize={19} />
                   </button>
-                  <button
-                    aria-label="Details"
-                    className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-600 transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-neutral-800"
-                  >
-                    <CgMoreO fontSize={18} />
-                  </button>
+                  <Link
+            to={`/Admin/consulte-detail/${espace.id}`} // Link to details page for each espace
+            className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-600 transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-neutral-800"
+          >
+            <CgMoreO fontSize={18} />
+          </Link>
                 </td>
               </tr>
             ))}
@@ -644,10 +687,10 @@ export default function Espaces() {
                       {/* EQUIPEMENT */}
                       <div className="sm:col-span-1">
                         <label
-                          htmlFor="equipement_id"
+                          htmlFor="equipement"
                           className="block text-sm font-medium text-gray-700 dark:text-gray-300"
                         >
-                          Equipment
+                          Equipements
                         </label>
                         <Select
                           id="equipement_id"
@@ -772,275 +815,260 @@ export default function Espaces() {
           </div>
         </div>
       )}
-{/* Update Modal */}
-{isUpdateModalOpen && (
-  <div className="fixed inset-0 z-10 overflow-y-auto">
-    <div className="flex items-center justify-center min-h-screen p-4 text-center sm:block sm:p-0">
-      <div
-        className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-        aria-hidden="true"
-      ></div>
-      <div
-        className="inline-block align-bottom bg-white dark:bg-neutral-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-2xl sm:w-full sm:p-6"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-headline"
-      >
-        <div className="absolute top-0 right-0 pt-4 pr-4">
-          <button
-            type="button"
-            className="text-gray-400 hover:text-gray-500 focus:outline-none"
-            onClick={() => setIsUpdateModalOpen(false)}
-          >
-            <span className="sr-only">Close</span>
-            <FiX className="h-6 w-6" />
-          </button>
-        </div>
-        <div className="sm:flex sm:items-start">
-          <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-            <h2
-              className="text-2xl font-semibold mb-6 dark:text-white"
-              id="modal-headline"
+      {/* Update Modal */}
+      {isUpdateModalOpen && (
+        <div className="fixed inset-0 z-10 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-screen p-4 text-center sm:block sm:p-0">
+            <div
+              className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+              aria-hidden="true"
+            ></div>
+            <div
+              className="inline-block align-bottom bg-white dark:bg-neutral-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-2xl sm:w-full sm:p-6"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-headline"
             >
-              Update Espace
-            </h2>
-            <form onSubmit={(e) => handleUpdateEspace(e, espaceId)} className="mt-5">
-              <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
-                {/* FLOOR */}
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="floor"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Floor
-                  </label>
-                  <input
-                  type="text"
-                  id="floor"
-                  name="floor"
-                  value={updatedEspace.floor}
-                  onChange={handleUpdateInputChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-                  required
-                />
-                </div>
-
-                {/* PRICE */}
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="price"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Price
-                  </label>
-                  <input
-                    type="number"
-                    name="price"
-                    id="price"
-                    value={updatedEspace.price}
-                    onChange={handleUpdateInputChange}
-                    min={0}
-                    step="0.01"
-                    className="mt-1 h-9 block w-full rounded-sm border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
-                    required
-                  />
-                </div>
-
-                {/* CAPACITY */}
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="capacity"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Capacity
-                  </label>
-                  <input
-                    type="number"
-                    name="capacity"
-                    value={updatedEspace.capacity}
-                    onChange={handleUpdateInputChange}
-                    id="capacity"
-                    min={1}
-                    className="mt-1 h-9  block w-full rounded-sm border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
-                    required
-                  />
-                </div>
-
-                {/* STATUS */}
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="status"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Status
-                  </label>
-                  <Select
-                    id="status"
-                    name="status"
-                    options={StatusOptions}
-                    value={selectedStatus}
-                    className="mt-1"
-                    classNamePrefix="react-select"
-                    onChange={handleUpdateChangeStatus}
-                  />
-                </div>
-
-                {/* CATEGORY */}
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="category_id"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Category
-                  </label>
-                  <Select
-                    id="category_id"
-                    name="category_id"
-                    options={categories.map((category) => ({
-                      value: category.id,
-                      label: category.name,
-                    }))}
-                    value={selectedCategory}
-                    className="mt-1"
-                    classNamePrefix="react-select"
-                    onChange={handleUpdateChangeCategory}
-                  />
-                </div>
-
-                {/* EQUIPEMENT */}
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="equipement_id"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Equipment
-                  </label>
-                  <Select
-                    id="equipement_id"
-                    name="equipement_id"
-                    options={Equipementoptions}
-                    isMulti
-                    value={selectedEquipments}
-                    className="mt-1"
-                    classNamePrefix="react-select"
-                    onChange={(selectedOptions) =>
-                      handleUpdateChangeSelect(selectedOptions, {
-                        name: "equipement_id",
-                      })
-                    }
-                  />
-                </div>
-
-                {/* SERVICES */}
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="service"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Services
-                  </label>
-                  <Select
-                    id="service_id"
-                    name="service_id"
-                    options={Serviceoptions}
-                    isMulti
-                    value={selectedServices}
-                    className="mt-1"
-                    classNamePrefix="react-select"
-                    onChange={(selectedOptions) =>
-                      handleUpdateChangeSelect(selectedOptions, {
-                        name: "service_id",
-                      })
-                    }
-                  />
-                </div>
-
-                {/* DESCRIPTION */}
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="description"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Description
-                  </label>
-                  <textarea
-                    id="description"
-                    name="description"
-                    placeholder="Description"
-                    value={updatedEspace.description}
-                    onChange={handleUpdateInputChange}
-                    rows={3}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
-                    required
-                  />
-                </div>
-
-                {/* PHOTO */}
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="images"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Cover Photo
-                  </label>
-                  <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
-                    <div className="space-y-1 text-center">
-                      <PhotoIcon
-                        className="mx-auto h-12 w-12 text-gray-400"
-                        aria-hidden="true"
-                      />
-                      <div className="flex text-sm text-gray-600">
-                        <label
-                          htmlFor="images"
-                          className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                        >
-                          <span>Upload a file</span>
-                          <input
-                            id="images"
-                            name="images"
-                            type="file"
-                            className="sr-only"
-                            accept="image/*"
-                            multiple
-                            onChange={handleUpdateFileChange}
-                          />
-                        </label>
-                      </div>
-                      <p className="text-xs text-gray-500">
-                        PNG, JPG, GIF up to 10MB
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-5 sm:mt-6 flex justify-end gap-4">
+              <div className="absolute top-0 right-0 pt-4 pr-4">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-1 sm:text-sm"
-                  onClick={() => {
-                    setIsUpdateModalOpen(false);
-                    setError("");
-                  }}
+                  className="text-gray-400 hover:text-gray-500 focus:outline-none"
+                  onClick={() => setIsUpdateModalOpen(false)}
                 >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-2 sm:text-sm"
-                  onClick={(e) => handleUpdateEspace(e, espaceId)}
-                >
-                  Update Espace
+                  <span className="sr-only">Close</span>
+                  <FiX className="h-6 w-6" />
                 </button>
               </div>
-            </form>
+              <div className="sm:flex sm:items-start">
+                <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                  <h2
+                    className="text-2xl font-semibold mb-6 dark:text-white"
+                    id="modal-headline"
+                  >
+                    Update Espace
+                  </h2>
+                  <form onSubmit={handleUpdateEspace} className="mt-5">
+                    <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
+                      {/* FLOOR */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="floor"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Floor
+                        </label>
+                        <input
+                          type="text"
+                          id="floor"
+                          name="floor"
+                          value={updatedEspace.floor}
+                          onChange={handleUpdateInputChange}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        />
+                      </div>
+
+                      {/* PRICE */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="price"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Price
+                        </label>
+                        <input
+                          type="number"
+                          name="price"
+                          id="price"
+                          value={updatedEspace.price}
+                          onChange={handleUpdateInputChange}
+                          min={0}
+                          step="0.01"
+                          className="mt-1 h-9 block w-full rounded-sm border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
+                          required
+                        />
+                      </div>
+
+                      {/* CAPACITY */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="capacity"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Capacity
+                        </label>
+                        <input
+                          type="number"
+                          name="capacity"
+                          value={updatedEspace.capacity}
+                          onChange={handleUpdateInputChange}
+                          id="capacity"
+                          min={1}
+                          className="mt-1 h-9  block w-full rounded-sm border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white sm:text-sm"
+                          required
+                        />
+                      </div>
+
+                      {/* STATUS */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="status"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Status
+                        </label>
+                        <Select
+                          id="status"
+                          name="status"
+                          options={StatusOptions}
+                          value={selectedStatus}
+                          className="mt-1"
+                          classNamePrefix="react-select"
+                          onChange={handleUpdateChangeStatus}
+                        />
+                      </div>
+
+                      {/* CATEGORY */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="category_id"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Category
+                        </label>
+                        <Select
+                          id="category_id"
+                          name="category_id"
+                          options={categories.map((category) => ({
+                            value: category.id,
+                            label: category.name,
+                          }))}
+                          value={selectedCategory}
+                          className="mt-1"
+                          classNamePrefix="react-select"
+                          onChange={handleUpdateChangeCategory}
+                        />
+                      </div>
+
+                      {/* EQUIPEMENT */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="equipement_id"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Equipements
+                        </label>
+                        <Select
+                          id="equipement_id"
+                          name="equipement_id"
+                          options={Equipementoptions}
+                          isMulti
+                          value={selectedEquipements}
+                          className="mt-1"
+                          classNamePrefix="react-select"
+                          onChange={(selectedOptions) =>
+                            handleUpdateChangeSelect(selectedOptions, {
+                              name: "equipement_id",
+                            })
+                          }
+                        />
+                      </div>
+
+                      {/* SERVICES */}
+                      <div className="sm:col-span-1">
+                        <label
+                          htmlFor="service"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Services
+                        </label>
+                        <Select
+                          id="service_id"
+                          name="service_id"
+                          options={Serviceoptions}
+                          isMulti
+                          value={selectedServices}
+                          className="mt-1"
+                          classNamePrefix="react-select"
+                          onChange={(selectedOptions) =>
+                            handleUpdateChangeSelect(selectedOptions, {
+                              name: "service_id",
+                            })
+                          }
+                        />
+                      </div>
+
+                      {/* DESCRIPTION */}
+                      <div className="sm:col-span-2">
+                        <label
+                          htmlFor="description"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Description
+                        </label>
+                        <textarea
+                          id="description"
+                          name="description"
+                          rows={3}
+                          value={updatedEspace.description}
+                          onChange={handleUpdateInputChange}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                          required
+                        ></textarea>
+                      </div>
+
+                      {/* IMAGES */}
+                      <div className="sm:col-span-2">
+                        <label
+                          htmlFor="images"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                        >
+                          Images
+                        </label>
+                        <input
+                          type="file"
+                          name="images"
+                          id="images"
+                          onChange={(e) =>
+                            setUpdatedEspace({
+                              ...updatedEspace,
+                              images: e.target.files,
+                            })
+                          }
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                        />
+                        {/* {updatedEspace.first_image_url && (
+                                        <img
+                                            src={updatedEspace.first_image_url}
+                                            alt="First Espace"
+                                            className="mt-4 rounded-md"
+                                        />
+                                    )} */}
+                      </div>
+                    </div>
+
+                    <div className="mt-5 sm:mt-6 sm:flex sm:flex-row-reverse">
+                      <button
+                        type="submit"
+                        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+                      >
+                        Update
+                      </button>
+                      <button
+                        type="button"
+                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm"
+                        onClick={() => setIsUpdateModalOpen(false)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-)}
-
+      )}
 
       {isDeleteModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300">

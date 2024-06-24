@@ -19,6 +19,7 @@ import Register from "../views/Auth/Register";
 import Login from "../views/Auth/Login";
 import MainLayout from "../components/Layouts/Home/MainLayout";
 import Home from "../views/FrontOffice/Home";
+import EspaceDetail from '../views/BackOffice/EspaceDetail';
 
 const Router = () => {
   return (
@@ -36,6 +37,7 @@ const Router = () => {
         <Route path="manage-reservations" element={<Reservations />} />
         <Route path="manage-roles" element={<Roles />} />
         <Route path="manage-profil" element={<Profil />} />
+        <Route path="consulte-detail/:id" element={<EspaceDetail />} /> 
       </Route>
       
       {/*Auth Routes */}
