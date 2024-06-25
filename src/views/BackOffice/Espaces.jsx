@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 import { FiX } from "react-icons/fi";
@@ -54,53 +54,40 @@ export default function Espaces() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/espaces");
+      setEspaces(response.data);
+    } catch (error) {
+      setError("Failed to fetch espaces from the server");
+    } finally {
+      setLoading(false);
+    }
+
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/categories");
+      setCategories(response.data);
+    } catch (error) {
+      setError("Failed to fetch categories from the server");
+    }
+
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/equipements");
+      setEquipements(response.data);
+    } catch (error) {
+      setError("Failed to fetch equipements from the server");
+    }
+
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/services");
+      setServices(response.data);
+    } catch (error) {
+      setError("Failed to fetch services from the server");
+    }
+  };
+
   useEffect(() => {
-    const fetchEspaces = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:8000/api/espaces");
-        setEspaces(response.data);
-      } catch (error) {
-        setError("Failed to fetch espaces from the server");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/categories"
-        );
-        setCategories(response.data);
-      } catch (error) {
-        setError("Failed to fetch categories from the server");
-      }
-    };
-
-    const fetchEquipements = async () => {
-      try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/equipements"
-        );
-        setEquipements(response.data);
-      } catch (error) {
-        setError("Failed to fetch equipements from the server");
-      }
-    };
-
-    const fetchServices = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:8000/api/services");
-        setServices(response.data);
-      } catch (error) {
-        setError("Failed to fetch services from the server");
-      }
-    };
-
-    fetchEspaces();
-    fetchCategories();
-    fetchEquipements();
-    fetchServices();
+    fetchData();
   }, []);
 
   const handleInputChange = (e) => {
@@ -137,17 +124,27 @@ export default function Espaces() {
   const handleUpdateInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedEspace((prev) => ({
-      ...prev,
-      [name]: value,
+        ...prev,
+        [name]: value,
     }));
-  };
+};
 
-  const handleUpdateFileChange = (e) => {
-    setUpdatedEspace((prev) => ({
-      ...prev,
-      images: e.target.files,
-    }));
-  };
+const handleUpdateFileChange = (e) => {
+  const files = Array.from(e.target.files);
+  setUpdatedEspace((prev) => ({
+    ...prev,
+    images: files,
+  }));
+};
+
+
+
+  // const handleUpdateFileChange = (e) => {
+  //   setUpdatedEspace((prev) => ({
+  //     ...prev,
+  //     images: e.target.files,
+  //   }));
+  // };
 
   //select
   const Serviceoptions = services.map((service) => ({
@@ -169,7 +166,9 @@ export default function Espaces() {
   const handleUpdateChangeSelect = (selectedOptions, { name }) => {
     setUpdatedEspace((prev) => ({
       ...prev,
-      [name]: selectedOptions.map((option) => option.value),
+      [name]: selectedOptions
+        ? selectedOptions.map((option) => option.value)
+        : [],
     }));
   };
 
@@ -291,8 +290,9 @@ export default function Espaces() {
         equipement_id: espace.equipements
           ? espace.equipements.map((equipement) => equipement.id)
           : [],
-        images: null, // Assuming you'll handle images differently
+        images: null,
         first_image_url: espace.first_image_url || "",
+        id: espace.id,
       });
 
       setSelectedCategory(
@@ -327,7 +327,8 @@ export default function Espaces() {
     }
   };
 
-  const handleUpdateEspace = async (espaceId) => {
+  const handleUpdateEspace = async (event) => {
+    event.preventDefault();
     try {
       const formData = new FormData();
       Object.keys(updatedEspace).forEach((key) => {
@@ -336,30 +337,26 @@ export default function Espaces() {
             formData.append("images[]", updatedEspace[key][i]);
           }
         } else if (Array.isArray(updatedEspace[key])) {
-          updatedEspace[key].forEach((item) =>
-            formData.append(`${key}[]`, item)
-          );
-          formData.append("_method", "PUT");
+          updatedEspace[key].forEach((item) => formData.append(`${key}[]`, item));
         } else {
           formData.append(key, updatedEspace[key] ?? "");
         }
       });
-
+      formData.append("_method", "PUT");
+  
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/espaces/${espaceId}`,
+        `http://127.0.0.1:8000/api/espaces/${updatedEspace.id}`,
         formData,
         {
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
       );
-
-      setEspaces((prevEspaces) =>
-        prevEspaces.map((espace) =>
-          espace.id === espaceId ? response.data.espace : espace
-        )
-      );
+  
+      // Fetch data again to reflect updates
+      fetchData();
+  
       setIsUpdateModalOpen(false);
       setUpdatedEspace({
         floor: "",
@@ -372,6 +369,7 @@ export default function Espaces() {
         equipement_id: [],
         images: null,
         first_image_url: "",
+        id: ""
       });
       setSuccess("Espace updated successfully!");
       setTimeout(() => setSuccess(""), 2000);
@@ -379,6 +377,7 @@ export default function Espaces() {
       setError("Failed to update Espace. Please try again.");
     }
   };
+  
 
   // DELETE ESPACES
   const handleDeleteEspace = async (espaceId) => {
@@ -508,11 +507,11 @@ export default function Espaces() {
                     <AiFillDelete fontSize={19} />
                   </button>
                   <Link
-            to={`/Admin/consulte-detail/${espace.id}`} // Link to details page for each espace
-            className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-600 transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-neutral-800"
-          >
-            <CgMoreO fontSize={18} />
-          </Link>
+                    to={`/Admin/consulte-detail/${espace.id}`} // Link to details page for each espace
+                    className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-600 transition-colors rounded-full hover:bg-blue-50 dark:hover:bg-neutral-800"
+                  >
+                    <CgMoreO fontSize={18} />
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -963,7 +962,9 @@ export default function Espaces() {
                           name="equipement_id"
                           options={Equipementoptions}
                           isMulti
-                          value={selectedEquipements}
+                          value={Equipementoptions.filter((option) =>
+                            updatedEspace.equipement_id.includes(option.value)
+                          )}
                           className="mt-1"
                           classNamePrefix="react-select"
                           onChange={(selectedOptions) =>
@@ -987,7 +988,9 @@ export default function Espaces() {
                           name="service_id"
                           options={Serviceoptions}
                           isMulti
-                          value={selectedServices}
+                          value={Serviceoptions.filter((option) =>
+                            updatedEspace.service_id.includes(option.value)
+                          )}
                           className="mt-1"
                           classNamePrefix="react-select"
                           onChange={(selectedOptions) =>
@@ -1017,33 +1020,42 @@ export default function Espaces() {
                         ></textarea>
                       </div>
 
-                      {/* IMAGES */}
+                      {/* PHOTO */}
                       <div className="sm:col-span-2">
                         <label
                           htmlFor="images"
                           className="block text-sm font-medium text-gray-700 dark:text-gray-300"
                         >
-                          Images
+                          Cover Photo
                         </label>
-                        <input
-                          type="file"
-                          name="images"
-                          id="images"
-                          onChange={(e) =>
-                            setUpdatedEspace({
-                              ...updatedEspace,
-                              images: e.target.files,
-                            })
-                          }
-                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
-                        />
-                        {/* {updatedEspace.first_image_url && (
-                                        <img
-                                            src={updatedEspace.first_image_url}
-                                            alt="First Espace"
-                                            className="mt-4 rounded-md"
-                                        />
-                                    )} */}
+                        <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                          <div className="space-y-1 text-center">
+                            <PhotoIcon
+                              className="mx-auto h-12 w-12 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <div className="flex text-sm text-gray-600">
+                              <label
+                                htmlFor="images"
+                                className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                              >
+                                <span>Upload files</span>
+                                <input
+                                  id="images"
+                                  name="images"
+                                  type="file"
+                                  className="sr-only"
+                                  accept="image/*"
+                                  multiple
+                                  onChange={handleUpdateFileChange}
+                                />
+                              </label>
+                            </div>
+                            <p className="text-xs text-gray-500">
+                              PNG, JPG, GIF up to 10MB
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
