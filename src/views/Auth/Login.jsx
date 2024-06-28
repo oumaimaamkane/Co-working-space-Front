@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import api from "../../services/api";
 import authImage from "../../assets/img/auth.png";
 import axios from "../../api/axios";
+import { toast, } from "react-toastify";
 
 const LOGIN_URL = "/login";
 
@@ -24,16 +26,28 @@ export default function Login() {
       const res = await axios.post(LOGIN_URL, { email, password });
       const authData = res.data;
 
-      login({ user: authData.user, token: authData.access_token });
-      navigate(authData.user.role_id === 1 ? "/Admin/dashboard" : "/");
+      console.log("Login response:", authData);
+
+      // Update the Authorization header for future requests
+      api.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${authData.access_token}`;
+
+      login({ user: authData.user, token: authData.access_token, refresh_token: authData.refresh_token });
+
+      setTimeout(() => {
+        navigate(authData.user.role_id === 1 ? "/Admin/dashboard" : "/about");
+      }, 100000);
+
+      toast.success("Login successful!");
     } catch (error) {
       if (error.response) {
         if (error.response.data.errors) {
           setErrors(error.response.data.errors);
-        } else if (error.response.status === 401) {
-          setErrors({ password: error.response.data.error });
+          toast.error("Error logging in. Please check your input.");
         } else {
           setErrors({});
+          toast.error("An unexpected error occurred.");
         }
       }
     }
@@ -82,7 +96,7 @@ export default function Login() {
                     <div className="text-red-500">{errors.email}</div>
                   )}
                 </div>
-                
+
                 <div className="mb-4">
                   <label
                     className="block mb-2 text-sm 2xl:text-2xl font-bold text-gray-700"
