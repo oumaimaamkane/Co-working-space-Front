@@ -1,0 +1,54 @@
+/* FloorPlan.css */
+.image-gallery-left-nav,
+.image-gallery-right-nav {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 30;
+}
+
+.image-gallery-left-nav {
+  left: 10px;
+}
+
+.image-gallery-right-nav {
+  right: 10px;
+}
+
+.image-gallery-left-nav::before,
+.image-gallery-right-nav::before {
+  font-size: 20px;
+  line-height: 1;
+  color: white;
+}
+
+.floor-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.floor-button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.floor-button:hover {
+  background-color: #e0e0e0;
+}
+
+.floor-button.active {
+  background-color: #3dc1d3;
+  color: white;
+}

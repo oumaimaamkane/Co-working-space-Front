@@ -26,7 +26,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [profileData, setProfileData] = useState({});
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchUserData();

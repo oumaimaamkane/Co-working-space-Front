@@ -28,6 +28,7 @@ import Packs from '../views/FrontOffice/Packs';
 import Profile from '../views/FrontOffice/Profile';
 import ProtectedRoute from "../components/Auth/ProtectedRoute";
 import NotFound from '../views/FrontOffice/NotFound';
+import FloorPlans from '../views/FrontOffice/FloorPlans';
 
 const Router = () => {
   return (
@@ -64,6 +65,7 @@ const Router = () => {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/packs" element={<Packs />} />
         <Route path="/blogs/single-blog" element={<SingleBlog />} />
+        <Route path="/floor-plans" element={<FloorPlans />} />
         <Route path="/single-workspace" element={<SingleWorkspace />} />
       </Route>
 

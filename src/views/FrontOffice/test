@@ -152,4 +152,703 @@
                     {/* button */}
                     <LinkButton className="text-white w-full text-center">Select Plan</LinkButton>
                   </Fade>
-                </div>
+                </div>        
+                
+
+
+                # next step :
+
+                <Modal open={open} onClose={handleClose}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 550,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+            outline: "none",
+          }}
+        >
+          {selectedSpace && (
+            <>
+              <Typography variant="h6">{selectedSpace.label}</Typography>
+              <ImageGallery
+                items={selectedSpace.images.map((src) => ({ original: src }))}
+                showPlayButton={false}
+                showThumbnails={false}
+                showFullscreenButton={true}
+                autoPlay={true}
+                slideInterval={2500}
+              />
+              <div className="mt-4">
+                <button
+                  type="button"
+                  className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-black hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={handleClose}
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  className="ml-2 inline-flex justify-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={() => {
+                    handleClose();
+                    setReservationStepsOpen(true);
+                  }}
+                >
+                  Confirm Booking
+                </button>
+              </div>
+            </>
+          )}
+        </Box>
+      </Modal>
+
+      {/* Modal Area */}
+      <div
+        className={`fixed inset-0 overflow-auto  z-50 transition-all duration-500 ease-in-out transform 
+        ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
+        style={{
+          backgroundColor: "#ffffff",
+          scrollbarWidth: "none",
+        }}
+      >
+        {/* close button */}
+        <div className="absolute top-4 right-4">
+          <button
+            className="text-white bg-black px-4 p-2"
+            onClick={toggleModal}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
+        </div>
+
+        <div
+          className={`w-full h-full px-4 md:px-12 transition-all duration-500 ease-in-out ${
+            isOpen ? "visible" : "invisible"
+          }`}
+        >
+          {/* Membership options Area */}
+          <div className="leading-tight bg-center">
+            <div className="container mx-auto mt-20 pb-16">
+              <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                <h2 className="text-[20px] uppercase md:text-4xl font-semibold text-center mb-3 text-black">
+                  Plan Type
+                </h2>
+
+                <p className="text-center text-gray-500 text-base md:text-base mb-14">
+                  Choose a plan and Save more with longer contracts
+                </p>
+              </Fade>
+
+              <Slider>
+                {(Membership_SLIDES || []).map((d) => (
+                  <div
+                    key={d.title}
+                    className="py-8 md:py-12  flex-shrink-0 w-full md:w-[31%] px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:hover:border hover:border-[#55BBAF]"
+                  >
+                    <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
+                      <h3 className="text-lg uppercase md:text-2xl font-semibold text-black">
+                        {d.title}
+                      </h3>
+                      <div className="price flex items-center space-x-2 text-green-500 mt-4 md:mt-6 rounded-md">
+                        <span className="text-lg md:text-2xl font-bold">$</span>
+                        <span className="text-[30px] md:text-5xl font-semibold">
+                          {d.price}
+                        </span>
+                        <span className="text-base md:text-lg font-semibold">
+                          {d.duration}
+                        </span>
+                      </div>
+
+                      {/* benefits */}
+                      <div className="mt-6 mb-10 pr-4">
+                        {(d.benefits || []).map((benefit, index) => (
+                          <li className="py-3 flex" key={index}>
+                            <FontAwesomeIcon
+                              icon={faCheck}
+                              className="text-[#55BBAF] size-[20px]"
+                            />
+                            <p className="text-sm md:text-base text-black ml-4">
+                              {benefit}
+                            </p>
+                          </li>
+                        ))}
+
+                        {(d.drawbacks || []).map((drawback, index) => (
+                          <li className="py-3 flex" key={index}>
+                            <FontAwesomeIcon
+                              icon={faTimes}
+                              className="text-red-600 size-[20px]"
+                            />
+                            <p className="text-sm md:text-base text-black ml-4">
+                              {drawback}
+                            </p>
+                          </li>
+                        ))}
+                      </div>
+                      <LinkButton className="text-white w-full text-center">
+                        Select Plan
+                      </LinkButton>
+                    </Fade>
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+#floorPlans : 
+
+import { useState } from "react";
+import { Stage, Layer, Rect, Text, Group } from "react-konva";
+import { Modal, Box, Typography } from "@mui/material";
+import ImageGallery from "react-image-gallery";
+import images from "../../assets/img/assets";
+import "react-image-gallery/styles/css/image-gallery.css";
+import "./FloorPlan.css";
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  Button,
+  TextField,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+
+const ReservationSteps = ({ onClose }) => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const steps = ["Select Membership", "Choose Date", "Confirm Details"];
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleFinish = () => {
+    // Handle reservation completion
+    console.log("Reservation completed:", { selectedPlan, selectedDate });
+    onClose();
+  };
+
+  const getStepContent = (step) => {
+    switch (step) {
+      case 0:
+        return <MembershipSelection onSelect={setSelectedPlan} />;
+      case 1:
+        return <DateSelection onSelect={setSelectedDate} />;
+      case 2:
+        return (
+          <ConfirmationStep
+            selectedPlan={selectedPlan}
+            selectedDate={selectedDate}
+          />
+        );
+      default:
+        return "Unknown step";
+    }
+  };
+
+  return (
+    <div>
+      <Stepper activeStep={activeStep}>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+      <div>
+        {activeStep === steps.length ? (
+          <div>
+            <Typography>All steps completed</Typography>
+            <Button onClick={handleFinish}>Finish</Button>
+          </div>
+        ) : (
+          <div>
+            {getStepContent(activeStep)}
+            <div style={{ marginTop: "20px" }}>
+              <Button disabled={activeStep === 0} onClick={handleBack}>
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={
+                  activeStep === steps.length - 1 ? handleFinish : handleNext
+                }
+              >
+                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const MembershipSelection = ({ onSelect }) => {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const handleSelect = (plan) => {
+    setSelectedPlan(plan);
+    onSelect(plan);
+  };
+
+  return (
+    <div>
+      <Typography variant="h6">Choose a Membership Plan</Typography>
+      {Membership_SLIDES.map((plan) => (
+        <Button
+          key={plan.title}
+          variant={selectedPlan === plan ? "contained" : "outlined"}
+          onClick={() => handleSelect(plan)}
+          fullWidth
+          style={{ marginTop: "10px" }}
+        >
+          {plan.title} - ${plan.price}
+          {plan.duration}
+        </Button>
+      ))}
+    </div>
+  );
+};
+
+const DateSelection = ({ onSelect }) => {
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+    onSelect(event.target.value);
+  };
+
+  return (
+    <div>
+      <Typography variant="h6">Select Start Date</Typography>
+      <TextField
+        id="date"
+        label="Start Date"
+        type="date"
+        value={selectedDate}
+        onChange={handleDateChange}
+        fullWidth
+        InputLabelProps={{
+          shrink: true,
+        }}
+        style={{ marginTop: "20px" }}
+      />
+    </div>
+  );
+};
+
+const ConfirmationStep = ({ selectedPlan, selectedDate }) => {
+  return (
+    <div>
+      <Typography variant="h6">Confirm Your Reservation</Typography>
+      <List>
+        <ListItem>
+          <ListItemText
+            primary="Selected Plan"
+            secondary={`${selectedPlan.title} - $${selectedPlan.price}${selectedPlan.duration}`}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary="Start Date" secondary={selectedDate} />
+        </ListItem>
+      </List>
+    </div>
+  );
+};
+
+const Membership_SLIDES = [
+  {
+    title: "Day Pass",
+    price: 10,
+    duration: "/day",
+    benefits: ["Mix of sitting and standing workspaces", "24/7 Access"],
+  },
+  {
+    title: "Monthly",
+    price: 35,
+    duration: "/month",
+    benefits: ["Mix of sitting and standing workspaces", "24/7 Access"],
+  },
+  {
+    title: "6 Months",
+    price: 180,
+    duration: "/6 months",
+    benefits: ["Mix of sitting and standing workspaces", "24/7 Access"],
+  },
+  {
+    title: "Yearly",
+    price: 366,
+    duration: "/year",
+    benefits: ["Mix of sitting and standing workspaces", "24/7 Access"],
+  },
+];
+
+const FloorSelector = ({ floors, currentFloor, onFloorChange }) => (
+  <div className="floor-selector">
+    {floors.map((floor) => (
+      <button
+        key={floor}
+        onClick={() => onFloorChange(floor)}
+        className={`floor-button ${currentFloor === floor ? "active" : ""}`}
+      >
+        Floor {floor}
+      </button>
+    ))}
+  </div>
+);
+
+const FloorPlan = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedSpace, setSelectedSpace] = useState(null);
+  const [currentFloor, setCurrentFloor] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
+  const [reservationStepsOpen, setReservationStepsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const floors = [1, 2, 3];
+
+  const handleOpen = (space) => {
+    if (space.type !== "Exit" && space.type !== "Shared Coworking Space") {
+      setSelectedSpace(space);
+      setOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleFloorChange = (floor) => {
+    setCurrentFloor(floor);
+  };
+
+  const createLabeledRect = (x, y, width, height, color, label, space) => (
+    <Group x={x} y={y} onClick={() => handleOpen(space)}>
+      <Rect
+        width={width}
+        height={height}
+        fill={color}
+        stroke="black"
+        strokeWidth={2}
+      />
+      <Text
+        text={label}
+        fontSize={14}
+        fontFamily="Calibri"
+        fill="black"
+        width={width}
+        align="center"
+        verticalAlign="middle"
+        padding={10}
+      />
+    </Group>
+  );
+
+  const createDesk = (x, y) => (
+    <Rect
+      x={x}
+      y={y}
+      width={50}
+      height={30}
+      fill="brown"
+      stroke="black"
+      strokeWidth={2}
+    />
+  );
+
+  const createChair = (x, y) => (
+    <Rect
+      x={x}
+      y={y}
+      width={20}
+      height={20}
+      fill="blue"
+      stroke="black"
+      strokeWidth={2}
+      cornerRadius={5}
+    />
+  );
+
+  const createMeetingTable = (x, y, width, height) => (
+    <>
+      <Rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        fill="grey"
+        stroke="black"
+        strokeWidth={2}
+      />
+      {createChair(x - 25, y + height / 2 - 10)}
+      {createChair(x + width + 5, y + height / 2 - 10)}
+      {createChair(x + width / 2 - 30, y - 25)}
+      {createChair(x + width / 2 - 30, y + height + 5)}
+      {createChair(x + width / 2 + 10, y - 25)}
+      {createChair(x + width / 2 + 10, y + height + 5)}
+    </>
+  );
+
+  const createTeamWorkspace = (x, y, workspace) => (
+    <Group x={x} y={y} onClick={() => handleOpen(workspace)}>
+      {createDesk(0, 0)}
+      {createDesk(50, 0)}
+      {createDesk(0, 30)}
+      {createDesk(50, 30)}
+      {createChair(15, -25)}
+      {createChair(65, -25)}
+      {createChair(15, 65)}
+      {createChair(65, 65)}
+    </Group>
+  );
+
+  const sharedWorkspaces = [
+    {
+      id: "sw1",
+      x: 90,
+      y: 320,
+      label: "Workspace 1",
+      type: "Individual Workspace",
+      images: [images.workspace1, images.workspace2],
+    },
+    {
+      id: "sw2",
+      x: 300,
+      y: 320,
+      label: "Workspace 2",
+      type: "Individual Workspace",
+      images: [images.workspace3, images.workspace4],
+    },
+    {
+      id: "sw3",
+      x: 500,
+      y: 320,
+      label: "Workspace 3",
+      type: "Individual Workspace",
+      images: [images.workspace1, images.workspace3],
+    },
+  ];
+
+  const getFloorData = (floorNumber) => {
+    const baseSpaces = [
+      {
+        id: 1,
+        type: "Meeting Room",
+        label: `Meeting Room ${floorNumber}A`,
+        x: 50,
+        y: 50,
+        width: 200,
+        height: 150,
+        color: "#f8b400",
+        images: [images.workspace1, images.workspace2, images.workspace3],
+      },
+      {
+        id: 2,
+        type: "Private Office",
+        label: `Private Office ${floorNumber}A`,
+        x: 300,
+        y: 50,
+        width: 150,
+        height: 150,
+        color: "#6ab04c",
+        images: [images.workspace4, images.workspace3, images.workspace1],
+      },
+      {
+        id: 3,
+        type: "Private Office",
+        label: `Private Office ${floorNumber}B`,
+        x: 500,
+        y: 50,
+        width: 150,
+        height: 150,
+        color: "#6ab04c",
+        images: [images.workspace4, images.workspace3],
+      },
+      {
+        id: 4,
+        type: "Shared Coworking Space",
+        label: `Shared Coworking Space ${floorNumber}`,
+        x: 50,
+        y: 250,
+        width: 600,
+        height: 200,
+        color: "#3dc1d3",
+        images: [images.workspace1, images.workspace2],
+      },
+      {
+        id: 5,
+        type: "Exit",
+        label: `Exit ${floorNumber}A`,
+        x: 50,
+        y: 500,
+        width: 100,
+        height: 50,
+        color: "#eb4d4b",
+        images: [],
+      },
+      {
+        id: 6,
+        type: "Exit",
+        label: `Exit ${floorNumber}B`,
+        x: 550,
+        y: 500,
+        width: 100,
+        height: 50,
+        color: "#eb4d4b",
+        images: [],
+      },
+    ];
+
+    // floor-specific modifications
+    switch (floorNumber) {
+      case 2:
+        baseSpaces[0].color = "#3f667f";
+        break;
+      default:
+        break;
+    }
+
+    return baseSpaces;
+  };
+
+  return (
+    <div>
+      <FloorSelector
+        floors={floors}
+        currentFloor={currentFloor}
+        onFloorChange={handleFloorChange}
+      />
+      <Stage width={800} height={600}>
+        <Layer>
+          {getFloorData(currentFloor).map((space) => (
+            <Group key={space.id}>
+              {createLabeledRect(
+                space.x,
+                space.y,
+                space.width,
+                space.height,
+                space.color,
+                space.label,
+                space
+              )}
+              {space.type === "Meeting Room" &&
+                createMeetingTable(space.x + 50, space.y + 60, 100, 50)}
+              {space.type === "Private Office" && (
+                <>
+                  {createDesk(space.x + 50, space.y + 75)}
+                  {createChair(space.x + 65, space.y + 50)}
+                </>
+              )}
+              {space.type === "Shared Coworking Space" && (
+                <>
+                  {sharedWorkspaces.map((workspace) =>
+                    createTeamWorkspace(workspace.x, workspace.y, workspace)
+                  )}
+                </>
+              )}
+            </Group>
+          ))}
+        </Layer>
+      </Stage>
+
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 550,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+            outline: "none",
+          }}
+        >
+          {selectedSpace && (
+            <>
+              <Typography variant="h6">{selectedSpace.label}</Typography>
+              <ImageGallery
+                items={selectedSpace.images.map((src) => ({ original: src }))}
+                showPlayButton={false}
+                showThumbnails={false}
+                showFullscreenButton={true}
+                autoPlay={true}
+                slideInterval={2500}
+              />
+              <div className="mt-4">
+                <button
+                  type="button"
+                  className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-black hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={handleClose}
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  className="ml-2 inline-flex justify-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={() => {
+                    handleClose();
+                    setReservationStepsOpen(true);
+                  }}
+                >
+                  Confirm Booking
+                </button>
+              </div>
+            </>
+          )}
+        </Box>
+      </Modal>
+
+      {/* Reservation Steps Modal */}
+      <Modal
+        open={reservationStepsOpen}
+        onClose={() => setReservationStepsOpen(false)}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 600,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+            outline: "none",
+          }}
+        >
+          <ReservationSteps onClose={() => setReservationStepsOpen(false)} />
+        </Box>
+      </Modal>
+      
+    </div>
+  );
+};
+
+export default FloorPlan;

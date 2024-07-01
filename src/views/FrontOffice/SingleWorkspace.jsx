@@ -1,13 +1,8 @@
 import { Fade } from "react-awesome-reveal";
 import images from "../../assets/img/assets";
-import Carousel from "../../components/Slider/Carousel";
-import LinkButton from "../../components/Buttons/LinkButton";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTimes, faXmark } from "@fortawesome/free-solid-svg-icons";
-import Slider from "../../components/Membership/Slider";
-import FloorPlan from "./FloorPlan";
+import ImageGallery from "react-image-gallery";
 import Services from "../../components/Services/Services";
+import { Link } from "react-router-dom";
 
 const REVIEW_IMAGE = [
   images.workspace1,
@@ -16,63 +11,10 @@ const REVIEW_IMAGE = [
   images.workspace4,
 ];
 
-const Membership_SLIDES = [
-  {
-    title: "Day Pass",
-    price: 10,
-    duration: "/day",
-    benefits: [
-      "Mix of sitting and standing workspaces",
-      "24/7 Access",
-      "Coffee, tea, still, and sparkling water",
-      "Access to community's online member network",
-      "Fast Wi-Fi and prints",
-    ],
-  },
-  {
-    title: "Monthly",
-    price: 35,
-    duration: "/month",
-    benefits: [
-      "Mix of sitting and standing workspaces",
-      "24/7 Access",
-      "Coffee, tea, still, and sparkling water",
-      "Access to community's online member network",
-      "Fast Wi-Fi and prints",
-    ],
-  },
-  {
-    title: "6 Months",
-    price: 180,
-    duration: "/6 months",
-    benefits: [
-      "Mix of sitting and standing workspaces",
-      "24/7 Access",
-      "Coffee, tea, still, and sparkling water",
-      "Access to community's online member network",
-      "Fast Wi-Fi and prints",
-    ],
-  },
-  {
-    title: "Yearly",
-    price: 366,
-    duration: "/year",
-    benefits: [
-      "Mix of sitting and standing workspaces",
-      "24/7 Access",
-      "Coffee, tea, still, and sparkling water",
-      "Access to community's online member network",
-      "Fast Wi-Fi and prints",
-    ],
-  },
-];
+
 
 export default function SingleWorkspace() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleModal = () => {
-    setIsOpen(!isOpen);
-  };
+  
 
   return (
     <>
@@ -116,12 +58,19 @@ export default function SingleWorkspace() {
             {/* <!-- Testimonial Thumbnail --> */}
             <div className="col-span-1 md:col-span-7 lg:grid-cols-7 md:mx-8">
               <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                <div className="w-full testimonial-thumbnail">
-                  <Carousel autoSlide={true} className="" autoSlideInterval={1800}>
-                    {REVIEW_IMAGE.map((slide, index) => (
-                      <img key={index} src={slide} alt={`Slide ${index + 1}`} />
-                    ))}
-                  </Carousel>
+                <div className="w-full">
+                  <ImageGallery
+                    items={REVIEW_IMAGE.map((src) => ({
+                      original: src,
+                      thumbnail: src,
+                    }))}
+                    showNav={false}
+                    showPlayButton={false}
+                    showThumbnails={false}
+                    showFullscreenButton={false}
+                    autoPlay={true}
+                    slideInterval={2000}
+                  />
                 </div>
               </Fade>
             </div>
@@ -167,12 +116,12 @@ export default function SingleWorkspace() {
                       perspiciatis unde omnis iste. Lorem Ipsum available.
                     </p>
 
-                    <button
+                    <Link
+                      to={"/floor-plans"}
                       className="inline-block h-fit px-8 py-3 md:py-4 md:px-12 text-sm md:text-base rounded-full bg-[#030303] border-transparent hover:bg-gray-800 duration-200 text-white mt-3"
-                      onClick={toggleModal}
                     >
                       Reserve Now
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </Fade>
@@ -180,105 +129,8 @@ export default function SingleWorkspace() {
           </div>
         </section>
 
-        {/* Modal Area */}
-        <div
-          className={`fixed inset-0 overflow-auto  z-50 transition-all duration-500 ease-in-out transform 
-        ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
-          style={{
-            backgroundColor: "#ffffff",
-            scrollbarWidth: "none",
-          }}
-        >
-          {/* close button */}
-          <div className="absolute top-4 right-4">
-            <button
-              className="text-white bg-black px-4 p-2"
-              onClick={toggleModal}
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-          </div>
-
-          <div
-            className={`w-full h-full px-4 md:px-12 transition-all duration-500 ease-in-out ${
-              isOpen ? "visible" : "invisible"
-            }`}
-          >
-            {/* Membership options Area */}
-            <div className="leading-tight bg-center">
-              <div className="container mx-auto mt-20 pb-16">
-                <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                  <h2 className="text-[20px] uppercase md:text-4xl font-semibold text-center mb-3 text-black">
-                    Plan Type
-                  </h2>
-
-                  <p className="text-center text-gray-500 text-base md:text-base mb-14">
-                    Choose a plan and Save more with longer contracts
-                  </p>
-                </Fade>
-
-                <Slider>
-                  {(Membership_SLIDES || []).map((d) => (
-                    <div
-                      key={d.title}
-                      className="py-8 md:py-12  flex-shrink-0 w-full md:w-[31%] px-6 md:px-8 rounded-xl transition-border duration-200 ease-in border border-[#55BBAF] md:hover:border hover:border-[#55BBAF]"
-                    >
-                      <Fade delay={1e2} cascade triggerOnce damping={1e-1}>
-                        <h3 className="text-lg uppercase md:text-2xl font-semibold text-black">
-                          {d.title}
-                        </h3>
-                        <div className="price flex items-center space-x-2 text-green-500 mt-4 md:mt-6 rounded-md">
-                          <span className="text-lg md:text-2xl font-bold">
-                            $
-                          </span>
-                          <span className="text-[30px] md:text-5xl font-semibold">
-                            {d.price}
-                          </span>
-                          <span className="text-base md:text-lg font-semibold">
-                            {d.duration}
-                          </span>
-                        </div>
-
-                        {/* benefits */}
-                        <div className="mt-6 mb-10 pr-4">
-                          {(d.benefits || []).map((benefit, index) => (
-                            <li className="py-3 flex" key={index}>
-                              <FontAwesomeIcon
-                                icon={faCheck}
-                                className="text-[#55BBAF] size-[20px]"
-                              />
-                              <p className="text-sm md:text-base text-black ml-4">
-                                {benefit}
-                              </p>
-                            </li>
-                          ))}
-
-                          {(d.drawbacks || []).map((drawback, index) => (
-                            <li className="py-3 flex" key={index}>
-                              <FontAwesomeIcon
-                                icon={faTimes}
-                                className="text-red-600 size-[20px]"
-                              />
-                              <p className="text-sm md:text-base text-black ml-4">
-                                {drawback}
-                              </p>
-                            </li>
-                          ))}
-                        </div>
-                        <LinkButton className="text-white w-full text-center">
-                          Select Plan
-                        </LinkButton>
-                      </Fade>
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Services Area */}
-        <section className="bg-[white] pb-14 md:pb-24 px-4 md:px-12">
+        <section className="bg-[white] pb-10 px-4 md:px-12">
           <div className="section-heading">
             <h2 className="font-bold text-[20px] md:text-[30px] mb-16 text-[#1E3954]">
               Workspace Services
@@ -286,11 +138,6 @@ export default function SingleWorkspace() {
           </div>
 
           <Services />
-        </section>
-
-        <section className="pb-16 md:pb-24 bg-[#F9FAFC]">
-          <FloorPlan />
-          {/* <FloorSketcher />  */}
         </section>
       </div>
 
